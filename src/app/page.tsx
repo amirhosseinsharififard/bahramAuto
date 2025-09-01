@@ -46,8 +46,8 @@ const BahramAutohaus = () => {
         stats: {
           sold: "Verkaufte Fahrzeuge",
           customers: "Zufriedene Kunden",
-          experience: "Jahre Erfahrung"
-        }
+          experience: "Jahre Erfahrung",
+        },
       },
       highlights: {
         title: "Aktuelle Top-Angebote",
@@ -60,7 +60,7 @@ const BahramAutohaus = () => {
         features: "Features",
         mileage: "km",
         fuel: "Kraftstoff",
-        transmission: "Getriebe"
+        transmission: "Getriebe",
       },
       advantages: {
         title: "Warum Bahram Autohaus?",
@@ -69,29 +69,29 @@ const BahramAutohaus = () => {
       footer: {
         contact: "Kontakt",
         address: "Adresse",
-        legal: "Rechtliches",
         company: {
-          description: "Seit über 15 Jahren Ihr vertrauensvoller Partner für Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit stehen bei uns an erster Stelle.",
-          rating: "4.9/5 (482 Bewertungen)"
+          description:
+            "Seit über 15 Jahren Ihr vertrauensvoller Partner für Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit stehen bei uns an erster Stelle.",
+          rating: "4.9/5 (482 Bewertungen)",
         },
         services: {
           financing: "Finanzierung & Leasing",
           warranty: "Garantie & Service",
           tradeIn: "Inzahlungnahme",
-          export: "Export weltweit"
+          export: "Export weltweit",
         },
         legal: {
           privacy: "Datenschutz",
           terms: "AGB",
-          imprint: "Impressum"
+          imprint: "Impressum",
         },
         certifications: {
           title: "Zertifiziert durch:",
           tuv: "TÜV SÜD",
           dekra: "DEKRA",
-          association: "Autohändler-Verband"
+          association: "Autohändler-Verband",
         },
-        copyright: "© 2024 Bahram Autohaus. Alle Rechte vorbehalten."
+        copyright: "© 2024 Bahram Autohaus. Alle Rechte vorbehalten.",
       },
     },
     fa: {
@@ -112,8 +112,8 @@ const BahramAutohaus = () => {
         stats: {
           sold: "خودروهای فروخته شده",
           customers: "مشتریان راضی",
-          experience: "سال تجربه"
-        }
+          experience: "سال تجربه",
+        },
       },
       highlights: {
         title: "بهترین پیشنهادات فعلی",
@@ -126,7 +126,7 @@ const BahramAutohaus = () => {
         features: "ویژگی‌ها",
         mileage: "کیلومتر",
         fuel: "سوخت",
-        transmission: "گیربکس"
+        transmission: "گیربکس",
       },
       advantages: {
         title: "چرا بهرام اتوهاوس؟",
@@ -135,29 +135,29 @@ const BahramAutohaus = () => {
       footer: {
         contact: "تماس",
         address: "آدرس",
-        legal: "قانونی",
         company: {
-          description: "بیش از ۱۵ سال شریک قابل اعتماد شما برای خودروهای پریمیوم. کیفیت، خدمات و رضایت مشتری در اولویت ماست.",
-          rating: "۴.۹/۵ (۴۸۲ نظر)"
+          description:
+            "بیش از ۱۵ سال شریک قابل اعتماد شما برای خودروهای پریمیوم. کیفیت، خدمات و رضایت مشتری در اولویت ماست.",
+          rating: "۴.۹/۵ (۴۸۲ نظر)",
         },
         services: {
           financing: "تامین مالی و لیزینگ",
           warranty: "ضمانت و خدمات",
           tradeIn: "تحویل خودرو قدیمی",
-          export: "صادرات جهانی"
+          export: "صادرات جهانی",
         },
         legal: {
           privacy: "حریم خصوصی",
           terms: "شرایط و ضوابط",
-          imprint: "مشخصات"
+          imprint: "مشخصات",
         },
         certifications: {
           title: "تایید شده توسط:",
           tuv: "TÜV SÜD",
           dekra: "DEKRA",
-          association: "انجمن فروشندگان خودرو"
+          association: "انجمن فروشندگان خودرو",
         },
-        copyright: "© ۲۰۲۴ بهرام اتوهاوس. تمامی حقوق محفوظ است."
+        copyright: "© ۲۰۲۴ بهرام اتوهاوس. تمامی حقوق محفوظ است.",
       },
     },
   };
@@ -435,20 +435,22 @@ const BahramAutohaus = () => {
           ></div>
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-2">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <div className="text-center lg:text-left">
-                <h1 className="mb-4 sm:mb-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white">
+                <h1 className="mb-4 text-4xl font-bold leading-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl xl:text-7xl">
                   {t.hero.title}
                 </h1>
-                <p className="mb-3 sm:mb-4 text-lg sm:text-xl lg:text-2xl text-white/90">{t.hero.subtitle}</p>
-                <p className="mb-6 sm:mb-8 max-w-xl text-base sm:text-lg text-white/80 mx-auto lg:mx-0">
+                <p className="mb-3 text-lg text-white/90 sm:mb-4 sm:text-xl lg:text-2xl">
+                  {t.hero.subtitle}
+                </p>
+                <p className="mx-auto mb-6 max-w-xl text-base text-white/80 sm:mb-8 sm:text-lg lg:mx-0">
                   {t.hero.description}
                 </p>
-                <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-                  <button className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl">
+                <div className="mb-6 flex flex-col justify-center gap-3 sm:mb-8 sm:flex-row sm:gap-4 lg:justify-start">
+                  <button className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg">
                     {t.hero.cta}
                   </button>
-                  <button className="rounded-full border border-white/30 bg-white/20 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30">
+                  <button className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg">
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
                     {language === "fa" ? "مشاهده ویدیو" : "Video ansehen"}
                   </button>
@@ -456,26 +458,30 @@ const BahramAutohaus = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-3">
-                <div className="rounded-2xl bg-white/10 p-4 sm:p-6 text-center backdrop-blur-sm">
-                  <div className="mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+                <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
+                  <div className="mb-2 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
                     2500+
                   </div>
-                  <div className="text-xs sm:text-sm text-white/80">
-                    {language === "fa" ? "خودروهای فروخته شده" : "Verkaufte Fahrzeuge"}
+                  <div className="text-xs text-white/80 sm:text-sm">
+                    {language === "fa"
+                      ? "خودروهای فروخته شده"
+                      : "Verkaufte Fahrzeuge"}
                   </div>
                 </div>
-                <div className="rounded-2xl bg-white/10 p-4 sm:p-6 text-center backdrop-blur-sm">
-                  <div className="mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+                <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
+                  <div className="mb-2 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
                     1800+
                   </div>
-                  <div className="text-xs sm:text-sm text-white/80">
+                  <div className="text-xs text-white/80 sm:text-sm">
                     {language === "fa" ? "مشتریان راضی" : "Zufriedene Kunden"}
                   </div>
                 </div>
-                <div className="rounded-2xl bg-white/10 p-4 sm:p-6 text-center backdrop-blur-sm">
-                  <div className="mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">15+</div>
-                  <div className="text-xs sm:text-sm text-white/80">
+                <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
+                  <div className="mb-2 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+                    15+
+                  </div>
+                  <div className="text-xs text-white/80 sm:text-sm">
                     {language === "fa" ? "سال تجربه" : "Jahre Erfahrung"}
                   </div>
                 </div>
@@ -485,31 +491,44 @@ const BahramAutohaus = () => {
         </section>
 
         {/* Search & Filter Section */}
-        <section className="bg-white py-6 sm:py-8 shadow-sm">
+        <section className="bg-white py-6 shadow-sm sm:py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
               <div className="relative w-full lg:flex-1">
-                <Search className="absolute left-4 top-1/2 h-4 w-4 sm:h-5 sm:w-5 -translate-y-1/2 transform text-gray-400" />
+                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 sm:h-5 sm:w-5" />
                 <input
                   type="text"
-                  placeholder={language === "fa" ? "جستجوی برند یا مدل..." : "Marke oder Modell suchen..."}
+                  placeholder={
+                    language === "fa"
+                      ? "جستجوی برند یا مدل..."
+                      : "Marke oder Modell suchen..."
+                  }
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 py-2 sm:py-3 pl-10 sm:pl-12 pr-4 text-sm sm:text-base focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-xl border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
                 />
               </div>
-              <div className="flex flex-wrap justify-center gap-2 w-full lg:w-auto">
+              <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
                   { key: "alle", label: language === "fa" ? "همه" : "Alle" },
-                  { key: "limousine", label: language === "fa" ? "سدان" : "Limousine" },
+                  {
+                    key: "limousine",
+                    label: language === "fa" ? "سدان" : "Limousine",
+                  },
                   { key: "suv", label: "SUV" },
-                  { key: "sportwagen", label: language === "fa" ? "اسپرت" : "Sportwagen" },
-                  { key: "kombi", label: language === "fa" ? "استیشن" : "Kombi" }
+                  {
+                    key: "sportwagen",
+                    label: language === "fa" ? "اسپرت" : "Sportwagen",
+                  },
+                  {
+                    key: "kombi",
+                    label: language === "fa" ? "استیشن" : "Kombi",
+                  },
                 ].map((filter) => (
                   <button
                     key={filter.key}
                     onClick={() => setSelectedFilter(filter.key)}
-                    className={`rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
                       selectedFilter === filter.key
                         ? "bg-blue-600 text-white shadow-md"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-sm"
@@ -541,7 +560,7 @@ const BahramAutohaus = () => {
               {/* Left Arrow - Hidden on mobile */}
               <button
                 onClick={scrollLeft}
-                className="absolute left-0 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 hidden lg:block"
+                className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
               >
                 <svg
                   className="h-6 w-6"
@@ -561,7 +580,7 @@ const BahramAutohaus = () => {
               {/* Right Arrow - Hidden on mobile */}
               <button
                 onClick={scrollRight}
-                className="absolute right-0 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 hidden lg:block"
+                className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
               >
                 <svg
                   className="h-6 w-6"
@@ -578,17 +597,17 @@ const BahramAutohaus = () => {
                 </svg>
               </button>
 
-              <div className="mx-8 sm:mx-12 overflow-hidden">
+              <div className="mx-8 overflow-hidden sm:mx-12">
                 <div
                   id="car-slider"
-                  className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 pb-6"
+                  className="grid grid-cols-1 gap-4 pb-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
                 >
                   {filteredCars.map((car) => (
                     <div
                       key={car.id}
                       className="group w-full transform cursor-pointer transition-all duration-500 hover:scale-105"
                     >
-                      <div className="hover:shadow-glow relative overflow-hidden rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-2xl backdrop-blur-lg transition-all duration-500 group-hover:border-blue-500/50">
+                      <div className="hover:shadow-glow relative overflow-hidden rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-2xl backdrop-blur-lg transition-all duration-500">
                         {/* Image with overlay */}
                         <div className="relative h-52 overflow-hidden">
                           <Image
@@ -612,27 +631,35 @@ const BahramAutohaus = () => {
 
                         <div className="relative z-10 p-4 sm:p-6">
                           <div className="mb-3 flex items-center justify-between">
-                            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white transition-colors duration-300 group-hover:text-blue-400">
+                            <h3 className="text-lg font-bold text-white transition-colors duration-300 group-hover:text-blue-400 sm:text-xl lg:text-2xl">
                               {car.brand} {car.model}
                             </h3>
-                            <span className="text-xs sm:text-sm text-gray-400">
+                            <span className="text-xs text-gray-400 sm:text-sm">
                               {car.year}
                             </span>
                           </div>
 
                           {/* Car specs */}
-                          <div className="mb-4 grid grid-cols-3 gap-1 sm:gap-2 text-xs sm:text-sm text-gray-300">
+                          <div className="mb-4 grid grid-cols-3 gap-1 text-xs text-gray-300 sm:gap-2 sm:text-sm">
                             <div className="text-center">
                               <div className="font-medium">{car.mileage}</div>
-                              <div className="text-xs opacity-75">{language === "fa" ? "کیلومتر" : "km"}</div>
+                              <div className="text-xs opacity-75">
+                                {language === "fa" ? "کیلومتر" : "km"}
+                              </div>
                             </div>
                             <div className="text-center">
                               <div className="font-medium">{car.fuel}</div>
-                              <div className="text-xs opacity-75">{language === "fa" ? "سوخت" : "Kraftstoff"}</div>
+                              <div className="text-xs opacity-75">
+                                {language === "fa" ? "سوخت" : "Kraftstoff"}
+                              </div>
                             </div>
                             <div className="text-center">
-                              <div className="font-medium">{car.transmission}</div>
-                              <div className="text-xs opacity-75">{language === "fa" ? "گیربکس" : "Getriebe"}</div>
+                              <div className="font-medium">
+                                {car.transmission}
+                              </div>
+                              <div className="text-xs opacity-75">
+                                {language === "fa" ? "گیربکس" : "Getriebe"}
+                              </div>
                             </div>
                           </div>
 
@@ -657,19 +684,19 @@ const BahramAutohaus = () => {
 
                           {/* Financing info */}
                           <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 p-2 sm:p-3">
-                            <div className="text-xs sm:text-sm text-green-400 text-center">
+                            <div className="text-center text-xs text-green-400 sm:text-sm">
                               {t.highlights.financing} €{car.financing}
                               {t.highlights.month}
                             </div>
                           </div>
 
                           {/* Action buttons */}
-                          <div className="flex flex-col sm:flex-row gap-2">
-                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600">
+                          <div className="flex flex-col gap-2 sm:flex-row">
+                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-3 py-2 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-4 sm:py-3 sm:text-sm">
                               <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "جزئیات" : "Details"}
                             </button>
-                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600">
+                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-3 py-2 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-4 sm:py-3 sm:text-sm">
                               <MessageCircle className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "تماس" : "Kontakt"}
                             </button>
@@ -855,7 +882,7 @@ const BahramAutohaus = () => {
                 </a>
                 <div className="border-t border-gray-700 pt-4">
                   <h4 className="mb-3 text-lg font-semibold text-white">
-                    {t.footer.legal}
+                    Rechtliches
                   </h4>
                   <div className="space-y-2">
                     <a
