@@ -81,6 +81,7 @@ const BahramAutohaus = () => {
           export: "Export weltweit",
         },
         legal: {
+          title: "Rechtliches",
           privacy: "Datenschutz",
           terms: "AGB",
           imprint: "Impressum",
@@ -92,6 +93,18 @@ const BahramAutohaus = () => {
           association: "Autohändler-Verband",
         },
         copyright: "© 2024 Bahram Autohaus. Alle Rechte vorbehalten.",
+        contactInfo: {
+          phone: "+49 221 123 4567",
+          phoneHours: "Mo-Fr: 9:00-18:00",
+          email: "info@bahramautohaus.de",
+          emailSupport: "24/7 E-Mail Support",
+          address: {
+            street: "Musterstraße 123",
+            city: "50667 Köln",
+            country: "Deutschland",
+          },
+        },
+        servicesTitle: "Services & Info",
       },
     },
     fa: {
@@ -147,6 +160,7 @@ const BahramAutohaus = () => {
           export: "صادرات جهانی",
         },
         legal: {
+          title: "قانونی",
           privacy: "حریم خصوصی",
           terms: "شرایط و ضوابط",
           imprint: "مشخصات",
@@ -158,6 +172,18 @@ const BahramAutohaus = () => {
           association: "انجمن فروشندگان خودرو",
         },
         copyright: "© ۲۰۲۴ بهرام اتوهاوس. تمامی حقوق محفوظ است.",
+        contactInfo: {
+          phone: "+49 221 123 4567",
+          phoneHours: "دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰",
+          email: "info@bahramautohaus.de",
+          emailSupport: "پشتیبانی ایمیل ۲۴/۷",
+          address: {
+            street: "خیابان نمونه ۱۲۳",
+            city: "۵۰۶۶۷ کلن",
+            country: "آلمان",
+          },
+        },
+        servicesTitle: "خدمات و اطلاعات",
       },
     },
   };
@@ -288,30 +314,30 @@ const BahramAutohaus = () => {
         car.model.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
-  const scrollLeft = () => {
-    const container = document.getElementById("car-slider");
-    if (container) {
-      container.scrollBy({ left: -400, behavior: "smooth" });
-    }
-  };
+  // const scrollLeft = () => {
+  //   const container = document.getElementById("car-slider");
+  //   if (container) {
+  //     container.scrollBy({ left: -400, behavior: "smooth" });
+  //   }
+  // };
 
-  const scrollRight = () => {
-    const container = document.getElementById("car-slider");
-    if (container) {
-      container.scrollBy({ left: 400, behavior: "smooth" });
-    }
-  };
+  // const scrollRight = () => {
+  //   const container = document.getElementById("car-slider");
+  //   if (container) {
+  //     container.scrollBy({ left: 400, behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"
       dir={language === "fa" ? "rtl" : "ltr"}
     >
-      <style>{`
+      {/* <style>{`
         #car-slider::-webkit-scrollbar {
           display: none;
         }
-      `}</style>
+      `}</style> */}
 
       {/* Header */}
       <header className="order-b sticky top-0 z-50 border-gray-200/50 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-300">
@@ -340,11 +366,11 @@ const BahramAutohaus = () => {
                 { href: "#services", label: t.nav.services },
                 { href: "#about", label: t.nav.about },
                 { href: "#contact", label: t.nav.contact },
-              ].map((item, index) => (
+              ].map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-700 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600"
+                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
@@ -405,7 +431,7 @@ const BahramAutohaus = () => {
                   { href: "#services", label: t.nav.services, icon: "🔧" },
                   { href: "#about", label: t.nav.about, icon: "ℹ️" },
                   { href: "#contact", label: t.nav.contact, icon: "📞" },
-                ].map((item, index) => (
+                ].map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
@@ -555,10 +581,10 @@ const BahramAutohaus = () => {
               <p className="text-xl text-gray-300">{t.highlights.subtitle}</p>
             </div>
 
-            {/* Horizontal Scrolling Container with Arrow Controls */}
+            {/* Horizontal Scrolling Container with Arrow Controls - SLIDER DISABLED */}
             <div className="relative">
-              {/* Left Arrow - Hidden on mobile */}
-              <button
+              {/* Left Arrow - Hidden on mobile - DISABLED */}
+              {/* <button
                 onClick={scrollLeft}
                 className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
               >
@@ -575,10 +601,10 @@ const BahramAutohaus = () => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-              </button>
+              </button> */}
 
-              {/* Right Arrow - Hidden on mobile */}
-              <button
+              {/* Right Arrow - Hidden on mobile - DISABLED */}
+              {/* <button
                 onClick={scrollRight}
                 className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
               >
@@ -595,21 +621,21 @@ const BahramAutohaus = () => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </button>
+              </button> */}
 
-              <div className="mx-8 overflow-hidden sm:mx-12">
+              <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
                 <div
                   id="car-slider"
-                  className="grid grid-cols-1 gap-4 pb-6 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+                  className="grid grid-cols-2 gap-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
                 >
                   {filteredCars.map((car) => (
                     <div
                       key={car.id}
-                      className="group w-full transform cursor-pointer transition-all duration-500 hover:scale-105"
+                      className="group w-full transform cursor-pointer transition-all duration-500"
                     >
-                      <div className="hover:shadow-glow relative overflow-hidden rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-2xl backdrop-blur-lg transition-all duration-500">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                         {/* Image with overlay */}
-                        <div className="relative h-52 overflow-hidden">
+                        <div className="relative h-48 overflow-hidden sm:h-52">
                           <Image
                             src={car.image}
                             alt={`${car.brand} ${car.model}`}
@@ -629,9 +655,9 @@ const BahramAutohaus = () => {
                           </button>
                         </div>
 
-                        <div className="relative z-10 p-4 sm:p-6">
+                        <div className="relative z-10 p-3 sm:p-4 lg:p-6">
                           <div className="mb-3 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white transition-colors duration-300 group-hover:text-blue-400 sm:text-xl lg:text-2xl">
+                            <h3 className="text-base font-bold text-white transition-colors duration-300 group-hover:text-blue-400 sm:text-lg lg:text-xl">
                               {car.brand} {car.model}
                             </h3>
                             <span className="text-xs text-gray-400 sm:text-sm">
@@ -692,11 +718,11 @@ const BahramAutohaus = () => {
 
                           {/* Action buttons */}
                           <div className="flex flex-col gap-2 sm:flex-row">
-                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-3 py-2 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-4 sm:py-3 sm:text-sm">
+                            <button className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm">
                               <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "جزئیات" : "Details"}
                             </button>
-                            <button className="flex-1 transform rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-3 py-2 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-4 sm:py-3 sm:text-sm">
+                            <button className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm">
                               <MessageCircle className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "تماس" : "Kontakt"}
                             </button>
@@ -801,9 +827,7 @@ const BahramAutohaus = () => {
                 </div>
               </div>
               <p className="mb-6 max-w-md text-gray-300">
-                Seit über 15 Jahren Ihr vertrauensvoller Partner für
-                Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit
-                stehen bei uns an erster Stelle.
+                {t.footer.company.description}
               </p>
               <div className="flex space-x-4">
                 <div className="flex items-center space-x-2 text-sm">
@@ -813,7 +837,7 @@ const BahramAutohaus = () => {
                   <Star className="h-5 w-5 fill-current text-yellow-400" />
                   <Star className="h-5 w-5 fill-current text-yellow-400" />
                   <span className="ml-2 text-gray-300">
-                    4.9/5 (482 Bewertungen)
+                    {t.footer.company.rating}
                   </span>
                 </div>
               </div>
@@ -828,23 +852,35 @@ const BahramAutohaus = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 flex-shrink-0 text-blue-400" />
                   <div>
-                    <p className="font-medium text-white">+49 221 123 4567</p>
-                    <p className="text-sm text-gray-400">Mo-Fr: 9:00-18:00</p>
+                    <p className="font-medium text-white">
+                      {t.footer.contactInfo.phone}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      {t.footer.contactInfo.phoneHours}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 flex-shrink-0 text-blue-400" />
                   <div>
-                    <p className="text-white">info@bahramautohaus.de</p>
-                    <p className="text-sm text-gray-400">24/7 E-Mail Support</p>
+                    <p className="text-white">{t.footer.contactInfo.email}</p>
+                    <p className="text-sm text-gray-400">
+                      {t.footer.contactInfo.emailSupport}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400" />
                   <div>
-                    <p className="text-white">Musterstraße 123</p>
-                    <p className="text-white">50667 Köln</p>
-                    <p className="text-sm text-gray-400">Deutschland</p>
+                    <p className="text-white">
+                      {t.footer.contactInfo.address.street}
+                    </p>
+                    <p className="text-white">
+                      {t.footer.contactInfo.address.city}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      {t.footer.contactInfo.address.country}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -853,55 +889,55 @@ const BahramAutohaus = () => {
             {/* Services & Legal */}
             <div>
               <h3 className="mb-6 text-xl font-bold text-white">
-                Services & Info
+                {t.footer.servicesTitle}
               </h3>
               <div className="space-y-3">
                 <a
                   href="#financing"
                   className="block text-gray-400 transition-colors hover:text-blue-400"
                 >
-                  Finanzierung & Leasing
+                  {t.footer.services.financing}
                 </a>
                 <a
                   href="#warranty"
                   className="block text-gray-400 transition-colors hover:text-blue-400"
                 >
-                  Garantie & Service
+                  {t.footer.services.warranty}
                 </a>
                 <a
                   href="#trade-in"
                   className="block text-gray-400 transition-colors hover:text-blue-400"
                 >
-                  Inzahlungnahme
+                  {t.footer.services.tradeIn}
                 </a>
                 <a
                   href="#export"
                   className="block text-gray-400 transition-colors hover:text-blue-400"
                 >
-                  Export weltweit
+                  {t.footer.services.export}
                 </a>
                 <div className="border-t border-gray-700 pt-4">
                   <h4 className="mb-3 text-lg font-semibold text-white">
-                    Rechtliches
+                    {t.footer.legal.title}
                   </h4>
                   <div className="space-y-2">
                     <a
                       href="#privacy"
                       className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
                     >
-                      Datenschutz
+                      {t.footer.legal.privacy}
                     </a>
                     <a
                       href="#terms"
                       className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
                     >
-                      AGB
+                      {t.footer.legal.terms}
                     </a>
                     <a
                       href="#imprint"
                       className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
                     >
-                      Impressum
+                      {t.footer.legal.imprint}
                     </a>
                   </div>
                 </div>
@@ -912,22 +948,20 @@ const BahramAutohaus = () => {
           {/* Bottom Section */}
           <div className="mt-12 border-t border-gray-800 pt-8">
             <div className="flex flex-col items-center justify-between md:flex-row">
-              <p className="text-sm text-gray-400">
-                © 2024 Bahram Autohaus. Alle Rechte vorbehalten.
-              </p>
+              <p className="text-sm text-gray-400">{t.footer.copyright}</p>
               <div className="mt-4 flex items-center space-x-6 md:mt-0">
                 <span className="text-sm text-gray-400">
-                  Zertifiziert durch:
+                  {t.footer.certifications.title}
                 </span>
                 <div className="flex space-x-4">
                   <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    TÜV SÜD
+                    {t.footer.certifications.tuv}
                   </div>
                   <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    DEKRA
+                    {t.footer.certifications.dekra}
                   </div>
                   <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    Autohändler-Verband
+                    {t.footer.certifications.association}
                   </div>
                 </div>
               </div>
