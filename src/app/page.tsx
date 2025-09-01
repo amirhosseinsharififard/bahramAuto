@@ -62,6 +62,16 @@ const BahramAutohaus = () => {
         fuel: "Kraftstoff",
         transmission: "Getriebe",
       },
+      search: {
+        placeholder: "Marke oder Modell suchen...",
+        filters: {
+          all: "Alle",
+          limousine: "Limousine",
+          suv: "SUV",
+          sportwagen: "Sportwagen",
+          kombi: "Kombi",
+        },
+      },
       advantages: {
         title: "Warum Bahram Autohaus?",
         subtitle: "Ihre Vorteile bei uns",
@@ -140,6 +150,16 @@ const BahramAutohaus = () => {
         mileage: "کیلومتر",
         fuel: "سوخت",
         transmission: "گیربکس",
+      },
+      search: {
+        placeholder: "جستجوی برند یا مدل...",
+        filters: {
+          all: "همه",
+          limousine: "سدان",
+          suv: "SUV",
+          sportwagen: "اسپرت",
+          kombi: "استیشن",
+        },
       },
       advantages: {
         title: "چرا بهرام اتوهاوس؟",
@@ -478,7 +498,7 @@ const BahramAutohaus = () => {
                   </button>
                   <button className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg">
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
-                    {language === "fa" ? "مشاهده ویدیو" : "Video ansehen"}
+                    {t.hero.videoButton}
                   </button>
                 </div>
               </div>
@@ -490,9 +510,7 @@ const BahramAutohaus = () => {
                     2500+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {language === "fa"
-                      ? "خودروهای فروخته شده"
-                      : "Verkaufte Fahrzeuge"}
+                    {t.hero.stats.sold}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -500,7 +518,7 @@ const BahramAutohaus = () => {
                     1800+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {language === "fa" ? "مشتریان راضی" : "Zufriedene Kunden"}
+                    {t.hero.stats.customers}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -508,7 +526,7 @@ const BahramAutohaus = () => {
                     15+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {language === "fa" ? "سال تجربه" : "Jahre Erfahrung"}
+                    {t.hero.stats.experience}
                   </div>
                 </div>
               </div>
@@ -524,11 +542,7 @@ const BahramAutohaus = () => {
                 <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 sm:h-5 sm:w-5" />
                 <input
                   type="text"
-                  placeholder={
-                    language === "fa"
-                      ? "جستجوی برند یا مدل..."
-                      : "Marke oder Modell suchen..."
-                  }
+                  placeholder={t.search.placeholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-xl border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
@@ -536,19 +550,19 @@ const BahramAutohaus = () => {
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
-                  { key: "alle", label: language === "fa" ? "همه" : "Alle" },
+                  { key: "alle", label: t.search.filters.all },
                   {
                     key: "limousine",
-                    label: language === "fa" ? "سدان" : "Limousine",
+                    label: t.search.filters.limousine,
                   },
-                  { key: "suv", label: "SUV" },
+                  { key: "suv", label: t.search.filters.suv },
                   {
                     key: "sportwagen",
-                    label: language === "fa" ? "اسپرت" : "Sportwagen",
+                    label: t.search.filters.sportwagen,
                   },
                   {
                     key: "kombi",
-                    label: language === "fa" ? "استیشن" : "Kombi",
+                    label: t.search.filters.kombi,
                   },
                 ].map((filter) => (
                   <button
@@ -626,14 +640,14 @@ const BahramAutohaus = () => {
               <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
                 <div
                   id="car-slider"
-                  className="grid grid-cols-2 gap-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 py-3"
+                  className="grid grid-cols-2 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
                 >
                   {filteredCars.map((car) => (
                     <div
                       key={car.id}
                       className="group w-full transform cursor-pointer transition-all duration-500"
                     >
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                      <div className="hover:scale-101 relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
                         {/* Image with overlay */}
                         <div className="relative h-48 overflow-hidden sm:h-52">
                           <Image
@@ -738,7 +752,7 @@ const BahramAutohaus = () => {
             {/* View all button */}
             <div className="mt-8 text-center">
               <button className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25">
-                {t.highlights.viewAll} 
+                {t.highlights.viewAll}
               </button>
             </div>
           </div>
