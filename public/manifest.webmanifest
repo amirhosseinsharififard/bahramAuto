@@ -1,0 +1,30 @@
+{
+  "name": "VivaPersian: Your Music World",
+  "short_name": "VivaPersian",
+  "description": "Explore the best of every genre, create your playlist, and grab tickets to unforgettable concerts.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#06020d",
+  "theme_color": "rgba(6,2,13,0.14)",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
