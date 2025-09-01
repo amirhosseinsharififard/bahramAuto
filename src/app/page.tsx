@@ -246,77 +246,63 @@ const BahramAutohaus = () => {
       `}</style>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 shadow-lg backdrop-blur-md">
+      <header className="order-b sticky top-0 z-50 border-gray-200/50 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3">
-                <Car className="h-8 w-8 text-white" />
+            <div className="group flex cursor-pointer items-center space-x-3">
+              <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                <Car className="h-8 w-8 text-white transition-transform duration-300 group-hover:rotate-12" />
               </div>
               <div>
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-600">
                   Bahram Autohaus
                 </span>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 transition-colors duration-300 group-hover:text-blue-600">
                   Premium Cars Deutschland
                 </p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden space-x-8 lg:flex">
-              <a
-                href="#home"
-                className="font-medium text-gray-700 transition-colors hover:text-blue-600"
-              >
-                {t.nav.home}
-              </a>
-              <a
-                href="#gallery"
-                className="font-medium text-gray-700 transition-colors hover:text-blue-600"
-              >
-                {t.nav.gallery}
-              </a>
-              <a
-                href="#services"
-                className="font-medium text-gray-700 transition-colors hover:text-blue-600"
-              >
-                {t.nav.services}
-              </a>
-              <a
-                href="#about"
-                className="font-medium text-gray-700 transition-colors hover:text-blue-600"
-              >
-                {t.nav.about}
-              </a>
-              <a
-                href="#contact"
-                className="font-medium text-gray-700 transition-colors hover:text-blue-600"
-              >
-                {t.nav.contact}
-              </a>
+            <nav className="hidden items-center space-x-1 lg:flex">
+              {[
+                { href: "#home", label: t.nav.home },
+                { href: "#gallery", label: t.nav.gallery },
+                { href: "#services", label: t.nav.services },
+                { href: "#about", label: t.nav.about },
+                { href: "#contact", label: t.nav.contact },
+              ].map((item, index) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-700 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600"
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
+                </a>
+              ))}
             </nav>
 
             <div className="flex items-center space-x-4">
               {/* Language Switch */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 rounded-lg bg-gray-100 p-1">
                 <button
                   onClick={() => setLanguage("de")}
-                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     language === "de"
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-600 hover:bg-gray-100"
+                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
+                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                 >
                   DE
                 </button>
                 <button
                   onClick={() => setLanguage("fa")}
-                  className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     language === "fa"
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-600 hover:bg-gray-100"
+                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
+                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                 >
                   FA
@@ -326,48 +312,45 @@ const BahramAutohaus = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-md p-2 text-gray-600 hover:bg-gray-100 lg:hidden"
+                className="rounded-lg p-2 text-gray-600 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:hidden"
               >
                 {mobileMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="h-6 w-6 rotate-90 transition-transform duration-300" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-6 w-6 transition-transform duration-300" />
                 )}
               </button>
             </div>
           </div>
 
           {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="border-t border-gray-200 pb-4 lg:hidden">
-              <div className="flex flex-col space-y-2 pt-4">
-                <a
-                  href="#home"
-                  className="rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  {t.nav.home}
-                </a>
-                <a
-                  href="#gallery"
-                  className="rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  {t.nav.gallery}
-                </a>
-                <a
-                  href="#services"
-                  className="rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  {t.nav.services}
-                </a>
-                <a
-                  href="#contact"
-                  className="rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  {t.nav.contact}
-                </a>
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
+              mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="border-t border-gray-200 pb-4 pt-4">
+              <div className="flex flex-col space-y-1">
+                {[
+                  { href: "#home", label: t.nav.home, icon: "🏠" },
+                  { href: "#gallery", label: t.nav.gallery, icon: "🚗" },
+                  { href: "#services", label: t.nav.services, icon: "🔧" },
+                  { href: "#about", label: t.nav.about, icon: "ℹ️" },
+                  { href: "#contact", label: t.nav.contact, icon: "📞" },
+                ].map((item, index) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="flex transform items-center space-x-3 rounded-lg px-4 py-3 text-gray-700 transition-all duration-300 hover:translate-x-2 hover:bg-blue-50 hover:text-blue-600"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="font-medium">{item.label}</span>
+                  </a>
+                ))}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </header>
 
@@ -386,7 +369,7 @@ const BahramAutohaus = () => {
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
-                <h1 className="mb-6 text-6xl leading-tight font-bold text-white md:text-7xl">
+                <h1 className="mb-6 text-6xl font-bold leading-tight text-white md:text-7xl">
                   {t.hero.title}
                 </h1>
                 <p className="mb-4 text-2xl text-white/90">{t.hero.subtitle}</p>
@@ -432,13 +415,13 @@ const BahramAutohaus = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
               <div className="relative flex-1">
-                <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
+                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
                 <input
                   type="text"
                   placeholder="Marke oder Modell suchen..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 py-3 pr-4 pl-12 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-xl border border-gray-300 py-3 pl-12 pr-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="flex flex-wrap gap-2">
@@ -469,7 +452,7 @@ const BahramAutohaus = () => {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-5xl font-bold text-transparent">
+              <h2 className="mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text py-2 text-5xl font-bold text-transparent">
                 {t.highlights.title}
               </h2>
               <p className="text-xl text-gray-300">{t.highlights.subtitle}</p>
@@ -480,7 +463,7 @@ const BahramAutohaus = () => {
               {/* Left Arrow */}
               <button
                 onClick={scrollLeft}
-                className="absolute top-1/2 left-0 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500"
+                className="absolute left-0 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500"
               >
                 <svg
                   className="h-6 w-6"
@@ -500,7 +483,7 @@ const BahramAutohaus = () => {
               {/* Right Arrow */}
               <button
                 onClick={scrollRight}
-                className="absolute top-1/2 right-0 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500"
+                className="absolute right-0 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500"
               >
                 <svg
                   className="h-6 w-6"
@@ -540,12 +523,12 @@ const BahramAutohaus = () => {
                           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
 
                           {/* Floating price tag */}
-                          <div className="absolute top-4 right-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
+                          <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
                             €{car.price}
                           </div>
 
                           {/* Heart icon */}
-                          <button className="absolute top-4 left-4 rounded-full bg-black/50 p-2 transition-colors hover:bg-black/70">
+                          <button className="absolute left-4 top-4 rounded-full bg-black/50 p-2 transition-colors hover:bg-black/70">
                             <Heart className="h-5 w-5 text-white" />
                           </button>
                         </div>
@@ -626,13 +609,13 @@ const BahramAutohaus = () => {
         <section className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 py-20">
           {/* Animated background elements */}
           <div className="absolute inset-0">
-            <div className="absolute top-10 left-10 h-72 w-72 animate-pulse rounded-full bg-blue-500/10 blur-3xl"></div>
-            <div className="absolute right-10 bottom-10 h-96 w-96 animate-pulse rounded-full bg-purple-500/10 blur-3xl"></div>
+            <div className="absolute left-10 top-10 h-72 w-72 animate-pulse rounded-full bg-blue-500/10 blur-3xl"></div>
+            <div className="absolute bottom-10 right-10 h-96 w-96 animate-pulse rounded-full bg-purple-500/10 blur-3xl"></div>
           </div>
 
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
-              <h2 className="mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-5xl font-bold text-transparent">
+              <h2 className="mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text py-2 text-5xl font-bold text-transparent">
                 {t.advantages.title}
               </h2>
               <p className="mx-auto max-w-2xl text-xl text-gray-300">
