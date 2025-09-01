@@ -626,7 +626,7 @@ const BahramAutohaus = () => {
               <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
                 <div
                   id="car-slider"
-                  className="grid grid-cols-2 gap-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+                  className="grid grid-cols-2 gap-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 py-3"
                 >
                   {filteredCars.map((car) => (
                     <div
