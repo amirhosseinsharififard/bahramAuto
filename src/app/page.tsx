@@ -738,7 +738,7 @@ const BahramAutohaus = () => {
             {/* View all button */}
             <div className="mt-8 text-center">
               <button className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25">
-                {t.highlights.viewAll} ({filteredCars.length})
+                {t.highlights.viewAll} 
               </button>
             </div>
           </div>
