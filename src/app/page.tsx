@@ -9,21 +9,22 @@ import {
   Heart,
   Mail,
   MapPin,
-  Menu,
-  MessageCircle,
-  Phone,
   PlayCircle,
   Search,
   Shield,
   Star,
   Users,
-  X,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+import AnimatedBackground from "@/components/AnimatedBackground";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BahramAutohaus = () => {
-  const [language, setLanguage] = useState("de");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -76,46 +77,6 @@ const BahramAutohaus = () => {
         title: "Warum Bahram Autohaus?",
         subtitle: "Ihre Vorteile bei uns",
       },
-      footer: {
-        contact: "Kontakt",
-        address: "Adresse",
-        company: {
-          description:
-            "Seit über 15 Jahren Ihr vertrauensvoller Partner für Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit stehen bei uns an erster Stelle.",
-          rating: "4.9/5 (482 Bewertungen)",
-        },
-        services: {
-          financing: "Finanzierung & Leasing",
-          warranty: "Garantie & Service",
-          tradeIn: "Inzahlungnahme",
-          export: "Export weltweit",
-        },
-        legal: {
-          title: "Rechtliches",
-          privacy: "Datenschutz",
-          terms: "AGB",
-          imprint: "Impressum",
-        },
-        certifications: {
-          title: "Zertifiziert durch:",
-          tuv: "TÜV SÜD",
-          dekra: "DEKRA",
-          association: "Autohändler-Verband",
-        },
-        copyright: "© 2024 Bahram Autohaus. Alle Rechte vorbehalten.",
-        contactInfo: {
-          phone: "+49 221 123 4567",
-          phoneHours: "Mo-Fr: 9:00-18:00",
-          email: "info@bahramautohaus.de",
-          emailSupport: "24/7 E-Mail Support",
-          address: {
-            street: "Musterstraße 123",
-            city: "50667 Köln",
-            country: "Deutschland",
-          },
-        },
-        servicesTitle: "Services & Info",
-      },
     },
     fa: {
       nav: {
@@ -164,46 +125,6 @@ const BahramAutohaus = () => {
       advantages: {
         title: "چرا بهرام اتوهاوس؟",
         subtitle: "مزایای شما نزد ما",
-      },
-      footer: {
-        contact: "تماس",
-        address: "آدرس",
-        company: {
-          description:
-            "بیش از ۱۵ سال شریک قابل اعتماد شما برای خودروهای پریمیوم. کیفیت، خدمات و رضایت مشتری در اولویت ماست.",
-          rating: "۴.۹/۵ (۴۸۲ نظر)",
-        },
-        services: {
-          financing: "تامین مالی و لیزینگ",
-          warranty: "ضمانت و خدمات",
-          tradeIn: "تحویل خودرو قدیمی",
-          export: "صادرات جهانی",
-        },
-        legal: {
-          title: "قانونی",
-          privacy: "حریم خصوصی",
-          terms: "شرایط و ضوابط",
-          imprint: "مشخصات",
-        },
-        certifications: {
-          title: "تایید شده توسط:",
-          tuv: "TÜV SÜD",
-          dekra: "DEKRA",
-          association: "انجمن فروشندگان خودرو",
-        },
-        copyright: "© ۲۰۲۴ بهرام اتوهاوس. تمامی حقوق محفوظ است.",
-        contactInfo: {
-          phone: "+49 221 123 4567",
-          phoneHours: "دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰",
-          email: "info@bahramautohaus.de",
-          emailSupport: "پشتیبانی ایمیل ۲۴/۷",
-          address: {
-            street: "خیابان نمونه ۱۲۳",
-            city: "۵۰۶۶۷ کلن",
-            country: "آلمان",
-          },
-        },
-        servicesTitle: "خدمات و اطلاعات",
       },
     },
   };
@@ -334,139 +255,12 @@ const BahramAutohaus = () => {
         car.model.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
-  // const scrollLeft = () => {
-  //   const container = document.getElementById("car-slider");
-  //   if (container) {
-  //     container.scrollBy({ left: -400, behavior: "smooth" });
-  //   }
-  // };
-
-  // const scrollRight = () => {
-  //   const container = document.getElementById("car-slider");
-  //   if (container) {
-  //     container.scrollBy({ left: 400, behavior: "smooth" });
-  //   }
-  // };
-
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"
       dir={language === "fa" ? "rtl" : "ltr"}
     >
-      {/* <style>{`
-        #car-slider::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style> */}
-
-      {/* Header */}
-      <header className="order-b sticky top-0 z-50 border-gray-200/50 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-300">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            {/* Logo */}
-            <div className="group flex cursor-pointer items-center space-x-3">
-              <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
-                <Car className="h-8 w-8 text-white transition-transform duration-300 group-hover:rotate-12" />
-              </div>
-              <div>
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-600">
-                  Bahram Autohaus
-                </span>
-                <p className="text-xs text-gray-500 transition-colors duration-300 group-hover:text-blue-600">
-                  Premium Cars Deutschland
-                </p>
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden items-center space-x-1 lg:flex">
-              {[
-                { href: "#home", label: t.nav.home },
-                { href: "#gallery", label: t.nav.gallery },
-                { href: "#services", label: t.nav.services },
-                { href: "#about", label: t.nav.about },
-                { href: "#contact", label: t.nav.contact },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
-                </a>
-              ))}
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              {/* Language Switch */}
-              <div className="flex items-center space-x-2 rounded-lg bg-gray-100 p-1">
-                <button
-                  onClick={() => setLanguage("de")}
-                  className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                    language === "de"
-                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
-                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
-                  }`}
-                >
-                  DE
-                </button>
-                <button
-                  onClick={() => setLanguage("fa")}
-                  className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                    language === "fa"
-                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
-                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
-                  }`}
-                >
-                  FA
-                </button>
-              </div>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-lg p-2 text-gray-600 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:hidden"
-              >
-                {mobileMenuOpen ? (
-                  <X className="h-6 w-6 rotate-90 transition-transform duration-300" />
-                ) : (
-                  <Menu className="h-6 w-6 transition-transform duration-300" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          <div
-            className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-              mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            <div className="border-t border-gray-200 pb-4 pt-4">
-              <div className="flex flex-col space-y-1">
-                {[
-                  { href: "#home", label: t.nav.home, icon: "🏠" },
-                  { href: "#gallery", label: t.nav.gallery, icon: "🚗" },
-                  { href: "#services", label: t.nav.services, icon: "🔧" },
-                  { href: "#about", label: t.nav.about, icon: "ℹ️" },
-                  { href: "#contact", label: t.nav.contact, icon: "📞" },
-                ].map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className="flex transform items-center space-x-3 rounded-lg px-4 py-3 text-gray-700 transition-all duration-300 hover:translate-x-2 hover:bg-blue-50 hover:text-blue-600"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <span className="text-lg">{item.icon}</span>
-                    <span className="font-medium">{item.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header language={language} setLanguage={setLanguage} />
 
       {/* Main Content */}
       <main>
@@ -493,9 +287,12 @@ const BahramAutohaus = () => {
                   {t.hero.description}
                 </p>
                 <div className="mb-6 flex flex-col justify-center gap-3 sm:mb-8 sm:flex-row sm:gap-4 lg:justify-start">
-                  <button className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg">
+                  <Link
+                    href="/gallery"
+                    className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg"
+                  >
                     {t.hero.cta}
-                  </button>
+                  </Link>
                   <button className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg">
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
                     {t.hero.videoButton}
@@ -595,48 +392,7 @@ const BahramAutohaus = () => {
               <p className="text-xl text-gray-300">{t.highlights.subtitle}</p>
             </div>
 
-            {/* Horizontal Scrolling Container with Arrow Controls - SLIDER DISABLED */}
             <div className="relative">
-              {/* Left Arrow - Hidden on mobile - DISABLED */}
-              {/* <button
-                onClick={scrollLeft}
-                className="absolute left-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button> */}
-
-              {/* Right Arrow - Hidden on mobile - DISABLED */}
-              {/* <button
-                onClick={scrollRight}
-                className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-500 hover:to-purple-500 lg:block"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button> */}
-
               <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
                 <div
                   id="car-slider"
@@ -732,14 +488,20 @@ const BahramAutohaus = () => {
 
                           {/* Action buttons */}
                           <div className="flex flex-col gap-2 sm:flex-row">
-                            <button className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm">
+                            <Link
+                              href={`/gallery?car=${car.id}`}
+                              className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm"
+                            >
                               <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "جزئیات" : "Details"}
-                            </button>
-                            <button className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm">
-                              <MessageCircle className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
+                            </Link>
+                            <Link
+                              href="/contact-us"
+                              className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
+                            >
+                              <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                               {language === "fa" ? "تماس" : "Kontakt"}
-                            </button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -751,9 +513,12 @@ const BahramAutohaus = () => {
 
             {/* View all button */}
             <div className="mt-8 text-center">
-              <button className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25">
+              <Link
+                href="/gallery"
+                className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25"
+              >
                 {t.highlights.viewAll}
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -821,168 +586,7 @@ const BahramAutohaus = () => {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 py-12 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-            {/* Company Info */}
-            <div className="md:col-span-2">
-              <div className="mb-6 flex items-center space-x-3">
-                <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3">
-                  <Car className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl font-bold text-transparent">
-                    Bahram Autohaus
-                  </span>
-                  <p className="text-sm text-gray-400">
-                    Premium Cars Deutschland
-                  </p>
-                </div>
-              </div>
-              <p className="mb-6 max-w-md text-gray-300">
-                {t.footer.company.description}
-              </p>
-              <div className="flex space-x-4">
-                <div className="flex items-center space-x-2 text-sm">
-                  <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <span className="ml-2 text-gray-300">
-                    {t.footer.company.rating}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Kontaktinfo */}
-            <div>
-              <h3 className="mb-6 text-xl font-bold text-white">
-                {t.footer.contact}
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 flex-shrink-0 text-blue-400" />
-                  <div>
-                    <p className="font-medium text-white">
-                      {t.footer.contactInfo.phone}
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      {t.footer.contactInfo.phoneHours}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-5 w-5 flex-shrink-0 text-blue-400" />
-                  <div>
-                    <p className="text-white">{t.footer.contactInfo.email}</p>
-                    <p className="text-sm text-gray-400">
-                      {t.footer.contactInfo.emailSupport}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400" />
-                  <div>
-                    <p className="text-white">
-                      {t.footer.contactInfo.address.street}
-                    </p>
-                    <p className="text-white">
-                      {t.footer.contactInfo.address.city}
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      {t.footer.contactInfo.address.country}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Services & Legal */}
-            <div>
-              <h3 className="mb-6 text-xl font-bold text-white">
-                {t.footer.servicesTitle}
-              </h3>
-              <div className="space-y-3">
-                <a
-                  href="#financing"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
-                  {t.footer.services.financing}
-                </a>
-                <a
-                  href="#warranty"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
-                  {t.footer.services.warranty}
-                </a>
-                <a
-                  href="#trade-in"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
-                  {t.footer.services.tradeIn}
-                </a>
-                <a
-                  href="#export"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
-                  {t.footer.services.export}
-                </a>
-                <div className="border-t border-gray-700 pt-4">
-                  <h4 className="mb-3 text-lg font-semibold text-white">
-                    {t.footer.legal.title}
-                  </h4>
-                  <div className="space-y-2">
-                    <a
-                      href="#privacy"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
-                      {t.footer.legal.privacy}
-                    </a>
-                    <a
-                      href="#terms"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
-                      {t.footer.legal.terms}
-                    </a>
-                    <a
-                      href="#imprint"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
-                      {t.footer.legal.imprint}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="mt-12 border-t border-gray-800 pt-8">
-            <div className="flex flex-col items-center justify-between md:flex-row">
-              <p className="text-sm text-gray-400">{t.footer.copyright}</p>
-              <div className="mt-4 flex items-center space-x-6 md:mt-0">
-                <span className="text-sm text-gray-400">
-                  {t.footer.certifications.title}
-                </span>
-                <div className="flex space-x-4">
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    {t.footer.certifications.tuv}
-                  </div>
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    {t.footer.certifications.dekra}
-                  </div>
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    {t.footer.certifications.association}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer language={language} />
     </div>
   );
 };

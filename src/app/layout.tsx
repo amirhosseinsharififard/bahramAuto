@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { LanguageProvider } from "@/contexts/LanguageContext";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen w-full overflow-x-hidden">{children}</body>
+      <body className="min-h-screen w-full overflow-x-hidden">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }
