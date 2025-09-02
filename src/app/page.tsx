@@ -27,16 +27,10 @@ const BahramAutohaus = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCar, setSelectedCar] = useState<(typeof cars)[0] | null>(null);
 
   const content = {
     de: {
-      nav: {
-        home: "Startseite",
-        gallery: "Fahrzeuge",
-        services: "Service",
-        about: "Über uns",
-        contact: "Kontakt",
-      },
       hero: {
         title: "Bahram Autohaus",
         subtitle: "Ihr Premium Partner für Qualitätsfahrzeuge in Deutschland",
@@ -62,6 +56,10 @@ const BahramAutohaus = () => {
         mileage: "km",
         fuel: "Kraftstoff",
         transmission: "Getriebe",
+        back: "Zurück zur Übersicht",
+        price: "Preis",
+        year: "Baujahr",
+        contactUs: "Kontakt aufnehmen",
       },
       search: {
         placeholder: "Marke oder Modell suchen...",
@@ -79,13 +77,6 @@ const BahramAutohaus = () => {
       },
     },
     fa: {
-      nav: {
-        home: "صفحه اصلی",
-        gallery: "خودروها",
-        services: "خدمات",
-        about: "درباره ما",
-        contact: "تماس",
-      },
       hero: {
         title: "بهرام اتوهاوس",
         subtitle: "شریک برتر شما برای خودروهای باکیفیت در آلمان",
@@ -111,6 +102,10 @@ const BahramAutohaus = () => {
         mileage: "کیلومتر",
         fuel: "سوخت",
         transmission: "گیربکس",
+        back: "بازگشت به نمای کلی",
+        price: "قیمت",
+        year: "سال ساخت",
+        contactUs: "تماس بگیرید",
       },
       search: {
         placeholder: "جستجوی برند یا مدل...",
@@ -168,6 +163,8 @@ const BahramAutohaus = () => {
       image: "/images/cars/bmw-x5.jpg",
       features: ["M-Paket", "Panorama", "HUD", "Harman Kardon"],
       category: "suv",
+      description:
+        "Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort. Mit dem M Sportpaket und der Panoramadachanlage steht er für sportliche Eleganz.",
     },
     {
       id: 2,
@@ -182,6 +179,8 @@ const BahramAutohaus = () => {
       image: "/images/cars/mercedes-c63.jpg",
       features: ["AMG Performance", "Burmester", "Distronic", "360° Kamera"],
       category: "sportwagen",
+      description:
+        "Der Mercedes-AMG C63 ist die Definition von Performance und Luxus. Mit dem AMG Performance Paket und dem hochwertigen Burmester Soundsystem.",
     },
     {
       id: 3,
@@ -201,6 +200,8 @@ const BahramAutohaus = () => {
         "B&O Sound",
       ],
       category: "kombi",
+      description:
+        "Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens. Ausgestattet mit dem Virtual Cockpit und Matrix LED Scheinwerfern.",
     },
     {
       id: 4,
@@ -215,6 +216,8 @@ const BahramAutohaus = () => {
       image: "/images/cars/porsche-cayenne.jpg",
       features: ["Sport Chrono", "Luftfederung", "PASM", "Bose Surround"],
       category: "suv",
+      description:
+        "Der Porsche Cayenne Turbo verkörpert die perfekte Symbiose aus Sportlichkeit und Komfort. Mit Luftfederung und Sport Chrono Paket für ein einzigartiges Fahrerlebnis.",
     },
     {
       id: 5,
@@ -229,6 +232,8 @@ const BahramAutohaus = () => {
       image: "/images/cars/tesla-model-s.jpg",
       features: ["Plaid Mode", "Autopilot", "21 Zoll Räder", "Premium Audio"],
       category: "limousine",
+      description:
+        "Das Tesla Model S Plaid setzt neue Maßstäbe in der Elektromobilität. Mit Plaid Mode, Autopilot und Premium Audio System für ein zukunftsweisendes Fahrerlebnis.",
     },
     {
       id: 6,
@@ -243,6 +248,8 @@ const BahramAutohaus = () => {
       image: "/images/cars/bmw-m4.png",
       features: ["M Competition", "Carbon Paket", "M Driver Package", "HiFi"],
       category: "sportwagen",
+      description:
+        "Der BMW M4 Competition ist ein reiner Sportwagen pur. Mit dem Carbon Paket und M Driver Package für maximale Performance auf der Straße und der Rennstrecke.",
     },
   ];
 
@@ -257,13 +264,14 @@ const BahramAutohaus = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
       dir={language === "fa" ? "rtl" : "ltr"}
     >
+      <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
 
       {/* Main Content */}
-      <main>
+      <main className="relative z-10">
         {/* Hero Section */}
         <section id="home" className="relative overflow-hidden py-24">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
@@ -332,7 +340,7 @@ const BahramAutohaus = () => {
         </section>
 
         {/* Search & Filter Section */}
-        <section className="bg-white py-6 shadow-sm sm:py-8">
+        <section className="bg-white/10 py-6 shadow-sm backdrop-blur-sm sm:py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
               <div className="relative w-full lg:flex-1">
@@ -342,7 +350,7 @@ const BahramAutohaus = () => {
                   placeholder={t.search.placeholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
+                  className="w-full rounded-xl border border-white/20 bg-white/10 py-2 pl-10 pr-4 text-sm text-white placeholder-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
                 />
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
@@ -368,7 +376,7 @@ const BahramAutohaus = () => {
                     className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
                       selectedFilter === filter.key
                         ? "bg-blue-600 text-white shadow-md"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-sm"
+                        : "bg-white/20 text-white hover:bg-white/30 hover:shadow-sm"
                     }`}
                   >
                     {filter.label}
@@ -392,134 +400,254 @@ const BahramAutohaus = () => {
               <p className="text-xl text-gray-300">{t.highlights.subtitle}</p>
             </div>
 
-            <div className="relative">
-              <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
-                <div
-                  id="car-slider"
-                  className="grid grid-cols-2 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+            {selectedCar ? (
+              // Car Detail View
+              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-gray-800/80 to-gray-900/90 p-6 shadow-xl backdrop-blur-sm">
+                <button
+                  onClick={() => setSelectedCar(null)}
+                  className="mb-6 flex items-center text-blue-400 transition-colors hover:text-blue-300"
                 >
-                  {filteredCars.map((car) => (
-                    <div
-                      key={car.id}
-                      className="group w-full transform cursor-pointer transition-all duration-500"
-                    >
-                      <div className="hover:scale-101 relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
-                        {/* Image with overlay */}
-                        <div className="relative h-48 overflow-hidden sm:h-52">
-                          <Image
-                            src={car.image}
-                            alt={`${car.brand} ${car.model}`}
-                            fill
-                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                  <svg
+                    className="mr-2 h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                    />
+                  </svg>
+                  {t.highlights.back}
+                </button>
 
-                          {/* Floating price tag */}
-                          <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
-                            €{car.price}
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                  <div className="relative h-96 overflow-hidden rounded-xl">
+                    <Image
+                      src={selectedCar.image}
+                      alt={`${selectedCar.brand} ${selectedCar.model}`}
+                      fill
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <h2 className="mb-4 text-3xl font-bold text-white">
+                      {selectedCar.brand} {selectedCar.model}
+                    </h2>
+                    <p className="mb-6 text-gray-300">
+                      {selectedCar.description}
+                    </p>
+
+                    <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
+                      <div>
+                        <p className="text-sm text-gray-400">
+                          {t.highlights.year}
+                        </p>
+                        <p className="font-medium text-white">
+                          {selectedCar.year}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400">
+                          {t.highlights.mileage}
+                        </p>
+                        <p className="font-medium text-white">
+                          {selectedCar.mileage} km
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400">
+                          {t.highlights.fuel}
+                        </p>
+                        <p className="font-medium text-white">
+                          {selectedCar.fuel}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-400">
+                          {t.highlights.transmission}
+                        </p>
+                        <p className="font-medium text-white">
+                          {selectedCar.transmission}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mb-8">
+                      <h3 className="mb-3 text-lg font-semibold text-white">
+                        {t.highlights.features}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCar.features.map((feature, index) => (
+                          <span
+                            key={index}
+                            className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4 sm:flex-row">
+                      <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center text-white">
+                        <p className="text-sm">{t.highlights.price}</p>
+                        <p className="text-2xl font-bold">
+                          €{selectedCar.price}
+                        </p>
+                      </div>
+                      <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
+                        <p className="text-sm">{t.highlights.financing}</p>
+                        <p className="text-2xl font-bold">
+                          €{selectedCar.financing}
+                          {t.highlights.month}
+                        </p>
+                      </div>
+                    </div>
+
+                    <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
+                      {t.highlights.contactUs}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              // Car Grid View
+              <div className="relative">
+                <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
+                  <div
+                    id="car-slider"
+                    className="grid grid-cols-2 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+                  >
+                    {filteredCars.map((car) => (
+                      <div
+                        key={car.id}
+                        className="group w-full transform cursor-pointer transition-all duration-500"
+                        onClick={() => setSelectedCar(car)}
+                      >
+                        <div className="hover:scale-101 relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
+                          {/* Image with overlay */}
+                          <div className="relative h-48 overflow-hidden sm:h-52">
+                            <Image
+                              src={car.image}
+                              alt={`${car.brand} ${car.model}`}
+                              fill
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+
+                            {/* Floating price tag */}
+                            <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
+                              €{car.price}
+                            </div>
+
+                            {/* Heart icon */}
+                            <button className="absolute left-4 top-4 rounded-full bg-black/50 p-2 transition-colors hover:bg-black/70">
+                              <Heart className="h-5 w-5 text-white" />
+                            </button>
                           </div>
 
-                          {/* Heart icon */}
-                          <button className="absolute left-4 top-4 rounded-full bg-black/50 p-2 transition-colors hover:bg-black/70">
-                            <Heart className="h-5 w-5 text-white" />
-                          </button>
-                        </div>
-
-                        <div className="relative z-10 p-3 sm:p-4 lg:p-6">
-                          <div className="mb-3 flex items-center justify-between">
-                            <h3 className="text-base font-bold text-white transition-colors duration-300 group-hover:text-blue-400 sm:text-lg lg:text-xl">
-                              {car.brand} {car.model}
-                            </h3>
-                            <span className="text-xs text-gray-400 sm:text-sm">
-                              {car.year}
-                            </span>
-                          </div>
-
-                          {/* Car specs */}
-                          <div className="mb-4 grid grid-cols-3 gap-1 text-xs text-gray-300 sm:gap-2 sm:text-sm">
-                            <div className="text-center">
-                              <div className="font-medium">{car.mileage}</div>
-                              <div className="text-xs opacity-75">
-                                {language === "fa" ? "کیلومتر" : "km"}
-                              </div>
-                            </div>
-                            <div className="text-center">
-                              <div className="font-medium">{car.fuel}</div>
-                              <div className="text-xs opacity-75">
-                                {language === "fa" ? "سوخت" : "Kraftstoff"}
-                              </div>
-                            </div>
-                            <div className="text-center">
-                              <div className="font-medium">
-                                {car.transmission}
-                              </div>
-                              <div className="text-xs opacity-75">
-                                {language === "fa" ? "گیربکس" : "Getriebe"}
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Features */}
-                          <div className="mb-4 flex flex-wrap gap-1">
-                            {car.features
-                              .slice(0, 2)
-                              .map((feature, featureIndex) => (
-                                <span
-                                  key={featureIndex}
-                                  className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
-                                >
-                                  {feature}
-                                </span>
-                              ))}
-                            {car.features.length > 2 && (
-                              <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
-                                +{car.features.length - 2}
+                          <div className="relative z-10 p-3 sm:p-4 lg:p-6">
+                            <div className="mb-3 flex items-center justify-between">
+                              <h3 className="text-base font-bold text-white transition-colors duration-300 group-hover:text-blue-400 sm:text-lg lg:text-xl">
+                                {car.brand} {car.model}
+                              </h3>
+                              <span className="text-xs text-gray-400 sm:text-sm">
+                                {car.year}
                               </span>
-                            )}
-                          </div>
-
-                          {/* Financing info */}
-                          <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 p-2 sm:p-3">
-                            <div className="text-center text-xs text-green-400 sm:text-sm">
-                              {t.highlights.financing} €{car.financing}
-                              {t.highlights.month}
                             </div>
-                          </div>
 
-                          {/* Action buttons */}
-                          <div className="flex flex-col gap-2 sm:flex-row">
-                            <Link
-                              href={`/gallery?car=${car.id}`}
-                              className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm"
-                            >
-                              <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                              {language === "fa" ? "جزئیات" : "Details"}
-                            </Link>
-                            <Link
-                              href="/contact-us"
-                              className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
-                            >
-                              <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                              {language === "fa" ? "تماس" : "Kontakt"}
-                            </Link>
+                            {/* Car specs */}
+                            <div className="mb-4 grid grid-cols-3 gap-1 text-xs text-gray-300 sm:gap-2 sm:text-sm">
+                              <div className="text-center">
+                                <div className="font-medium">{car.mileage}</div>
+                                <div className="text-xs opacity-75">
+                                  {language === "fa" ? "کیلومتر" : "km"}
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-medium">{car.fuel}</div>
+                                <div className="text-xs opacity-75">
+                                  {language === "fa" ? "سوخت" : "Kraftstoff"}
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <div className="font-medium">
+                                  {car.transmission}
+                                </div>
+                                <div className="text-xs opacity-75">
+                                  {language === "fa" ? "گیربکس" : "Getriebe"}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Features */}
+                            <div className="mb-4 flex flex-wrap gap-1">
+                              {car.features
+                                .slice(0, 2)
+                                .map((feature, featureIndex) => (
+                                  <span
+                                    key={featureIndex}
+                                    className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
+                                  >
+                                    {feature}
+                                  </span>
+                                ))}
+                              {car.features.length > 2 && (
+                                <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
+                                  +{car.features.length - 2}
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Financing info */}
+                            <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 p-2 sm:p-3">
+                              <div className="text-center text-xs text-green-400 sm:text-sm">
+                                {t.highlights.financing} €{car.financing}
+                                {t.highlights.month}
+                              </div>
+                            </div>
+
+                            {/* Action buttons */}
+                            <div className="flex flex-col gap-2 sm:flex-row">
+                              <button
+                                onClick={() => setSelectedCar(car)}
+                                className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm"
+                              >
+                                <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
+                                {t.highlights.details}
+                              </button>
+                              <Link
+                                href="/contact-us"
+                                className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
+                              >
+                                <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
+                                {t.highlights.contact}
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* View all button */}
-            <div className="mt-8 text-center">
-              <Link
-                href="/gallery"
-                className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25"
-              >
-                {t.highlights.viewAll}
-              </Link>
-            </div>
+            {!selectedCar && (
+              <div className="mt-8 text-center">
+                <Link
+                  href="/gallery"
+                  className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25"
+                >
+                  {t.highlights.viewAll}
+                </Link>
+              </div>
+            )}
           </div>
         </section>
 
