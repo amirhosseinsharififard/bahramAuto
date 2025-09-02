@@ -1,22 +1,17 @@
 "use client";
 import React, { useState } from "react";
-
 import {
-  Award,
   Car,
+  Menu,
+  X,
+  Search,
   Eye,
   Heart,
-  Mail,
-  MapPin,
-  Menu,
   MessageCircle,
+  MapPin,
   Phone,
-  PlayCircle,
-  Search,
-  Shield,
+  Mail,
   Star,
-  Users,
-  X,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -25,7 +20,7 @@ const GalleryPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<any>(null);
+  const [selectedCar, setSelectedCar] = useState(null);
 
   const content = {
     de: {
@@ -116,8 +111,7 @@ const GalleryPage = () => {
       image: "/images/cars/bmw-x5.jpg",
       features: ["M-Paket", "Panorama", "HUD", "Harman Kardon"],
       category: "suv",
-      description:
-        "Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort. Mit dem M Sportpaket und der Panoramadachanlage steht er für sportliche Eleganz.",
+      description: "Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort. Mit dem M Sportpaket und der Panoramadachanlage steht er für sportliche Eleganz.",
     },
     {
       id: 2,
@@ -132,8 +126,7 @@ const GalleryPage = () => {
       image: "/images/cars/mercedes-c63.jpg",
       features: ["AMG Performance", "Burmester", "Distronic", "360° Kamera"],
       category: "sportwagen",
-      description:
-        "Der Mercedes-AMG C63 ist die Definition von Performance und Luxus. Mit dem AMG Performance Paket und dem hochwertigen Burmester Soundsystem.",
+      description: "Der Mercedes-AMG C63 ist die Definition von Performance und Luxus. Mit dem AMG Performance Paket und dem hochwertigen Burmester Soundsystem.",
     },
     {
       id: 3,
@@ -146,15 +139,9 @@ const GalleryPage = () => {
       fuel: "Benzin",
       transmission: "Automatik",
       image: "/images/cars/audi-rs6.jpg",
-      features: [
-        "RS Performance",
-        "Virtual Cockpit",
-        "Matrix LED",
-        "B&O Sound",
-      ],
+      features: ["RS Performance", "Virtual Cockpit", "Matrix LED", "B&O Sound"],
       category: "kombi",
-      description:
-        "Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens. Ausgestattet mit dem Virtual Cockpit und Matrix LED Scheinwerfern.",
+      description: "Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens. Ausgestattet mit dem Virtual Cockpit und Matrix LED Scheinwerfern.",
     },
     {
       id: 4,
@@ -169,8 +156,7 @@ const GalleryPage = () => {
       image: "/images/cars/porsche-cayenne.jpg",
       features: ["Sport Chrono", "Luftfederung", "PASM", "Bose Surround"],
       category: "suv",
-      description:
-        "Der Porsche Cayenne Turbo verkörpert die perfekte Symbiose aus Sportlichkeit und Komfort. Mit Luftfederung und Sport Chrono Paket für ein einzigartiges Fahrerlebnis.",
+      description: "Der Porsche Cayenne Turbo verkörpert die perfekte Symbiose aus Sportlichkeit und Komfort. Mit Luftfederung und Sport Chrono Paket für ein einzigartiges Fahrerlebnis.",
     },
     {
       id: 5,
@@ -185,8 +171,7 @@ const GalleryPage = () => {
       image: "/images/cars/tesla-model-s.jpg",
       features: ["Plaid Mode", "Autopilot", "21 Zoll Räder", "Premium Audio"],
       category: "limousine",
-      description:
-        "Das Tesla Model S Plaid setzt neue Maßstäbe in der Elektromobilität. Mit Plaid Mode, Autopilot und Premium Audio System für ein zukunftsweisendes Fahrerlebnis.",
+      description: "Das Tesla Model S Plaid setzt neue Maßstäbe in der Elektromobilität. Mit Plaid Mode, Autopilot und Premium Audio System für ein zukunftsweisendes Fahrerlebnis.",
     },
     {
       id: 6,
@@ -201,8 +186,7 @@ const GalleryPage = () => {
       image: "/images/cars/bmw-m4.png",
       features: ["M Competition", "Carbon Paket", "M Driver Package", "HiFi"],
       category: "sportwagen",
-      description:
-        "Der BMW M4 Competition ist ein reiner Sportwagen pur. Mit dem Carbon Paket und M Driver Package für maximale Performance auf der Straße und der Rennstrecke.",
+      description: "Der BMW M4 Competition ist ein reiner Sportwagen pur. Mit dem Carbon Paket und M Driver Package für maximale Performance auf der Straße und der Rennstrecke.",
     },
   ];
 
@@ -217,11 +201,18 @@ const GalleryPage = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
       dir={language === "fa" ? "rtl" : "ltr"}
     >
-      {/* Header - Same as home page */}
-      <header className="order-b sticky top-0 z-50 border-gray-200/50 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-300">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-purple-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-3xl animate-pulse"></div>
+      </div>
+
+      {/* Header */}
+      <header className="relative z-50 border-b border-white/10 bg-gradient-to-r from-gray-900/90 to-blue-900/90 shadow-lg backdrop-blur-md transition-all duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
@@ -230,14 +221,15 @@ const GalleryPage = () => {
                 <Car className="h-8 w-8 text-white transition-transform duration-300 group-hover:rotate-12" />
               </div>
               <div>
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent transition-all duration-300 group-hover:from-purple-600 group-hover:to-blue-600">
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl font-bold text-transparent transition-all duration-300 group-hover:from-purple-400 group-hover:to-blue-400">
                   Bahram Autohaus
                 </span>
-                <p className="text-xs text-gray-500 transition-colors duration-300 group-hover:text-blue-600">
+                <p className="text-xs text-gray-400 transition-colors duration-300 group-hover:text-blue-400">
                   Premium Cars Deutschland
                 </p>
               </div>
             </div>
+
             {/* Desktop Navigation */}
             <nav className="hidden items-center space-x-1 lg:flex">
               {[
@@ -250,22 +242,23 @@ const GalleryPage = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-700 transition-all duration-300 hover:text-blue-600"
+                  className="group relative rounded-lg px-4 py-2 font-medium text-gray-300 transition-all duration-300 hover:text-blue-400"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
                 </a>
               ))}
             </nav>
+
             <div className="flex items-center space-x-4">
               {/* Language Switch */}
-              <div className="flex items-center space-x-2 rounded-lg bg-gray-100 p-1">
+              <div className="flex items-center space-x-2 rounded-lg bg-gray-800/50 p-1">
                 <button
                   onClick={() => setLanguage("de")}
                   className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     language === "de"
-                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
-                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+                      ? "scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
+                      : "text-gray-300 hover:bg-gray-700/50 hover:text-gray-200"
                   }`}
                 >
                   DE
@@ -274,17 +267,18 @@ const GalleryPage = () => {
                   onClick={() => setLanguage("fa")}
                   className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     language === "fa"
-                      ? "scale-105 transform bg-white text-blue-600 shadow-md"
-                      : "text-gray-600 hover:bg-gray-200 hover:text-gray-900"
+                      ? "scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
+                      : "text-gray-300 hover:bg-gray-700/50 hover:text-gray-200"
                   }`}
                 >
                   FA
                 </button>
               </div>
+
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-lg p-2 text-gray-600 transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:hidden"
+                className="rounded-lg p-2 text-gray-300 transition-all duration-300 hover:bg-blue-900/50 hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 lg:hidden"
               >
                 {mobileMenuOpen ? (
                   <X className="h-6 w-6 rotate-90 transition-transform duration-300" />
@@ -294,13 +288,14 @@ const GalleryPage = () => {
               </button>
             </div>
           </div>
+
           {/* Mobile Menu */}
           <div
             className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
               mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="border-t border-gray-200 pb-4 pt-4">
+            <div className="border-t border-white/10 pb-4 pt-4">
               <div className="flex flex-col space-y-1">
                 {[
                   { href: "/", label: t.nav.home, icon: "🏠" },
@@ -312,7 +307,7 @@ const GalleryPage = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="flex transform items-center space-x-3 rounded-lg px-4 py-3 text-gray-700 transition-all duration-300 hover:translate-x-2 hover:bg-blue-50 hover:text-blue-600"
+                    className="flex transform items-center space-x-3 rounded-lg px-4 py-3 text-gray-300 transition-all duration-300 hover:translate-x-2 hover:bg-blue-900/30 hover:text-blue-400"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span className="text-lg">{item.icon}</span>
@@ -325,52 +320,43 @@ const GalleryPage = () => {
         </div>
       </header>
 
-      <main className="py-12">
+      <main className="relative z-10 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h1 className="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl">
+          <div className="mb-16 text-center">
+            <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
               {t.title}
             </h1>
-            <p className="text-xl text-gray-600">{t.subtitle}</p>
+            <p className="text-xl text-gray-300">{t.subtitle}</p>
           </div>
 
           {/* Search & Filter Section */}
-          <div className="mb-12 rounded-xl bg-white p-6 shadow-lg">
+          <div className="mb-12 rounded-xl bg-gradient-to-r from-blue-800/30 to-purple-800/30 p-6 shadow-lg backdrop-blur-sm border border-white/10">
             <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
               <div className="relative w-full lg:flex-1">
-                <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 sm:h-5 sm:w-5" />
+                <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
                 <input
                   type="text"
                   placeholder={t.search.placeholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
+                  className="w-full rounded-xl border border-white/20 bg-gray-800/50 py-3 pl-12 pr-4 text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
                   { key: "alle", label: t.search.filters.all },
-                  {
-                    key: "limousine",
-                    label: t.search.filters.limousine,
-                  },
+                  { key: "limousine", label: t.search.filters.limousine },
                   { key: "suv", label: t.search.filters.suv },
-                  {
-                    key: "sportwagen",
-                    label: t.search.filters.sportwagen,
-                  },
-                  {
-                    key: "kombi",
-                    label: t.search.filters.kombi,
-                  },
+                  { key: "sportwagen", label: t.search.filters.sportwagen },
+                  { key: "kombi", label: t.search.filters.kombi },
                 ].map((filter) => (
                   <button
                     key={filter.key}
                     onClick={() => setSelectedFilter(filter.key)}
-                    className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                       selectedFilter === filter.key
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-sm"
+                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md"
+                        : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-gray-200"
                     }`}
                   >
                     {filter.label}
@@ -383,23 +369,13 @@ const GalleryPage = () => {
           {/* Car Grid */}
           {selectedCar ? (
             // Car Detail View
-            <div className="rounded-2xl bg-white p-6 shadow-xl">
+            <div className="rounded-2xl bg-gradient-to-br from-gray-800/80 to-gray-900/90 p-6 shadow-xl backdrop-blur-sm border border-white/10">
               <button
                 onClick={() => setSelectedCar(null)}
-                className="mb-6 flex items-center text-blue-600 transition-colors hover:text-blue-800"
+                className="mb-6 flex items-center text-blue-400 transition-colors hover:text-blue-300"
               >
-                <svg
-                  className="mr-2 h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
+                <svg className="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 {t.details.back}
               </button>
@@ -415,51 +391,38 @@ const GalleryPage = () => {
                 </div>
 
                 <div>
-                  <h2 className="mb-2 text-3xl font-bold text-gray-900">
+                  <h2 className="mb-2 text-3xl font-bold text-white">
                     {selectedCar.brand} {selectedCar.model}
                   </h2>
-                  <p className="mb-6 text-gray-600">
-                    {selectedCar.description}
-                  </p>
+                  <p className="mb-6 text-gray-300">{selectedCar.description}</p>
 
-                  <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4">
+                  <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
                     <div>
-                      <p className="text-sm text-gray-500">{t.details.year}</p>
-                      <p className="font-medium">{selectedCar.year}</p>
+                      <p className="text-sm text-gray-400">{t.details.year}</p>
+                      <p className="font-medium text-white">{selectedCar.year}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">
-                        {t.details.mileage}
-                      </p>
-                      <p className="font-medium">{selectedCar.mileage} km</p>
+                      <p className="text-sm text-gray-400">{t.details.mileage}</p>
+                      <p className="font-medium text-white">{selectedCar.mileage} km</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">{t.details.fuel}</p>
-                      <p className="font-medium">{selectedCar.fuel}</p>
+                      <p className="text-sm text-gray-400">{t.details.fuel}</p>
+                      <p className="font-medium text-white">{selectedCar.fuel}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">
-                        {t.details.transmission}
-                      </p>
-                      <p className="font-medium">{selectedCar.transmission}</p>
+                      <p className="text-sm text-gray-400">{t.details.transmission}</p>
+                      <p className="font-medium text-white">{selectedCar.transmission}</p>
                     </div>
                   </div>
 
                   <div className="mb-8">
-                    <h3 className="mb-3 text-lg font-semibold text-gray-900">
-                      {t.details.features}
-                    </h3>
+                    <h3 className="mb-3 text-lg font-semibold text-white">{t.details.features}</h3>
                     <div className="flex flex-wrap gap-2">
-                      {selectedCar.features.map(
-                        (feature: any, index: number) => (
-                          <span
-                            key={index}
-                            className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800"
-                          >
-                            {feature}
-                          </span>
-                        ),
-                      )}
+                      {selectedCar.features.map((feature, index) => (
+                        <span key={index} className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300">
+                          {feature}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
@@ -470,14 +433,11 @@ const GalleryPage = () => {
                     </div>
                     <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
                       <p className="text-sm">{t.details.financing}</p>
-                      <p className="text-2xl font-bold">
-                        €{selectedCar.financing}
-                        {t.details.month}
-                      </p>
+                      <p className="text-2xl font-bold">€{selectedCar.financing}{t.details.month}</p>
                     </div>
                   </div>
 
-                  <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg">
+                  <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
                     {t.details.contact}
                   </button>
                 </div>
@@ -489,7 +449,7 @@ const GalleryPage = () => {
               {filteredCars.map((car) => (
                 <div
                   key={car.id}
-                  className="group transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
+                  className="group transform cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/70 to-gray-900/80 shadow-xl backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
                   onClick={() => setSelectedCar(car)}
                 >
                   <div className="relative h-48 overflow-hidden sm:h-56">
@@ -499,20 +459,20 @@ const GalleryPage = () => {
                       fill
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
                     <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
                       €{car.price}
                     </div>
                   </div>
                   <div className="p-4">
                     <div className="mb-3 flex items-center justify-between">
-                      <h3 className="text-lg font-bold text-gray-900">
+                      <h3 className="text-lg font-bold text-white">
                         {car.brand} {car.model}
                       </h3>
-                      <span className="text-sm text-gray-500">{car.year}</span>
+                      <span className="text-sm text-gray-400">{car.year}</span>
                     </div>
 
-                    <div className="mb-4 grid grid-cols-3 gap-1 text-sm text-gray-600">
+                    <div className="mb-4 grid grid-cols-3 gap-1 text-sm text-gray-300">
                       <div className="text-center">
                         <div className="font-medium">{car.mileage}</div>
                         <div className="text-xs opacity-75">km</div>
@@ -531,21 +491,20 @@ const GalleryPage = () => {
                       {car.features.slice(0, 2).map((feature, index) => (
                         <span
                           key={index}
-                          className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-700"
+                          className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
                         >
                           {feature}
                         </span>
                       ))}
                       {car.features.length > 2 && (
-                        <span className="rounded-lg bg-gray-100 px-2 py-1 text-xs text-gray-600">
+                        <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
                           +{car.features.length - 2}
                         </span>
                       )}
                     </div>
 
-                    <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-2 text-center text-sm text-green-700">
-                      {t.details.financing} €{car.financing}
-                      {t.details.month}
+                    <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-2 text-center text-sm text-green-400">
+                      {t.details.financing} €{car.financing}{t.details.month}
                     </div>
                   </div>
                 </div>
@@ -555,8 +514,8 @@ const GalleryPage = () => {
         </div>
       </main>
 
-      {/* Footer - Same as home page */}
-      <footer className="bg-gray-900 py-12 text-white">
+      {/* Footer */}
+      <footer className="relative z-10 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-12 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             {/* Company Info */}
@@ -575,9 +534,7 @@ const GalleryPage = () => {
                 </div>
               </div>
               <p className="mb-6 max-w-md text-gray-300">
-                Seit über 15 Jahren Ihr vertrauensvoller Partner für
-                Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit
-                stehen bei uns an erster Stelle.
+                Seit über 15 Jahren Ihr vertrauensvoller Partner für Premium-Fahrzeuge. Qualität, Service und Kundenzufriedenheit stehen bei uns an erster Stelle.
               </p>
               <div className="flex space-x-4">
                 <div className="flex items-center space-x-2 text-sm">
@@ -586,12 +543,11 @@ const GalleryPage = () => {
                   <Star className="h-5 w-5 fill-current text-yellow-400" />
                   <Star className="h-5 w-5 fill-current text-yellow-400" />
                   <Star className="h-5 w-5 fill-current text-yellow-400" />
-                  <span className="ml-2 text-gray-300">
-                    4.9/5 (482 Bewertungen)
-                  </span>
+                  <span className="ml-2 text-gray-300">4.9/5 (482 Bewertungen)</span>
                 </div>
               </div>
             </div>
+
             {/* Kontaktinfo */}
             <div>
               <h3 className="mb-6 text-xl font-bold text-white">Kontakt</h3>
@@ -620,57 +576,33 @@ const GalleryPage = () => {
                 </div>
               </div>
             </div>
+
             {/* Services & Legal */}
             <div>
-              <h3 className="mb-6 text-xl font-bold text-white">
-                Services & Info
-              </h3>
+              <h3 className="mb-6 text-xl font-bold text-white">Services & Info</h3>
               <div className="space-y-3">
-                <a
-                  href="/services"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
+                <a href="/services" className="block text-gray-400 transition-colors hover:text-blue-400">
                   Finanzierung & Leasing
                 </a>
-                <a
-                  href="/services"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
+                <a href="/services" className="block text-gray-400 transition-colors hover:text-blue-400">
                   Garantie & Service
                 </a>
-                <a
-                  href="/services"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
+                <a href="/services" className="block text-gray-400 transition-colors hover:text-blue-400">
                   Inzahlungnahme
                 </a>
-                <a
-                  href="/services"
-                  className="block text-gray-400 transition-colors hover:text-blue-400"
-                >
+                <a href="/services" className="block text-gray-400 transition-colors hover:text-blue-400">
                   Export weltweit
                 </a>
                 <div className="border-t border-gray-700 pt-4">
-                  <h4 className="mb-3 text-lg font-semibold text-white">
-                    Rechtliches
-                  </h4>
+                  <h4 className="mb-3 text-lg font-semibold text-white">Rechtliches</h4>
                   <div className="space-y-2">
-                    <a
-                      href="#"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
+                    <a href="#" className="block text-sm text-gray-400 transition-colors hover:text-blue-400">
                       Datenschutz
                     </a>
-                    <a
-                      href="#"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
+                    <a href="#" className="block text-sm text-gray-400 transition-colors hover:text-blue-400">
                       AGB
                     </a>
-                    <a
-                      href="#"
-                      className="block text-sm text-gray-400 transition-colors hover:text-blue-400"
-                    >
+                    <a href="#" className="block text-sm text-gray-400 transition-colors hover:text-blue-400">
                       Impressum
                     </a>
                   </div>
@@ -678,26 +610,17 @@ const GalleryPage = () => {
               </div>
             </div>
           </div>
+
           {/* Bottom Section */}
           <div className="mt-12 border-t border-gray-800 pt-8">
             <div className="flex flex-col items-center justify-between md:flex-row">
-              <p className="text-sm text-gray-400">
-                © 2024 Bahram Autohaus. Alle Rechte vorbehalten.
-              </p>
+              <p className="text-sm text-gray-400">© 2024 Bahram Autohaus. Alle Rechte vorbehalten.</p>
               <div className="mt-4 flex items-center space-x-6 md:mt-0">
-                <span className="text-sm text-gray-400">
-                  Zertifiziert durch:
-                </span>
+                <span className="text-sm text-gray-400">Zertifiziert durch:</span>
                 <div className="flex space-x-4">
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    TÜV SÜD
-                  </div>
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    DEKRA
-                  </div>
-                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">
-                    Autohändler-Verband
-                  </div>
+                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">TÜV SÜD</div>
+                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">DEKRA</div>
+                  <div className="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300">Autohändler-Verband</div>
                 </div>
               </div>
             </div>
