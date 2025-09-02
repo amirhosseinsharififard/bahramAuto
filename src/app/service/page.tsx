@@ -6,174 +6,14 @@ import { CreditCard, FileText, Globe, Shield, Wrench } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { de } from "@/constants/de";
+import { fa } from "@/constants/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ServicesPage = () => {
   const { language, setLanguage } = useLanguage();
 
-  const content = {
-    de: {
-      title: "Unsere Services",
-      subtitle: "Premium-Services für Ihre Anforderungen",
-      services: {
-        financing: {
-          title: "Finanzierung & Leasing",
-          description:
-            "Flexible Finanzierungslösungen für Ihr Traumauto. Wir arbeiten mit führenden Banken zusammen, um Ihnen attraktive Konditionen zu bieten.",
-          features: [
-            "Günstige Zinsen",
-            "Individuelle Laufzeiten",
-            "Boni bei Anzahlung",
-            "Online-Rechner",
-          ],
-        },
-        warranty: {
-          title: "Garantie & Service",
-          description:
-            "Umfassende Garantiepakete und professioneller Service für Ihr Fahrzeug. Wir sorgen dafür, dass Sie lange Freude an Ihrem Auto haben.",
-          features: [
-            "Bis zu 5 Jahre Garantie",
-            "Inspektion und Wartung",
-            "Mobilitätsgarantie",
-            "Originalersatzteile",
-          ],
-        },
-        tradeIn: {
-          title: "Inzahlungnahme",
-          description:
-            "Wir nehmen Ihr altes Fahrzeug in Zahlung und bieten Ihnen einen fairen Preis. Einfach und unkompliziert.",
-          features: [
-            "Sofortpreisangebot",
-            "Faire Bewertung",
-            "Abwicklung aller Formalitäten",
-            "Direkte Anrechnung",
-          ],
-        },
-        export: {
-          title: "Export weltweit",
-          description:
-            "Wir exportieren Fahrzeuge in alle Länder der Welt. Mit unserem Know-how und unseren internationalen Kontakten machen wir den Export einfach für Sie.",
-          features: [
-            "Zollabwicklung",
-            "Versicherungsschutz",
-            "Versandorganisation",
-            "Dokumentenübersetzung",
-          ],
-        },
-      },
-      process: {
-        title: "Unser Prozess",
-        steps: [
-          {
-            title: "Beratung",
-            description:
-              "Persönliche Beratung zur Findung des richtigen Fahrzeugs und der passenden Finanzierung.",
-          },
-          {
-            title: "Auswahl",
-            description:
-              "Große Auswahl an geprüften Premium-Fahrzeugen zu fairen Preisen.",
-          },
-          {
-            title: "Finanzierung",
-            description:
-              "Individuelle Finanzierungslösungen auf Ihre Bedürfnisse zugeschnitten.",
-          },
-          {
-            title: "Übergabe",
-            description:
-              "Sorgfältige Übergabe des Fahrzeugs mit allen Unterlagen und einer ausführlichen Einweisung.",
-          },
-        ],
-      },
-      cta: {
-        title: "Benötigen Sie Hilfe?",
-        description:
-          "Unser Expertenteam steht Ihnen gerne für alle Fragen zur Verfügung.",
-        button: "Kontaktieren Sie uns",
-      },
-    },
-    fa: {
-      title: "خدمات ما",
-      subtitle: "خدمات پریمیوم برای نیازهای شما",
-      services: {
-        financing: {
-          title: "تامین مالی و لیزینگ",
-          description:
-            "راه‌حل‌های انعطاف‌پذیر تامین مالی برای خودروی رویایی شما. ما با بانک‌های پیشرو همکاری می‌کنیم تا شرایط جذابی را به شما ارائه دهیم.",
-          features: [
-            "نرخ‌های بهره مقرون‌به‌صرفه",
-            "دوره‌های انعطاف‌پذیر",
-            "پاداش برای پیش‌پرداخت",
-            "محاسبه آنلاین",
-          ],
-        },
-        warranty: {
-          title: "ضمانت و خدمات",
-          description:
-            "بسته‌های ضمانت نامه جامع و خدمات حرفه‌ای برای وسیله نقلیه شما. ما اطمینان حاصل می‌کنیم که برای مدت طولانی از خودروی خود لذت ببرید.",
-          features: [
-            "تا ۵ سال ضمانت",
-            "بازرسی و نگهداری",
-            "ضمانت تلفن همراه",
-            "قطعات یدکی اصلی",
-          ],
-        },
-        tradeIn: {
-          title: "تحویل خودرو قدیمی",
-          description:
-            "ما وسیله نقلیه قدیمی شما را تحویل گرفته و قیمت منصفانه‌ای را به شما ارائه می‌دهیم. ساده و بدون دردسر.",
-          features: [
-            "پیشنهاد قیمت فوری",
-            "ارزیابی منصفانه",
-            "رسیدگی به تمام تشریفات",
-            "اعتبار مستقیم",
-          ],
-        },
-        export: {
-          title: "صادرات جهانی",
-          description:
-            "ما خودروها را به تمام کشورهای جهان صادر می‌کنیم. با دانش تخصصی و ارتباطات بین‌المللی خود، صادرات را برای شما آسان می‌کنیم.",
-          features: [
-            "رسیدگی گمرکی",
-            "پوشش بیمه",
-            "سازماندهی حمل و نقل",
-            "ترجمه اسناد",
-          ],
-        },
-      },
-      process: {
-        title: "فرآیند ما",
-        steps: [
-          {
-            title: "مشاوره",
-            description:
-              "مشاوره شخصی برای یافتن خودروی مناسب و تامین مالی مناسب.",
-          },
-          {
-            title: "انتخاب",
-            description:
-              "انتخاب گسترده‌ای از خودروهای پریمیوم تایید شده با قیمت‌های منصفانه.",
-          },
-          {
-            title: "تامین مالی",
-            description: "راه‌حل‌های تامین مالی فردی متناسب با نیازهای شما.",
-          },
-          {
-            title: "تحویل",
-            description: "تحویل دقیق خودرو با تمام مدارک و راهنمایی جامع.",
-          },
-        ],
-      },
-      cta: {
-        title: "به کمک نیاز دارید؟",
-        description:
-          "تیم متخصص ما خوشحال خواهد بود که به تمام سوالات شما پاسخ دهد.",
-        button: "با ما تماس بگیرید",
-      },
-    },
-  };
-
+  const content = { de, fa };
   const t = content[language as keyof typeof content];
 
   const serviceItems = [
@@ -200,10 +40,10 @@ const ServicesPage = () => {
   ];
 
   return (
-          <div
-        className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-        dir={t.direction}
-      >
+    <div
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
+      dir={t.direction}
+    >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
 
@@ -211,17 +51,22 @@ const ServicesPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
-              {t.title}
+              {t.services.title}
             </h1>
-            <p className="text-xl text-gray-300">{t.subtitle}</p>
+            <p className="text-xl text-gray-300">{t.services.subtitle}</p>
           </div>
 
           {/* Services Grid */}
           <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-2">
             {serviceItems.map((service) => {
               const IconComponent = service.icon;
-              const serviceData =
-                t.services[service.key as keyof typeof t.services];
+              const serviceData = t.services.services[
+                service.key as keyof typeof t.services.services
+              ] as {
+                title: string;
+                description: string;
+                features: string[];
+              };
 
               return (
                 <div
@@ -267,14 +112,16 @@ const ServicesPage = () => {
           {/* Process Section */}
           <div className="mb-20 rounded-2xl border border-white/10 bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-slate-900/80 p-8 text-white shadow-xl backdrop-blur-sm">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-bold">{t.process.title}</h2>
+              <h2 className="mb-4 text-3xl font-bold">
+                {t.services.process.title}
+              </h2>
               <p className="text-blue-200">
                 So einfach funktioniert es bei uns
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {t.process.steps.map((step, index) => (
+              {t.services.process.steps.map((step, index) => (
                 <div key={index} className="text-center">
                   <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-xl font-bold">
                     {index + 1}
@@ -293,16 +140,16 @@ const ServicesPage = () => {
                 <FileText className="h-10 w-10 text-blue-400" />
               </div>
               <h2 className="mb-4 text-3xl font-bold text-white">
-                {t.cta.title}
+                {t.services.cta.title}
               </h2>
               <p className="mb-8 max-w-2xl text-gray-300">
-                {t.cta.description}
+                {t.services.cta.description}
               </p>
               <a
                 href="/contact-us"
                 className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"
               >
-                {t.cta.button}
+                {t.services.cta.button}
               </a>
             </div>
           </div>

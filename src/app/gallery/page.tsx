@@ -7,19 +7,19 @@ import Image from "next/image";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { de } from "@/constants/de";
 import { fa } from "@/constants/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const GalleryPage = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(null);
+  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(
+    null,
+  );
 
   const content = { de, fa };
-
-  
 
   const t = content[language as keyof typeof content];
 
@@ -31,10 +31,10 @@ const GalleryPage = () => {
   );
 
   return (
-          <div
-        className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-        dir={t.direction}
-      >
+    <div
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
+      dir={t.direction}
+    >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
 
@@ -128,7 +128,9 @@ const GalleryPage = () => {
 
                   <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
                     <div>
-                      <p className="text-sm text-gray-400">{t.gallery.details.year}</p>
+                      <p className="text-sm text-gray-400">
+                        {t.gallery.details.year}
+                      </p>
                       <p className="font-medium text-white">
                         {selectedCar.year}
                       </p>
@@ -142,7 +144,9 @@ const GalleryPage = () => {
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">{t.gallery.details.fuel}</p>
+                      <p className="text-sm text-gray-400">
+                        {t.gallery.details.fuel}
+                      </p>
                       <p className="font-medium text-white">
                         {selectedCar.fuel}
                       </p>

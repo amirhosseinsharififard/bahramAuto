@@ -345,7 +345,6 @@ export const de = {
   },
   // Direction
   direction: "ltr",
-
   cars: [
     {
       id: 1,
