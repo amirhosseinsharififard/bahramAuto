@@ -310,7 +310,7 @@ export const de = {
       "Service & Wartung",
       "Export",
     ],
-    legalLinks: ["Impressum", "Datenschutz", "AGB", "Widerrufsrecht"],
+    legalLinks: ["Impressum", "Datenschutz"],
     certifications: [
       "TÜV SÜD zertifiziert",
       "DEKRA geprüft",
