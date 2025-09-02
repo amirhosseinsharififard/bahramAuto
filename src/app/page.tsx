@@ -303,7 +303,7 @@ const BahramAutohaus = () => {
                 <div className="mx-4 sm:mx-8 lg:mx-12">
                   <div
                     id="car-slider"
-                    className="grid grid-cols-2 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+                    className="grid grid-cols-1 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
                   >
                     {filteredCars.map((car) => (
                       <div
@@ -323,7 +323,7 @@ const BahramAutohaus = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
 
                             {/* Floating price tag */}
-                            <div className="absolute right-4 top-4 rounded-full bg-[#f5f200] px-4 py-2 text-lg font-bold text-[#715b0e] text-white shadow-lg">
+                            <div className="absolute right-4 top-4 rounded-full bg-[#f5f200] px-4 py-2 text-lg font-bold text-[#715b0e] shadow-lg">
                               €{car.price}
                             </div>
 
