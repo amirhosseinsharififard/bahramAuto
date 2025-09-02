@@ -21,241 +21,24 @@ import Link from "next/link";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { de } from "@/constants/de";
+import { fa } from "@/constants/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const BahramAutohaus = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<(typeof cars)[0] | null>(null);
+  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(
+    null,
+  );
 
-  const content = {
-    de: {
-      hero: {
-        title: "Bahram Autohaus",
-        subtitle: "Ihr Premium Partner für Qualitätsfahrzeuge in Deutschland",
-        description:
-          "Seit über 15 Jahren Ihr vertrauensvoller Spezialist für deutsche und europäische Premiumfahrzeuge.",
-        cta: "Fahrzeuge entdecken",
-        videoButton: "Video ansehen",
-        stats: {
-          sold: "Verkaufte Fahrzeuge",
-          customers: "Zufriedene Kunden",
-          experience: "Jahre Erfahrung",
-        },
-      },
-      highlights: {
-        title: "Aktuelle Top-Angebote",
-        subtitle: "Handverlesene Premium-Fahrzeuge",
-        viewAll: "Alle Fahrzeuge ansehen",
-        financing: "Finanzierung ab",
-        month: "/Monat",
-        details: "Details",
-        contact: "Kontakt",
-        features: "Features",
-        mileage: "km",
-        fuel: "Kraftstoff",
-        transmission: "Getriebe",
-        back: "Zurück zur Übersicht",
-        price: "Preis",
-        year: "Baujahr",
-        contactUs: "Kontakt aufnehmen",
-      },
-      search: {
-        placeholder: "Marke oder Modell suchen...",
-        filters: {
-          all: "Alle",
-          limousine: "Limousine",
-          suv: "SUV",
-          sportwagen: "Sportwagen",
-          kombi: "Kombi",
-        },
-      },
-      advantages: {
-        title: "Warum Bahram Autohaus?",
-        subtitle: "Ihre Vorteile bei uns",
-      },
-    },
-    fa: {
-      hero: {
-        title: "بهرام اتوهاوس",
-        subtitle: "شریک برتر شما برای خودروهای باکیفیت در آلمان",
-        description:
-          "بیش از ۱۵ سال متخصص قابل اعتماد شما برای خودروهای پریمیوم آلمانی و اروپایی.",
-        cta: "کشف خودروها",
-        videoButton: "مشاهده ویدیو",
-        stats: {
-          sold: "خودروهای فروخته شده",
-          customers: "مشتریان راضی",
-          experience: "سال تجربه",
-        },
-      },
-      highlights: {
-        title: "بهترین پیشنهادات فعلی",
-        subtitle: "خودروهای پریمیوم دست‌چین",
-        viewAll: "مشاهده همه خودروها",
-        financing: "تامین مالی از",
-        month: "/ماه",
-        details: "جزئیات",
-        contact: "تماس",
-        features: "ویژگی‌ها",
-        mileage: "کیلومتر",
-        fuel: "سوخت",
-        transmission: "گیربکس",
-        back: "بازگشت به نمای کلی",
-        price: "قیمت",
-        year: "سال ساخت",
-        contactUs: "تماس بگیرید",
-      },
-      search: {
-        placeholder: "جستجوی برند یا مدل...",
-        filters: {
-          all: "همه",
-          limousine: "سدان",
-          suv: "SUV",
-          sportwagen: "اسپرت",
-          kombi: "استیشن",
-        },
-      },
-      advantages: {
-        title: "چرا بهرام اتوهاوس؟",
-        subtitle: "مزایای شما نزد ما",
-      },
-    },
-  };
-
-  const advantageItems = [
-    {
-      icon: Shield,
-      titleDe: "100% Geprüfte Qualität",
-      titleFa: "کیفیت ۱۰۰٪ تضمینی",
-      descriptionDe:
-        "Alle Fahrzeuge mit Garantie und ausführlicher Dokumentation",
-      descriptionFa: "تمام خودروها با ضمانت و مستندات کامل",
-    },
-    {
-      icon: Award,
-      titleDe: "Faire Preise",
-      titleFa: "قیمت منصفانه",
-      descriptionDe: "Transparente Preisgestaltung ohne versteckte Kosten",
-      descriptionFa: "قیمت‌گذاری شفاف بدون هزینه‌های پنهان",
-    },
-    {
-      icon: Users,
-      titleDe: "Persönliche Beratung",
-      titleFa: "مشاوره شخصی",
-      descriptionDe: "Kompetente Beratung auf Deutsch, Englisch und Farsi",
-      descriptionFa: "مشاوره متخصص به زبان‌های آلمانی، انگلیسی و فارسی",
-    },
-  ];
-
-  const cars = [
-    {
-      id: 1,
-      brand: "BMW",
-      model: "X5 M50d",
-      year: 2023,
-      price: "78,900",
-      financing: "499",
-      mileage: "15,000",
-      fuel: "Diesel",
-      transmission: "Automatik",
-      image: "/images/cars/bmw-x5.jpg",
-      features: ["M-Paket", "Panorama", "HUD", "Harman Kardon"],
-      category: "suv",
-      description:
-        "Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort. Mit dem M Sportpaket und der Panoramadachanlage steht er für sportliche Eleganz.",
-    },
-    {
-      id: 2,
-      brand: "Mercedes",
-      model: "C63 AMG",
-      year: 2024,
-      price: "95,500",
-      financing: "649",
-      mileage: "8,500",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/mercedes-c63.jpg",
-      features: ["AMG Performance", "Burmester", "Distronic", "360° Kamera"],
-      category: "sportwagen",
-      description:
-        "Der Mercedes-AMG C63 ist die Definition von Performance und Luxus. Mit dem AMG Performance Paket und dem hochwertigen Burmester Soundsystem.",
-    },
-    {
-      id: 3,
-      brand: "Audi",
-      model: "RS6 Avant",
-      year: 2023,
-      price: "112,000",
-      financing: "799",
-      mileage: "12,000",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/audi-rs6.jpg",
-      features: [
-        "RS Performance",
-        "Virtual Cockpit",
-        "Matrix LED",
-        "B&O Sound",
-      ],
-      category: "kombi",
-      description:
-        "Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens. Ausgestattet mit dem Virtual Cockpit und Matrix LED Scheinwerfern.",
-    },
-    {
-      id: 4,
-      brand: "Porsche",
-      model: "Cayenne Turbo",
-      year: 2023,
-      price: "145,000",
-      financing: "999",
-      mileage: "6,800",
-      fuel: "Benzin",
-      transmission: "PDK",
-      image: "/images/cars/porsche-cayenne.jpg",
-      features: ["Sport Chrono", "Luftfederung", "PASM", "Bose Surround"],
-      category: "suv",
-      description:
-        "Der Porsche Cayenne Turbo verkörpert die perfekte Symbiose aus Sportlichkeit und Komfort. Mit Luftfederung und Sport Chrono Paket für ein einzigartiges Fahrerlebnis.",
-    },
-    {
-      id: 5,
-      brand: "Tesla",
-      model: "Model S Plaid",
-      year: 2024,
-      price: "119,990",
-      financing: "829",
-      mileage: "3,200",
-      fuel: "Elektro",
-      transmission: "Automatik",
-      image: "/images/cars/tesla-model-s.jpg",
-      features: ["Plaid Mode", "Autopilot", "21 Zoll Räder", "Premium Audio"],
-      category: "limousine",
-      description:
-        "Das Tesla Model S Plaid setzt neue Maßstäbe in der Elektromobilität. Mit Plaid Mode, Autopilot und Premium Audio System für ein zukunftsweisendes Fahrerlebnis.",
-    },
-    {
-      id: 6,
-      brand: "BMW",
-      model: "M4 Competition",
-      year: 2024,
-      price: "89,900",
-      financing: "599",
-      mileage: "5,500",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/bmw-m4.png",
-      features: ["M Competition", "Carbon Paket", "M Driver Package", "HiFi"],
-      category: "sportwagen",
-      description:
-        "Der BMW M4 Competition ist ein reiner Sportwagen pur. Mit dem Carbon Paket und M Driver Package für maximale Performance auf der Straße und der Rennstrecke.",
-    },
-  ];
-
+  const content = { de, fa };
   const t = content[language as keyof typeof content];
 
-  const filteredCars = cars.filter(
+  // advantageItems are now imported from language constants
+
+  const filteredCars = t.cars.filter(
     (car) =>
       (selectedFilter === "alle" || car.category === selectedFilter) &&
       (car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -265,7 +48,7 @@ const BahramAutohaus = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={language === "fa" ? "rtl" : "ltr"}
+      dir={t.direction}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
@@ -517,7 +300,7 @@ const BahramAutohaus = () => {
             ) : (
               // Car Grid View
               <div className="relative">
-                <div className="mx-4 overflow-hidden sm:mx-8 lg:mx-12">
+                <div className="mx-4 sm:mx-8 lg:mx-12">
                   <div
                     id="car-slider"
                     className="grid grid-cols-2 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
@@ -528,7 +311,7 @@ const BahramAutohaus = () => {
                         className="group w-full transform cursor-pointer transition-all duration-500"
                         onClick={() => setSelectedCar(car)}
                       >
-                        <div className="hover:scale-101 relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:shadow-2xl">
+                        <div className="relative h-full overflow-hidden rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-800/50 to-gray-900/80 shadow-xl backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                           {/* Image with overlay */}
                           <div className="relative h-48 overflow-hidden sm:h-52">
                             <Image
@@ -565,13 +348,13 @@ const BahramAutohaus = () => {
                               <div className="text-center">
                                 <div className="font-medium">{car.mileage}</div>
                                 <div className="text-xs opacity-75">
-                                  {language === "fa" ? "کیلومتر" : "km"}
+                                  {t.carLabels.mileage}
                                 </div>
                               </div>
                               <div className="text-center">
                                 <div className="font-medium">{car.fuel}</div>
                                 <div className="text-xs opacity-75">
-                                  {language === "fa" ? "سوخت" : "Kraftstoff"}
+                                  {t.carLabels.fuel}
                                 </div>
                               </div>
                               <div className="text-center">
@@ -579,7 +362,7 @@ const BahramAutohaus = () => {
                                   {car.transmission}
                                 </div>
                                 <div className="text-xs opacity-75">
-                                  {language === "fa" ? "گیربکس" : "Getriebe"}
+                                  {t.carLabels.transmission}
                                 </div>
                               </div>
                             </div>
@@ -622,7 +405,7 @@ const BahramAutohaus = () => {
                               </button>
                               <Link
                                 href="/contact-us"
-                                className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
+                                className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-center text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
                               >
                                 <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                                 {t.highlights.contact}
@@ -670,21 +453,24 @@ const BahramAutohaus = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {advantageItems.map((advantage, index) => {
-                const IconComponent = advantage.icon;
-                const title =
-                  language === "de" ? advantage.titleDe : advantage.titleFa;
-                const description =
-                  language === "de"
-                    ? advantage.descriptionDe
-                    : advantage.descriptionFa;
+              {t.advantageItems.map((advantage, index) => {
+                const IconComponent =
+                  advantage.icon === "Shield"
+                    ? Shield
+                    : advantage.icon === "Award"
+                      ? Award
+                      : advantage.icon === "Users"
+                        ? Users
+                        : Shield;
+                const title = advantage.title;
+                const description = advantage.description;
 
                 return (
                   <div
                     key={index}
-                    className="group relative transform transition-all duration-500 hover:scale-105"
+                    className="group relative h-full transform transition-all duration-500 hover:scale-105"
                   >
-                    <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-purple-500/20">
+                    <div className="flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-purple-500/20">
                       {/* Icon container */}
                       <div className="relative mb-8 flex justify-center">
                         <div className="relative">
@@ -695,11 +481,11 @@ const BahramAutohaus = () => {
                         </div>
                       </div>
 
-                      <div className="relative z-10 text-center">
+                      <div className="relative z-10 flex flex-1 flex-col justify-center text-center">
                         <h3 className="mb-4 text-2xl font-bold text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent">
                           {title}
                         </h3>
-                        <p className="leading-relaxed text-gray-300 transition-colors duration-500 group-hover:text-white">
+                        <p className="flex-1 leading-relaxed text-gray-300 transition-colors duration-500 group-hover:text-white">
                           {description}
                         </p>
                       </div>

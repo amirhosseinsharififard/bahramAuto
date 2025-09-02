@@ -8,181 +8,22 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { de } from "@/constants/de";
+import { fa } from "@/constants/fa";
 
 const GalleryPage = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<(typeof cars)[0] | null>(null);
+  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(null);
 
-  const content = {
-    de: {
-      title: "Fahrzeuggalerie",
-      subtitle: "Entdecken Sie unsere Premium-Fahrzeuge",
-      search: {
-        placeholder: "Marke oder Modell suchen...",
-        filters: {
-          all: "Alle",
-          limousine: "Limousine",
-          suv: "SUV",
-          sportwagen: "Sportwagen",
-          kombi: "Kombi",
-        },
-      },
-      details: {
-        title: "Fahrzeugdetails",
-        brand: "Marke",
-        model: "Modell",
-        year: "Baujahr",
-        price: "Preis",
-        financing: "Finanzierung ab",
-        month: "/Monat",
-        mileage: "Kilometerstand",
-        fuel: "Kraftstoff",
-        transmission: "Getriebe",
-        features: "Ausstattung",
-        contact: "Kontakt aufnehmen",
-        back: "Zurück zur Galerie",
-      },
-    },
-    fa: {
-      title: "گالری خودروها",
-      subtitle: "خودروهای پریمیوم ما را کشف کنید",
-      search: {
-        placeholder: "جستجوی برند یا مدل...",
-        filters: {
-          all: "همه",
-          limousine: "سدان",
-          suv: "SUV",
-          sportwagen: "اسپرت",
-          kombi: "استیشن",
-        },
-      },
-      details: {
-        title: "جزئیات خودرو",
-        brand: "برند",
-        model: "مدل",
-        year: "سال ساخت",
-        price: "قیمت",
-        financing: "تامین مالی از",
-        month: "/ماه",
-        mileage: "کارکرد",
-        fuel: "سوخت",
-        transmission: "گیربکس",
-        features: "ویژگی‌ها",
-        contact: "تماس بگیرید",
-        back: "بازگشت به گالری",
-      },
-    },
-  };
+  const content = { de, fa };
 
-  const cars = [
-    {
-      id: 1,
-      brand: "BMW",
-      model: "X5 M50d",
-      year: 2023,
-      price: "78,900",
-      financing: "499",
-      mileage: "15,000",
-      fuel: "Diesel",
-      transmission: "Automatik",
-      image: "/images/cars/bmw-x5.jpg",
-      features: ["M-Paket", "Panorama", "HUD", "Harman Kardon"],
-      category: "suv",
-      description:
-        "Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort. Mit dem M Sportpaket und der Panoramadachanlage steht er für sportliche Eleganz.",
-    },
-    {
-      id: 2,
-      brand: "Mercedes",
-      model: "C63 AMG",
-      year: 2024,
-      price: "95,500",
-      financing: "649",
-      mileage: "8,500",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/mercedes-c63.jpg",
-      features: ["AMG Performance", "Burmester", "Distronic", "360° Kamera"],
-      category: "sportwagen",
-      description:
-        "Der Mercedes-AMG C63 ist die Definition von Performance und Luxus. Mit dem AMG Performance Paket und dem hochwertigen Burmester Soundsystem.",
-    },
-    {
-      id: 3,
-      brand: "Audi",
-      model: "RS6 Avant",
-      year: 2023,
-      price: "112,000",
-      financing: "799",
-      mileage: "12,000",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/audi-rs6.jpg",
-      features: [
-        "RS Performance",
-        "Virtual Cockpit",
-        "Matrix LED",
-        "B&O Sound",
-      ],
-      category: "kombi",
-      description:
-        "Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens. Ausgestattet mit dem Virtual Cockpit und Matrix LED Scheinwerfern.",
-    },
-    {
-      id: 4,
-      brand: "Porsche",
-      model: "Cayenne Turbo",
-      year: 2023,
-      price: "145,000",
-      financing: "999",
-      mileage: "6,800",
-      fuel: "Benzin",
-      transmission: "PDK",
-      image: "/images/cars/porsche-cayenne.jpg",
-      features: ["Sport Chrono", "Luftfederung", "PASM", "Bose Surround"],
-      category: "suv",
-      description:
-        "Der Porsche Cayenne Turbo verkörpert die perfekte Symbiose aus Sportlichkeit und Komfort. Mit Luftfederung und Sport Chrono Paket für ein einzigartiges Fahrerlebnis.",
-    },
-    {
-      id: 5,
-      brand: "Tesla",
-      model: "Model S Plaid",
-      year: 2024,
-      price: "119,990",
-      financing: "829",
-      mileage: "3,200",
-      fuel: "Elektro",
-      transmission: "Automatik",
-      image: "/images/cars/tesla-model-s.jpg",
-      features: ["Plaid Mode", "Autopilot", "21 Zoll Räder", "Premium Audio"],
-      category: "limousine",
-      description:
-        "Das Tesla Model S Plaid setzt neue Maßstäbe in der Elektromobilität. Mit Plaid Mode, Autopilot und Premium Audio System für ein zukunftsweisendes Fahrerlebnis.",
-    },
-    {
-      id: 6,
-      brand: "BMW",
-      model: "M4 Competition",
-      year: 2024,
-      price: "89,900",
-      financing: "599",
-      mileage: "5,500",
-      fuel: "Benzin",
-      transmission: "Automatik",
-      image: "/images/cars/bmw-m4.png",
-      features: ["M Competition", "Carbon Paket", "M Driver Package", "HiFi"],
-      category: "sportwagen",
-      description:
-        "Der BMW M4 Competition ist ein reiner Sportwagen pur. Mit dem Carbon Paket und M Driver Package für maximale Performance auf der Straße und der Rennstrecke.",
-    },
-  ];
+  
 
   const t = content[language as keyof typeof content];
 
-  const filteredCars = cars.filter(
+  const filteredCars = t.cars.filter(
     (car) =>
       (selectedFilter === "alle" || car.category === selectedFilter) &&
       (car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -190,10 +31,10 @@ const GalleryPage = () => {
   );
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={language === "fa" ? "rtl" : "ltr"}
-    >
+          <div
+        className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
+        dir={t.direction}
+      >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
 
@@ -201,9 +42,9 @@ const GalleryPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
-              {t.title}
+              {t.gallery.title}
             </h1>
-            <p className="text-xl text-gray-300">{t.subtitle}</p>
+            <p className="text-xl text-gray-300">{t.gallery.subtitle}</p>
           </div>
 
           {/* Search & Filter Section */}
@@ -264,7 +105,7 @@ const GalleryPage = () => {
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                {t.details.back}
+                {t.gallery.details.back}
               </button>
 
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -287,28 +128,28 @@ const GalleryPage = () => {
 
                   <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
                     <div>
-                      <p className="text-sm text-gray-400">{t.details.year}</p>
+                      <p className="text-sm text-gray-400">{t.gallery.details.year}</p>
                       <p className="font-medium text-white">
                         {selectedCar.year}
                       </p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-400">
-                        {t.details.mileage}
+                        {t.gallery.details.mileage}
                       </p>
                       <p className="font-medium text-white">
                         {selectedCar.mileage} km
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">{t.details.fuel}</p>
+                      <p className="text-sm text-gray-400">{t.gallery.details.fuel}</p>
                       <p className="font-medium text-white">
                         {selectedCar.fuel}
                       </p>
                     </div>
                     <div>
                       <p className="text-sm text-gray-400">
-                        {t.details.transmission}
+                        {t.gallery.details.transmission}
                       </p>
                       <p className="font-medium text-white">
                         {selectedCar.transmission}
@@ -318,7 +159,7 @@ const GalleryPage = () => {
 
                   <div className="mb-8">
                     <h3 className="mb-3 text-lg font-semibold text-white">
-                      {t.details.features}
+                      {t.gallery.details.features}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedCar.features.map((feature, index) => (
@@ -334,20 +175,20 @@ const GalleryPage = () => {
 
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center text-white">
-                      <p className="text-sm">{t.details.price}</p>
+                      <p className="text-sm">{t.gallery.details.price}</p>
                       <p className="text-2xl font-bold">€{selectedCar.price}</p>
                     </div>
                     <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
-                      <p className="text-sm">{t.details.financing}</p>
+                      <p className="text-sm">{t.gallery.details.financing}</p>
                       <p className="text-2xl font-bold">
                         €{selectedCar.financing}
-                        {t.details.month}
+                        {t.gallery.details.month}
                       </p>
                     </div>
                   </div>
 
                   <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
-                    {t.details.contact}
+                    {t.gallery.details.contact}
                   </button>
                 </div>
               </div>
@@ -413,8 +254,8 @@ const GalleryPage = () => {
                     </div>
 
                     <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-2 text-center text-sm text-green-400">
-                      {t.details.financing} €{car.financing}
-                      {t.details.month}
+                      {t.gallery.details.financing} €{car.financing}
+                      {t.gallery.details.month}
                     </div>
                   </div>
                 </div>

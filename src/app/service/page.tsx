@@ -200,10 +200,10 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={language === "fa" ? "rtl" : "ltr"}
-    >
+          <div
+        className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
+        dir={t.direction}
+      >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
 
