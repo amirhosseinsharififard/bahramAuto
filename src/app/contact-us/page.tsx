@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Clock, Mail, Map, MapPin, Phone, Send, Wrench } from "lucide-react";
+import { Mail, Map, MapPin, Phone, Send, Wrench } from "lucide-react";
 import Image from "next/image";
 
 import AnimatedBackground from "@/components/AnimatedBackground";

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Eye, Heart, Mail, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 
 import AnimatedBackground from "@/components/AnimatedBackground";

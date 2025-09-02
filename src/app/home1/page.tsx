@@ -4,15 +4,12 @@ import React, { useState } from "react";
 
 import {
   Award,
-  Car,
   Eye,
   Heart,
   Mail,
-  MapPin,
   PlayCircle,
   Search,
   Shield,
-  Star,
   Users,
 } from "lucide-react";
 import Image from "next/image";

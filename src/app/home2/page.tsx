@@ -4,15 +4,12 @@ import React, { useState } from "react";
 
 import {
   Award,
-  Car,
   Eye,
   Heart,
   Mail,
-  MapPin,
   PlayCircle,
   Search,
   Shield,
-  Star,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -172,7 +169,10 @@ const BahramAutohaus = () => {
 
         {/* Fahrzeug-Highlights */}
         {/* background test */}
-        <section id="gallery" className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <section
+          id="gallery"
+          className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16"
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center">
               <h2 className="mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text py-2 text-5xl font-bold text-transparent">
