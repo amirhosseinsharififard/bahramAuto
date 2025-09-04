@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Award,
@@ -24,13 +24,16 @@ import { AdminPanel } from "@/components/AdminPanel";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { de } from "@/constants/de";
-import { fa } from "@/constants/fa";
+import TranslationTest from "@/components/TranslationTest";
+import ExcelDebug from "@/components/ExcelDebug";
+import CSVTest from "@/components/CSVTest";
+import JSONTest from "@/components/JSONTest";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useExcelData } from "@/hooks/useExcelData";
 
 const BahramAutohaus = () => {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t, translations, loading, error } =
+    useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCar, setSelectedCar] = useState<any | null>(null);
@@ -39,31 +42,10 @@ const BahramAutohaus = () => {
   const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
 
   // Load data from Excel files
-  const { translations, cars, loading, error } = useExcelData();
+  const { cars } = useExcelData();
 
   // Use Excel data if available, otherwise fallback to constants
-  const content =
-    translations.de && translations.fa ? translations : { de, fa };
-  const t = content[language as keyof typeof content] || content.de || de;
-  const availableCars = cars.length > 0 ? cars : de.cars;
-
-  // Ensure all required properties exist with fallbacks
-  const safeT = {
-    ...de,
-    ...t,
-    advantages: {
-      ...de.advantages,
-      ...t.advantages
-    },
-    advantageItems: Array.isArray(t.advantageItems) ? t.advantageItems : de.advantageItems
-  };
-
-  // Debug logging
-  console.log('t.advantageItems:', t.advantageItems);
-  console.log('de.advantageItems:', de.advantageItems);
-  console.log('safeT.advantageItems:', safeT.advantageItems);
-
-  // advantageItems are now imported from language constants
+  const availableCars = cars.length > 0 ? cars : [];
 
   // Handle modal animations
   useEffect(() => {
@@ -101,10 +83,30 @@ const BahramAutohaus = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={safeT.direction}
+      dir={t("direction")}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
+      
+      {/* Translation Test Component - Remove this after testing */}
+      <div className="fixed top-20 right-4 z-50 max-w-md rounded-lg bg-black/80 p-4 backdrop-blur-sm">
+        <TranslationTest />
+      </div>
+      
+      {/* Excel Debug Component - Remove this after testing */}
+      <div className="fixed bottom-4 right-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
+        <ExcelDebug />
+      </div>
+      
+      {/* CSV Test Component - Remove this after testing */}
+      <div className="fixed bottom-4 left-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
+        <CSVTest />
+      </div>
+      
+      {/* JSON Test Component - Remove this after testing */}
+      <div className="fixed top-20 left-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
+        <JSONTest />
+      </div>
 
       {/* Error notification */}
       {error && (
@@ -140,27 +142,27 @@ const BahramAutohaus = () => {
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <div className="text-center lg:text-left">
                 <h1 className="mb-4 text-4xl font-bold leading-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl xl:text-7xl">
-                  {safeT.hero.title}
+                  {t("hero.title")}
                 </h1>
                 <p className="mb-3 text-lg text-white/90 sm:mb-4 sm:text-xl lg:text-2xl">
-                  {safeT.hero.subtitle}
+                  {t("hero.subtitle")}
                 </p>
                 <p className="mx-auto mb-6 max-w-xl text-base text-white/80 sm:mb-8 sm:text-lg lg:mx-0">
-                  {safeT.hero.description}
+                  {t("hero.description")}
                 </p>
                 <div className="mb-6 flex flex-col justify-center gap-3 sm:mb-8 sm:flex-row sm:gap-4 lg:justify-start">
                   <Link
                     href="/gallery"
                     className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg"
                   >
-                    {safeT.hero.cta}
+                    {t("hero.cta")}
                   </Link>
                   <button
                     onClick={() => setIsVideoModalOpen(true)}
                     className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg"
                   >
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
-                    {safeT.hero.videoButton}
+                    {t("hero.videoButton")}
                   </button>
                 </div>
               </div>
@@ -172,7 +174,7 @@ const BahramAutohaus = () => {
                     2500+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t.hero.stats.sold}
+                    {t("hero.stats.sold")}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -180,7 +182,7 @@ const BahramAutohaus = () => {
                     1800+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t.hero.stats.customers}
+                    {t("hero.stats.customers")}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -188,7 +190,7 @@ const BahramAutohaus = () => {
                     15+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t.hero.stats.experience}
+                    {t("hero.stats.experience")}
                   </div>
                 </div>
               </div>
@@ -204,7 +206,7 @@ const BahramAutohaus = () => {
                 <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 sm:h-5 sm:w-5" />
                 <input
                   type="text"
-                  placeholder={t.search.placeholder}
+                  placeholder={t("search.placeholder")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-xl border border-white/20 bg-white/10 py-2 pl-10 pr-4 text-sm text-white placeholder-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
@@ -212,19 +214,19 @@ const BahramAutohaus = () => {
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
-                  { key: "alle", label: t.search.filters.all },
+                  { key: "alle", label: t("search.filters.all") },
                   {
                     key: "limousine",
-                    label: t.search.filters.limousine,
+                    label: t("search.filters.limousine"),
                   },
-                  { key: "suv", label: t.search.filters.suv },
+                  { key: "suv", label: t("search.filters.suv") },
                   {
                     key: "sportwagen",
-                    label: t.search.filters.sportwagen,
+                    label: t("search.filters.sportwagen"),
                   },
                   {
                     key: "kombi",
-                    label: t.search.filters.kombi,
+                    label: t("search.filters.kombi"),
                   },
                 ].map((filter) => (
                   <button
@@ -252,9 +254,11 @@ const BahramAutohaus = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center">
               <h2 className="mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text py-2 text-5xl font-bold text-transparent">
-                {t.highlights.title}
+                {t("highlights.title")}
               </h2>
-              <p className="text-xl text-gray-300">{t.highlights.subtitle}</p>
+              <p className="text-xl text-gray-300">
+                {t("highlights.subtitle")}
+              </p>
             </div>
 
             {selectedCar ? (
@@ -277,7 +281,7 @@ const BahramAutohaus = () => {
                       d="M10 19l-7-7m0 0l7-7m-7 7h18"
                     />
                   </svg>
-                  {t.highlights.back}
+                  {t("highlights.back")}
                 </button>
 
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -304,7 +308,7 @@ const BahramAutohaus = () => {
                           <Calendar className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t.highlights.year}
+                              {t("highlights.year")}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.year}
@@ -317,7 +321,7 @@ const BahramAutohaus = () => {
                           <Gauge className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t.highlights.mileage}
+                              {t("highlights.mileage")}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.mileage} km
@@ -330,7 +334,7 @@ const BahramAutohaus = () => {
                           <Fuel className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t.highlights.fuel}
+                              {t("highlights.fuel")}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.fuel}
@@ -343,7 +347,7 @@ const BahramAutohaus = () => {
                           <Settings className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t.highlights.transmission}
+                              {t("highlights.transmission")}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.transmission}
@@ -355,7 +359,7 @@ const BahramAutohaus = () => {
 
                     <div className="mb-8">
                       <h3 className="mb-3 text-lg font-semibold text-white">
-                        {t.highlights.features}
+                        {t("highlights.features")}
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {selectedCar.features.map(
@@ -373,22 +377,22 @@ const BahramAutohaus = () => {
 
                     <div className="flex flex-col gap-4 sm:flex-row">
                       <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center text-white">
-                        <p className="text-sm">{t.highlights.price}</p>
+                        <p className="text-sm">{t("highlights.price")}</p>
                         <p className="text-2xl font-bold">
                           €{selectedCar.price}
                         </p>
                       </div>
                       <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
-                        <p className="text-sm">{t.highlights.financing}</p>
+                        <p className="text-sm">{t("highlights.financing")}</p>
                         <p className="text-2xl font-bold">
                           €{selectedCar.financing}
-                          {t.highlights.month}
+                          {t("highlights.month")}
                         </p>
                       </div>
                     </div>
 
                     <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
-                      {t.highlights.contactUs}
+                      {t("highlights.contactUs")}
                     </button>
                   </div>
                 </div>
@@ -449,7 +453,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Gauge className="h-3 w-3 text-gray-400" />
-                                  <p>{t.carLabels.mileage}</p>
+                                  <p>{t("carLabels.mileage")}</p>
                                 </div>
                               </div>
                               <div className="text-center">
@@ -460,7 +464,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Fuel className="h-3 w-3 text-gray-400" />
-                                  <p>{t.carLabels.fuel}</p>
+                                  <p>{t("carLabels.fuel")}</p>
                                 </div>
                               </div>
                               <div className="text-center">
@@ -471,7 +475,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Settings className="h-3 w-3 text-gray-400" />
-                                  <p>{t.carLabels.transmission}</p>
+                                  <p>{t("carLabels.transmission")}</p>
                                 </div>
                               </div>
                             </div>
@@ -500,8 +504,8 @@ const BahramAutohaus = () => {
                             {/* Financing info */}
                             <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 p-2 sm:p-3">
                               <div className="text-center text-xs text-green-400 sm:text-sm">
-                                {t.highlights.financing} €{car.financing}
-                                {t.highlights.month}
+                                {t("highlights.financing")} €{car.financing}
+                                {t("highlights.month")}
                               </div>
                             </div>
 
@@ -512,14 +516,14 @@ const BahramAutohaus = () => {
                                 className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm"
                               >
                                 <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                                {t.highlights.details}
+                                {t("highlights.details")}
                               </button>
                               <Link
                                 href="/contact-us"
                                 className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-center text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
                               >
                                 <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                                {t.highlights.contact}
+                                {t("highlights.contact")}
                               </Link>
                             </div>
                           </div>
@@ -538,7 +542,7 @@ const BahramAutohaus = () => {
                   href="/gallery"
                   className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25"
                 >
-                  {t.highlights.viewAll}
+                  {t("highlights.viewAll")}
                 </Link>
               </div>
             )}
@@ -556,15 +560,17 @@ const BahramAutohaus = () => {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text py-2 text-5xl font-bold text-transparent">
-                {safeT.advantages.title}
+                {t("advantages.title")}
               </h2>
               <p className="mx-auto max-w-2xl text-xl text-gray-300">
-                {safeT.advantages.subtitle}
+                {t("advantages.subtitle")}
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {(Array.isArray(safeT.advantageItems) ? safeT.advantageItems : []).map((advantage: any, index: number) => {
+              {(Array.isArray(translations[language]?.advantageItems)
+                ? translations[language].advantageItems
+                : []).map((advantage: any, index: number) => {
                 const IconComponent =
                   advantage.icon === "Shield"
                     ? Shield
@@ -573,8 +579,8 @@ const BahramAutohaus = () => {
                       : advantage.icon === "Users"
                         ? Users
                         : Shield;
-                const title = advantage.title;
-                const description = advantage.description;
+                const title = t(`advantageItems.${index}.title`);
+                const description = t(`advantageItems.${index}.description`);
 
                 return (
                   <div
@@ -667,9 +673,9 @@ const BahramAutohaus = () => {
               {/* Video Info */}
               <div className="p-6">
                 <h3 className="mb-2 text-xl font-bold text-white">
-                  {t.hero.title} - {t.hero.subtitle}
+                  {t("hero.title")} - {t("hero.subtitle")}
                 </h3>
-                <p className="text-gray-300">{t.hero.description}</p>
+                <p className="text-gray-300">{t("hero.description")}</p>
               </div>
             </div>
           </div>

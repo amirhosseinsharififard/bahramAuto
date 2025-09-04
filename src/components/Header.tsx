@@ -5,8 +5,7 @@ import { Car, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { de } from "@/constants/de";
-import { fa } from "@/constants/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeaderProps {
   language: string;
@@ -16,16 +15,14 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const content = { de, fa };
-  const t = content[language as keyof typeof content];
+  const { t } = useLanguage();
 
   const navigation = [
-    { href: "/", label: t.nav.home, icon: "🏠" },
-    { href: "/gallery", label: t.nav.gallery, icon: "🚗" },
-    { href: "/service", label: t.nav.services, icon: "🔧" },
-    { href: "/about-us", label: t.nav.about, icon: "ℹ️" },
-    { href: "/contact-us", label: t.nav.contact, icon: "📞" },
+    { href: "/", label: t("nav.home"), icon: "🏠" },
+    { href: "/gallery", label: t("nav.gallery"), icon: "🚗" },
+    { href: "/service", label: t("nav.services"), icon: "🔧" },
+    { href: "/about-us", label: t("nav.about"), icon: "ℹ️" },
+    { href: "/contact-us", label: t("nav.contact"), icon: "📞" },
   ];
 
   return (

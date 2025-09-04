@@ -29,38 +29,55 @@ export class ExcelReader {
    */
   static async readTranslations(filePath: string): Promise<TranslationData[]> {
     try {
+      // Force reading as CSV with UTF-8 encoding
       const response = await fetch(filePath);
-      const arrayBuffer = await response.arrayBuffer();
+      const text = await response.text();
       
-      // Try to read as Excel first, then fallback to CSV
-      let jsonData: any[][];
-      try {
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-      } catch (excelError) {
-        // If Excel reading fails, try CSV
-        const text = await response.text();
-        const lines = text.split('\n');
-        jsonData = lines.map(line => line.split(',').map(cell => cell.trim().replace(/"/g, '')));
-      }
+      // Parse CSV with proper UTF-8 handling
+      const lines = text.split('\n').filter(line => line.trim());
+      const jsonData = lines.map(line => {
+        // Handle CSV parsing with proper UTF-8 support
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < line.length; i++) {
+          const char = line[i];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            result.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        result.push(current.trim());
+        return result;
+      });
 
       // Skip header row and convert to TranslationData format
       const translations: TranslationData[] = [];
       for (let i = 1; i < jsonData.length; i++) {
         const row = jsonData[i] as any[];
         if (row && row.length >= 4 && row[0]) {
-          translations.push({
+          const translation = {
             key: row[0] || "",
             de: row[1] || "",
             fa: row[2] || "",
             category: row[3] || "general",
-          });
+          };
+          translations.push(translation);
+          
+          // Debug first few translations
+          if (i <= 5) {
+            console.log(`Translation ${i}:`, translation);
+          }
         }
       }
 
       console.log('Parsed translations:', translations);
+      console.log('First few translations:', translations.slice(0, 5));
       return translations;
     } catch (error) {
       console.error("Error reading translations file:", error);
@@ -130,79 +147,56 @@ export class ExcelReader {
     const de: any = {};
     const fa: any = {};
 
-    // First pass: collect all array indices to determine array sizes
-    const arraySizes: { [key: string]: number } = {};
-    translations.forEach((translation) => {
-      const keys = translation.key.split(".");
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if (!isNaN(Number(key))) {
-          const parentKey = keys.slice(0, i).join(".");
-          const index = Number(key);
-          if (!arraySizes[parentKey] || arraySizes[parentKey] <= index) {
-            arraySizes[parentKey] = index + 1;
-          }
-        }
-      }
-    });
-
-    // Second pass: build the structure
-    translations.forEach((translation) => {
-      const keys = translation.key.split(".");
-      let currentDe = de;
-      let currentFa = fa;
-
-      // Navigate/create nested structure
+    // Helper function to set nested value
+    const setNestedValue = (obj: any, path: string, value: string) => {
+      const keys = path.split('.');
+      let current = obj;
+      
       for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
-        const parentKey = keys.slice(0, i).join(".");
+        const nextKey = keys[i + 1];
         
-        // Handle array indices (e.g., "advantageItems.0")
-        if (!isNaN(Number(key))) {
-          const index = Number(key);
-          if (!Array.isArray(currentDe)) {
-            currentDe = [];
-            // Initialize array with proper size
-            const size = arraySizes[parentKey] || index + 1;
-            for (let j = 0; j < size; j++) {
-              currentDe.push({});
-            }
+        // Check if next key is a number (array index)
+        if (!isNaN(Number(nextKey))) {
+          // This should be an array
+          if (!Array.isArray(current[key])) {
+            current[key] = [];
           }
-          if (!Array.isArray(currentFa)) {
-            currentFa = [];
-            // Initialize array with proper size
-            const size = arraySizes[parentKey] || index + 1;
-            for (let j = 0; j < size; j++) {
-              currentFa.push({});
-            }
+          // Ensure array is large enough
+          const index = Number(nextKey);
+          while (current[key].length <= index) {
+            current[key].push({});
           }
-          
-          currentDe = currentDe[index];
-          currentFa = currentFa[index];
+          current = current[key][index];
         } else {
-          // Check if this should be an array based on next key
-          const nextKey = keys[i + 1];
-          if (nextKey && !isNaN(Number(nextKey))) {
-            // This should be an array
-            if (!Array.isArray(currentDe[key])) {
-              currentDe[key] = [];
-              currentFa[key] = [];
-            }
-          } else {
-            // This should be an object
-            if (!currentDe[key]) currentDe[key] = {};
-            if (!currentFa[key]) currentFa[key] = {};
+          // This should be an object
+          if (!current[key] || Array.isArray(current[key])) {
+            current[key] = {};
           }
-          currentDe = currentDe[key];
-          currentFa = currentFa[key];
+          current = current[key];
         }
       }
-
+      
       // Set the final value
       const finalKey = keys[keys.length - 1];
-      currentDe[finalKey] = translation.de;
-      currentFa[finalKey] = translation.fa;
+      current[finalKey] = value;
+    };
+
+    // Process each translation
+    translations.forEach((translation) => {
+      if (translation.key && translation.de && translation.fa) {
+        setNestedValue(de, translation.key, translation.de);
+        setNestedValue(fa, translation.key, translation.fa);
+      }
     });
+
+    // Add direction property for RTL/LTR
+    de.direction = "ltr";
+    fa.direction = "rtl";
+
+    console.log('Converted translations - DE:', de);
+    console.log('Converted translations - FA:', fa);
+    console.log('FA advantageItems:', fa.advantageItems);
 
     return { de, fa };
   }

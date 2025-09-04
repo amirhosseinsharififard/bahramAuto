@@ -5,16 +5,14 @@ import React from "react";
 import { Car, Mail, MapPin, Phone, Star } from "lucide-react";
 import Link from "next/link";
 
-import { de } from "@/constants/de";
-import { fa } from "@/constants/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FooterProps {
   language: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ language }) => {
-  const content = { de, fa };
-  const t = content[language as keyof typeof content];
+  const { t, translations } = useLanguage();
 
   return (
     <footer className="relative z-10 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-12 text-white">
@@ -28,10 +26,10 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">
-                  {t.footer.company.name}
+                  {t("footer.company.name")}
                 </h3>
                 <p className="text-sm text-gray-300">
-                  {t.footer.company.description}
+                  {t("footer.company.description")}
                 </p>
               </div>
             </div>
@@ -42,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <span className="ml-2 text-gray-300">
-                {t.footer.company.rating}
+                {t("footer.company.rating")}
               </span>
             </div>
           </div>
@@ -50,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           {/* Kontaktinfo */}
           <div>
             <h3 className="mb-6 text-xl font-bold text-white">
-              {t.footer.contact}
+              {t("footer.contact")}
             </h3>
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
@@ -59,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">
-                    {t.footer.contactInfo.phone}
+                    {t("footer.contactInfo.phone")}
                   </p>
                 </div>
               </div>
@@ -69,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">
-                    {t.footer.contactInfo.email}
+                    {t("footer.contactInfo.email")}
                   </p>
                 </div>
               </div>
@@ -79,13 +77,13 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-white">
-                    {t.footer.contactInfo.address.street}
+                    {t("footer.contactInfo.address.street")}
                   </p>
                   <p className="text-white">
-                    {t.footer.contactInfo.address.city}
+                    {t("footer.contactInfo.address.city")}
                   </p>
                   <p className="text-sm text-gray-400">
-                    {t.footer.contactInfo.address.country}
+                    {t("footer.contactInfo.address.country")}
                   </p>
                 </div>
               </div>
@@ -96,10 +94,10 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           <div className="space-y-6">
             <div>
               <h3 className="mb-4 text-lg font-semibold text-white">
-                {t.footer.services}
+                {t("footer.services")}
               </h3>
               <ul className="space-y-2">
-                {t.footer.servicesLinks.map((link, index) => (
+                {translations[language]?.footer?.servicesLinks?.map((link, index) => (
                   <li key={index}>
                     <Link
                       href="#"
@@ -113,10 +111,10 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             </div>
             <div>
               <h3 className="mb-4 text-lg font-semibold text-white">
-                {t.footer.legal}
+                {t("footer.legal")}
               </h3>
               <ul className="space-y-2">
-                {t.footer.legalLinks.map((link, index) => (
+                {translations[language]?.footer?.legalLinks?.map((link, index) => (
                   <li key={index}>
                     <Link
                       href="#"
@@ -134,7 +132,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         {/* Certifications */}
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-wrap items-center justify-center gap-4 text-center">
-            {t.footer.certifications.map((cert, index) => (
+            {translations[language]?.footer?.certifications?.map((cert, index) => (
               <div
                 key={index}
                 className="rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300"
@@ -147,7 +145,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
 
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
-          <p className="text-sm text-gray-400">{t.footer.copyright}</p>
+          <p className="text-sm text-gray-400">{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>
