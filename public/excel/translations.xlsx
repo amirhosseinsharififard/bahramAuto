@@ -1,0 +1,49 @@
+key,de,fa,category
+nav.home,Startseite,صفحه اصلی,navigation
+nav.gallery,Fahrzeuge,خودروها,navigation
+nav.services,Service,خدمات,navigation
+nav.about,Über uns,درباره ما,navigation
+nav.contact,Kontakt,تماس,navigation
+hero.title,Bahram Autohaus,بهرام اتوهاوس,hero
+hero.subtitle,Ihr Premium Partner für Qualitätsfahrzeuge in Deutschland,شریک برتر شما برای خودروهای باکیفیت در آلمان,hero
+hero.description,Seit über 15 Jahren Ihr vertrauensvoller Spezialist für deutsche und europäische Premiumfahrzeuge.,بیش از ۱۵ سال متخصص قابل اعتماد شما برای خودروهای پریمیوم آلمانی و اروپایی.,hero
+hero.cta,Fahrzeuge entdecken,کشف خودروها,hero
+hero.videoButton,Video ansehen,مشاهده ویدیو,hero
+hero.stats.sold,Verkaufte Fahrzeuge,خودروهای فروخته شده,hero
+hero.stats.customers,Zufriedene Kunden,مشتریان راضی,hero
+hero.stats.experience,Jahre Erfahrung,سال تجربه,hero
+highlights.title,Aktuelle Top-Angebote,بهترین پیشنهادات فعلی,highlights
+highlights.subtitle,Handverlesene Premium-Fahrzeuge,خودروهای پریمیوم دست‌چین,highlights
+highlights.viewAll,Alle Fahrzeuge ansehen,مشاهده همه خودروها,highlights
+highlights.financing,Finanzierung ab,تامین مالی از,highlights
+highlights.month,/Monat,/ماه,highlights
+highlights.details,Details,جزئیات,highlights
+highlights.contact,Kontakt,تماس,highlights
+highlights.features,Features,ویژگی‌ها,highlights
+highlights.mileage,km,کیلومتر,highlights
+highlights.fuel,Kraftstoff,سوخت,highlights
+highlights.transmission,Getriebe,گیربکس,highlights
+highlights.back,Zurück zur Übersicht,بازگشت به نمای کلی,highlights
+highlights.price,Preis,قیمت,highlights
+highlights.year,Baujahr,سال ساخت,highlights
+highlights.contactUs,Kontakt aufnehmen,تماس بگیرید,highlights
+search.placeholder,Marke oder Modell suchen...,جستجوی برند یا مدل...,search
+search.filters.all,Alle,همه,search
+search.filters.limousine,Limousine,سدان,search
+search.filters.suv,SUV,SUV,search
+search.filters.sportwagen,Sportwagen,اسپرت,search
+search.filters.kombi,Kombi,استیشن,search
+carLabels.mileage,km,کیلومتر,carLabels
+carLabels.fuel,Kraftstoff,سوخت,carLabels
+carLabels.transmission,Getriebe,گیربکس,carLabels
+advantages.title,Warum Bahram Autohaus?,چرا بهرام اتوهاوس؟,advantages
+advantages.subtitle,Ihre Vorteile bei uns,مزایای شما نزد ما,advantages
+advantageItems.0.icon,Shield,Shield,advantages
+advantageItems.0.title,100% Geprüfte Qualität,کیفیت ۱۰۰٪ تضمینی,advantages
+advantageItems.0.description,Alle Fahrzeuge mit Garantie und ausführlicher Dokumentation,تمام خودروها با ضمانت و مستندات کامل,advantages
+advantageItems.1.icon,Award,Award,advantages
+advantageItems.1.title,Faire Preise,قیمت منصفانه,advantages
+advantageItems.1.description,Transparente Preisgestaltung ohne versteckte Kosten,قیمت‌گذاری شفاف بدون هزینه‌های پنهان,advantages
+advantageItems.2.icon,Users,Users,advantages
+advantageItems.2.title,Persönliche Beratung,مشاوره شخصی,advantages
+advantageItems.2.description,Kompetente Beratung auf Deutsch Englisch und Farsi,مشاوره متخصص به زبان‌های آلمانی انگلیسی و فارسی,advantages

@@ -10,25 +10,41 @@ import Header from "@/components/Header";
 import { de } from "@/constants/de";
 import { fa } from "@/constants/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useExcelData } from "@/hooks/useExcelData";
 
 const GalleryPage = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(
-    null,
-  );
+  const [selectedCar, setSelectedCar] = useState<any | null>(null);
 
-  const content = { de, fa };
+  // Load data from Excel files
+  const { translations, cars, loading, error } = useExcelData();
 
-  const t = content[language as keyof typeof content];
+  // Use Excel data if available, otherwise fallback to constants
+  const content =
+    translations.de && translations.fa ? translations : { de, fa };
+  const t = content[language as keyof typeof content] || content.de || de;
+  const availableCars = cars.length > 0 ? cars : de.cars;
 
-  const filteredCars = t.cars.filter(
+  const filteredCars = availableCars.filter(
     (car) =>
       (selectedFilter === "alle" || car.category === selectedFilter) &&
       (car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
         car.model.toLowerCase().includes(searchTerm.toLowerCase())),
   );
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-white"></div>
+          <p className="text-white">Loading content...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -37,6 +53,13 @@ const GalleryPage = () => {
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
+
+      {/* Error notification */}
+      {error && (
+        <div className="fixed right-4 top-4 z-50 rounded-lg bg-yellow-500 px-4 py-2 text-black shadow-lg">
+          <p className="text-sm">{error}</p>
+        </div>
+      )}
 
       <main className="relative z-10 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -186,14 +209,16 @@ const GalleryPage = () => {
                       {t.gallery.details.features}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {selectedCar.features.map((feature, index) => (
-                        <span
-                          key={index}
-                          className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
-                        >
-                          {feature}
-                        </span>
-                      ))}
+                      {selectedCar.features.map(
+                        (feature: string, index: number) => (
+                          <span
+                            key={index}
+                            className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
+                          >
+                            {feature}
+                          </span>
+                        ),
+                      )}
                     </div>
                   </div>
 
@@ -271,14 +296,16 @@ const GalleryPage = () => {
                     </div>
 
                     <div className="mb-4 flex flex-wrap gap-1">
-                      {car.features.slice(0, 2).map((feature, index) => (
-                        <span
-                          key={index}
-                          className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
-                        >
-                          {feature}
-                        </span>
-                      ))}
+                      {car.features
+                        .slice(0, 2)
+                        .map((feature: string, index: number) => (
+                          <span
+                            key={index}
+                            className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
+                          >
+                            {feature}
+                          </span>
+                        ))}
                       {car.features.length > 2 && (
                         <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
                           +{car.features.length - 2}

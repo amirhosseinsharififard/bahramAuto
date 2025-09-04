@@ -20,25 +20,48 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
+import { AdminPanel } from "@/components/AdminPanel";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { de } from "@/constants/de";
 import { fa } from "@/constants/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useExcelData } from "@/hooks/useExcelData";
 
 const BahramAutohaus = () => {
   const { language, setLanguage } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(
-    null,
-  );
+  const [selectedCar, setSelectedCar] = useState<any | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isModalAnimating, setIsModalAnimating] = useState(false);
+  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
 
-  const content = { de, fa };
-  const t = content[language as keyof typeof content];
+  // Load data from Excel files
+  const { translations, cars, loading, error } = useExcelData();
+
+  // Use Excel data if available, otherwise fallback to constants
+  const content =
+    translations.de && translations.fa ? translations : { de, fa };
+  const t = content[language as keyof typeof content] || content.de || de;
+  const availableCars = cars.length > 0 ? cars : de.cars;
+
+  // Ensure all required properties exist with fallbacks
+  const safeT = {
+    ...de,
+    ...t,
+    advantages: {
+      ...de.advantages,
+      ...t.advantages
+    },
+    advantageItems: Array.isArray(t.advantageItems) ? t.advantageItems : de.advantageItems
+  };
+
+  // Debug logging
+  console.log('t.advantageItems:', t.advantageItems);
+  console.log('de.advantageItems:', de.advantageItems);
+  console.log('safeT.advantageItems:', safeT.advantageItems);
 
   // advantageItems are now imported from language constants
 
@@ -56,20 +79,50 @@ const BahramAutohaus = () => {
     setIsVideoModalOpen(false);
   };
 
-  const filteredCars = t.cars.filter(
+  const filteredCars = availableCars.filter(
     (car) =>
       (selectedFilter === "alle" || car.category === selectedFilter) &&
       (car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
         car.model.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-white"></div>
+          <p className="text-white">Loading content...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={t.direction}
+      dir={safeT.direction}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
+
+      {/* Error notification */}
+      {error && (
+        <div className="fixed right-4 top-4 z-50 rounded-lg bg-yellow-500 px-4 py-2 text-black shadow-lg">
+          <p className="text-sm">{error}</p>
+        </div>
+      )}
+
+      {/* Admin Panel Toggle (only visible in development) */}
+      {process.env.NODE_ENV === "development" && (
+        <button
+          onClick={() => setIsAdminPanelOpen(true)}
+          className="fixed bottom-4 right-4 z-40 rounded-full bg-gray-800 p-3 text-white shadow-lg transition-colors hover:bg-gray-700"
+          title="Content Management"
+        >
+          <Settings className="h-5 w-5" />
+        </button>
+      )}
 
       {/* Main Content */}
       <main className="relative z-10">
@@ -87,27 +140,27 @@ const BahramAutohaus = () => {
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <div className="text-center lg:text-left">
                 <h1 className="mb-4 text-4xl font-bold leading-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl xl:text-7xl">
-                  {t.hero.title}
+                  {safeT.hero.title}
                 </h1>
                 <p className="mb-3 text-lg text-white/90 sm:mb-4 sm:text-xl lg:text-2xl">
-                  {t.hero.subtitle}
+                  {safeT.hero.subtitle}
                 </p>
                 <p className="mx-auto mb-6 max-w-xl text-base text-white/80 sm:mb-8 sm:text-lg lg:mx-0">
-                  {t.hero.description}
+                  {safeT.hero.description}
                 </p>
                 <div className="mb-6 flex flex-col justify-center gap-3 sm:mb-8 sm:flex-row sm:gap-4 lg:justify-start">
                   <Link
                     href="/gallery"
                     className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg"
                   >
-                    {t.hero.cta}
+                    {safeT.hero.cta}
                   </Link>
                   <button
                     onClick={() => setIsVideoModalOpen(true)}
                     className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg"
                   >
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
-                    {t.hero.videoButton}
+                    {safeT.hero.videoButton}
                   </button>
                 </div>
               </div>
@@ -305,14 +358,16 @@ const BahramAutohaus = () => {
                         {t.highlights.features}
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {selectedCar.features.map((feature, index) => (
-                          <span
-                            key={index}
-                            className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
-                          >
-                            {feature}
-                          </span>
-                        ))}
+                        {selectedCar.features.map(
+                          (feature: string, index: number) => (
+                            <span
+                              key={index}
+                              className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
+                            >
+                              {feature}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
 
@@ -425,14 +480,16 @@ const BahramAutohaus = () => {
                             <div className="mb-4 flex flex-wrap gap-1">
                               {car.features
                                 .slice(0, 2)
-                                .map((feature, featureIndex) => (
-                                  <span
-                                    key={featureIndex}
-                                    className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
-                                  >
-                                    {feature}
-                                  </span>
-                                ))}
+                                .map(
+                                  (feature: string, featureIndex: number) => (
+                                    <span
+                                      key={featureIndex}
+                                      className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
+                                    >
+                                      {feature}
+                                    </span>
+                                  ),
+                                )}
                               {car.features.length > 2 && (
                                 <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
                                   +{car.features.length - 2}
@@ -499,15 +556,15 @@ const BahramAutohaus = () => {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text py-2 text-5xl font-bold text-transparent">
-                {t.advantages.title}
+                {safeT.advantages.title}
               </h2>
               <p className="mx-auto max-w-2xl text-xl text-gray-300">
-                {t.advantages.subtitle}
+                {safeT.advantages.subtitle}
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {t.advantageItems.map((advantage, index) => {
+              {(Array.isArray(safeT.advantageItems) ? safeT.advantageItems : []).map((advantage: any, index: number) => {
                 const IconComponent =
                   advantage.icon === "Shield"
                     ? Shield
@@ -618,6 +675,12 @@ const BahramAutohaus = () => {
           </div>
         </div>
       )}
+
+      {/* Admin Panel */}
+      <AdminPanel
+        isOpen={isAdminPanelOpen}
+        onClose={() => setIsAdminPanelOpen(false)}
+      />
     </div>
   );
 };
