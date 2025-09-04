@@ -545,20 +545,18 @@ const BahramAutohaus = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {(Array.isArray(translations[language]?.advantageItems)
-                ? translations[language].advantageItems
-                : []).map((advantage: any, index: number) => {
+              {translations[language].advantageItems.map((advantage: any, index: number) => {
                   const IconComponent =
-                    advantage.icon === "Shield"
+                    advantage?.[index].icon === "Shield"
                       ? Shield
-                      : advantage.icon === "Award"
+                      : advantage?.[index].icon === "Award"
                         ? Award
-                        : advantage.icon === "Users"
+                        : advantage?.[index].icon === "Users"
                           ? Users
                           : Shield;
-                const title = t(`advantageItems.${index}.title`);
-                const description = t(`advantageItems.${index}.description`);
 
+                const title = advantage?.[index]?.title;
+                const description = advantage?.[index]?.description;
                 return (
                   <div
                     key={index}
