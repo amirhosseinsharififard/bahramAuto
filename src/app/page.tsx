@@ -4,11 +4,15 @@ import React, { useState } from "react";
 
 import {
   Award,
+  Calendar,
   Eye,
+  Fuel,
+  Gauge,
   Heart,
   Mail,
   PlayCircle,
   Search,
+  Settings,
   Shield,
   Users,
 } from "lucide-react";
@@ -223,36 +227,56 @@ const BahramAutohaus = () => {
 
                     <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
                       <div>
-                        <p className="text-sm text-gray-400">
-                          {t.highlights.year}
-                        </p>
-                        <p className="font-medium text-white">
-                          {selectedCar.year}
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4 text-gray-400" />
+                          <div>
+                            <p className="text-sm text-gray-400">
+                              {t.highlights.year}
+                            </p>
+                            <p className="font-medium text-white">
+                              {selectedCar.year}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">
-                          {t.highlights.mileage}
-                        </p>
-                        <p className="font-medium text-white">
-                          {selectedCar.mileage} km
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <Gauge className="h-4 w-4 text-gray-400" />
+                          <div>
+                            <p className="text-sm text-gray-400">
+                              {t.highlights.mileage}
+                            </p>
+                            <p className="font-medium text-white">
+                              {selectedCar.mileage} km
+                            </p>
+                          </div>
+                        </div>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">
-                          {t.highlights.fuel}
-                        </p>
-                        <p className="font-medium text-white">
-                          {selectedCar.fuel}
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <Fuel className="h-4 w-4 text-gray-400" />
+                          <div>
+                            <p className="text-sm text-gray-400">
+                              {t.highlights.fuel}
+                            </p>
+                            <p className="font-medium text-white">
+                              {selectedCar.fuel}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-400">
-                          {t.highlights.transmission}
-                        </p>
-                        <p className="font-medium text-white">
-                          {selectedCar.transmission}
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <Settings className="h-4 w-4 text-gray-400" />
+                          <div>
+                            <p className="text-sm text-gray-400">
+                              {t.highlights.transmission}
+                            </p>
+                            <p className="font-medium text-white">
+                              {selectedCar.transmission}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -320,7 +344,7 @@ const BahramAutohaus = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
 
                             {/* Floating price tag */}
-                            <div className="absolute right-4 top-4 rounded-full bg-[#f5f200] px-4 py-2 text-lg font-bold text-[#715b0e] shadow-lg">
+                            <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-lg font-bold text-white shadow-lg">
                               €{car.price}
                             </div>
 
@@ -343,23 +367,36 @@ const BahramAutohaus = () => {
                             {/* Car specs */}
                             <div className="mb-4 grid grid-cols-3 gap-1 text-xs text-gray-300 sm:gap-2 sm:text-sm">
                               <div className="text-center">
-                                <div className="font-medium">{car.mileage}</div>
-                                <div className="text-xs opacity-75">
-                                  {t.carLabels.mileage}
+                                <div className="flex items-center justify-center gap-1">
+                                  <span className="font-medium">
+                                    {car.mileage}
+                                  </span>
+                                </div>
+                                <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                                  <Gauge className="h-3 w-3 text-gray-400" />
+                                  <p>{t.carLabels.mileage}</p>
                                 </div>
                               </div>
                               <div className="text-center">
-                                <div className="font-medium">{car.fuel}</div>
-                                <div className="text-xs opacity-75">
-                                  {t.carLabels.fuel}
+                                <div className="flex items-center justify-center gap-1">
+                                  <span className="font-medium">
+                                    {car.fuel}
+                                  </span>
+                                </div>
+                                <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                                  <Fuel className="h-3 w-3 text-gray-400" />
+                                  <p>{t.carLabels.fuel}</p>
                                 </div>
                               </div>
                               <div className="text-center">
-                                <div className="font-medium">
-                                  {car.transmission}
+                                <div className="flex items-center justify-center gap-1">
+                                  <span className="font-medium">
+                                    {car.transmission}
+                                  </span>
                                 </div>
-                                <div className="text-xs opacity-75">
-                                  {t.carLabels.transmission}
+                                <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                                  <Settings className="h-3 w-3 text-gray-400" />
+                                  <p>{t.carLabels.transmission}</p>
                                 </div>
                               </div>
                             </div>

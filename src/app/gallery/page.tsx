@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Search } from "lucide-react";
+import { Calendar, Fuel, Gauge, Search, Settings } from "lucide-react";
 import Image from "next/image";
 
 import AnimatedBackground from "@/components/AnimatedBackground";
@@ -128,36 +128,56 @@ const GalleryPage = () => {
 
                   <div className="mb-8 grid grid-cols-2 gap-4 rounded-lg bg-gray-800/50 p-4">
                     <div>
-                      <p className="text-sm text-gray-400">
-                        {t.gallery.details.year}
-                      </p>
-                      <p className="font-medium text-white">
-                        {selectedCar.year}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4 text-gray-400" />
+                        <div>
+                          <p className="text-sm text-gray-400">
+                            {t.gallery.details.year}
+                          </p>
+                          <p className="font-medium text-white">
+                            {selectedCar.year}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">
-                        {t.gallery.details.mileage}
-                      </p>
-                      <p className="font-medium text-white">
-                        {selectedCar.mileage} km
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <Gauge className="h-4 w-4 text-gray-400" />
+                        <div>
+                          <p className="text-sm text-gray-400">
+                            {t.gallery.details.mileage}
+                          </p>
+                          <p className="font-medium text-white">
+                            {selectedCar.mileage} km
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">
-                        {t.gallery.details.fuel}
-                      </p>
-                      <p className="font-medium text-white">
-                        {selectedCar.fuel}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <Fuel className="h-4 w-4 text-gray-400" />
+                        <div>
+                          <p className="text-sm text-gray-400">
+                            {t.gallery.details.fuel}
+                          </p>
+                          <p className="font-medium text-white">
+                            {selectedCar.fuel}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">
-                        {t.gallery.details.transmission}
-                      </p>
-                      <p className="font-medium text-white">
-                        {selectedCar.transmission}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <Settings className="h-4 w-4 text-gray-400" />
+                        <div>
+                          <p className="text-sm text-gray-400">
+                            {t.gallery.details.transmission}
+                          </p>
+                          <p className="font-medium text-white">
+                            {selectedCar.transmission}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -229,15 +249,24 @@ const GalleryPage = () => {
                     <div className="mb-4 grid grid-cols-3 gap-1 text-sm text-gray-300">
                       <div className="text-center">
                         <div className="font-medium">{car.mileage}</div>
-                        <div className="text-xs opacity-75">km</div>
+                        <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                          <Gauge className="h-3 w-3 text-gray-400" />
+                          <p>{t.carLabels.mileage}</p>
+                        </div>
                       </div>
                       <div className="text-center">
                         <div className="font-medium">{car.fuel}</div>
-                        <div className="text-xs opacity-75">Kraftstoff</div>
+                        <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                          <Fuel className="h-3 w-3 text-gray-400" />
+                          <p>{t.carLabels.fuel}</p>
+                        </div>
                       </div>
                       <div className="text-center">
                         <div className="font-medium">{car.transmission}</div>
-                        <div className="text-xs opacity-75">Getriebe</div>
+                        <div className="flex items-center justify-center gap-2 text-xs opacity-75">
+                          <Settings className="h-3 w-3 text-gray-400" />
+                          <p>{t.carLabels.transmission}</p>
+                        </div>
                       </div>
                     </div>
 
