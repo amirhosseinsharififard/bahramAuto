@@ -3,21 +3,40 @@
 import React, { useState } from "react";
 import { useExcelData } from "@/hooks/useExcelData";
 
+/**
+ * Admin panel props interface
+ * @interface AdminPanelProps
+ * @property {boolean} isOpen - Whether the admin panel is currently open
+ * @property {function} onClose - Function to close the admin panel
+ */
 interface AdminPanelProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+/**
+ * Admin Panel component for content management
+ * Provides interface for refreshing Excel data and managing website content
+ * @param {AdminPanelProps} props - Component props
+ * @returns {JSX.Element | null} Admin panel component or null if not open
+ */
 export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
+  // Get data refresh function and loading states from Excel data hook
   const { refreshData, loading, error } = useExcelData();
+  
+  // Local state for refresh button loading state
   const [refreshing, setRefreshing] = useState(false);
 
+  /**
+   * Handle data refresh with loading state management
+   */
   const handleRefresh = async () => {
     setRefreshing(true);
     await refreshData();
     setRefreshing(false);
   };
 
+  // Don't render if panel is not open
   if (!isOpen) return null;
 
   return (

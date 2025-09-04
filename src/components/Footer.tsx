@@ -7,18 +7,30 @@ import Link from "next/link";
 
 import { useLanguage } from "@/contexts/LanguageContext";
 
+/**
+ * Footer component props interface
+ * @interface FooterProps
+ * @property {string} language - Current language setting
+ */
 interface FooterProps {
   language: string;
 }
 
+/**
+ * Footer component for the Bahram Autohaus website
+ * Displays company information, contact details, services, and legal links
+ * @param {FooterProps} props - Component props
+ * @returns {JSX.Element} Footer component
+ */
 const Footer: React.FC<FooterProps> = ({ language }) => {
+  // Get translation function and translations from language context
   const { t, translations } = useLanguage();
 
   return (
     <footer className="relative z-10 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-12 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Company Info */}
+          {/* Company Information Section */}
           <div className="lg:col-span-2">
             <div className="mb-6 flex items-center space-x-3">
               <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3">
