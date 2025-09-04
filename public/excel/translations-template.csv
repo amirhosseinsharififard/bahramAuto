@@ -58,3 +58,41 @@ footer.contactInfo.address.city,12345 Musterstadt,۱۲۳۴۵ شهر نمونه,f
 footer.contactInfo.address.country,Deutschland,آلمان,footer
 footer.services,Unsere Services,خدمات ما,footer
 footer.legal,Rechtliches,قانونی,footer
+footer.copyright,© 2024 Bahram Autohaus. Alle Rechte vorbehalten.,© ۲۰۲۴ بهرام اتوهاوس. تمامی حقوق محفوظ است.,footer
+footer.privacy,Datenschutz,حریم خصوصی,footer
+footer.imprint,Impressum,اطلاعات تماس,footer
+services.title,Unsere Services,خدمات ما,services
+services.subtitle,Umfassende Lösungen für alle Ihre Fahrzeugbedürfnisse,راه‌حل‌های جامع برای تمام نیازهای خودرویی شما,services
+services.financing.title,Finanzierung,تامین مالی,services
+services.financing.description,Individuelle Finanzierungslösungen für jeden Bedarf und jedes Budget,راه‌حل‌های تامین مالی شخصی‌سازی شده برای هر نیاز و بودجه,services
+services.financing.feature1,Ab 0% Zinsen möglich,امکان سود صفر درصد,services
+services.financing.feature2,Schnelle Bearbeitung,پردازش سریع,services
+services.financing.feature3,Flexible Laufzeiten,مدت‌های انعطاف‌پذیر,services
+services.warranty.title,Garantie & Service,ضمانت و خدمات,services
+services.warranty.description,Umfassende Garantie und Serviceleistungen für Ihr Fahrzeug,ضمانت و خدمات جامع برای خودروی شما,services
+services.warranty.feature1,Bis zu 3 Jahre Garantie,تا ۳ سال ضمانت,services
+services.warranty.feature2,24/7 Pannenhilfe,کمک اضطراری ۲۴/۷,services
+services.warranty.feature3,Kostenlose Inspektion,بازرسی رایگان,services
+services.tradeIn.title,Inzahlungnahme,خرید خودروی قدیمی,services
+services.tradeIn.description,Faire Bewertung und Inzahlungnahme Ihres aktuellen Fahrzeugs,ارزیابی منصفانه و خرید خودروی فعلی شما,services
+services.tradeIn.feature1,Kostenlose Bewertung,ارزیابی رایگان,services
+services.tradeIn.feature2,Sofortige Auszahlung,پرداخت فوری,services
+services.tradeIn.feature3,Abholung vor Ort,تحویل در محل,services
+services.export.title,Export & Import,صادرات و واردات,services
+services.export.description,Professioneller Export und Import von Fahrzeugen weltweit,صادرات و واردات حرفه‌ای خودرو در سراسر جهان,services
+services.export.feature1,Weltweiter Versand,ارسال جهانی,services
+services.export.feature2,Zollabwicklung,ترخیص گمرکی,services
+services.export.feature3,Exportdokumentation,مستندات صادراتی,services
+services.process.title,Unser Prozess,فرآیند ما,services
+services.process.step1.title,Beratung,مشاوره,services
+services.process.step1.description,Persönliche Beratung und Bedarfsanalyse,مشاوره شخصی و تحلیل نیازها,services
+services.process.step2.title,Angebot,پیشنهاد,services
+services.process.step2.description,Individuelles Angebot und Finanzierungsplan,پیشنهاد شخصی و برنامه تامین مالی,services
+services.process.step3.title,Abwicklung,پردازش,services
+services.process.step3.description,Schnelle und professionelle Abwicklung,پردازش سریع و حرفه‌ای,services
+services.cta.title,Bereit für den nächsten Schritt?,آماده برای قدم بعدی؟,services
+services.cta.description,Kontaktieren Sie uns noch heute für eine kostenlose Beratung und finden Sie Ihr Traumfahrzeug,همین امروز با ما تماس بگیرید برای مشاوره رایگان و پیدا کردن خودروی رویایی‌تان,services
+services.cta.button,Jetzt kontaktieren,همین الان تماس بگیرید,services
+services.features.title,Leistungen im Überblick,خدمات در یک نگاه,services
+services.learnMore,Mehr erfahren,بیشتر بدانید,services
+services.process.subtitle,So einfach funktioniert es bei uns,این‌طور ساده کار می‌کند,services

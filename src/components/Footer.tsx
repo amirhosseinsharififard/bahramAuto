@@ -141,7 +141,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="#"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    Datenschutz
+                    {t("footer.privacy")}
                   </Link>
                 </li>
                 <li>
@@ -149,7 +149,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="#"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    Impressum
+                    {t("footer.imprint")}
                   </Link>
                 </li>
               </ul>
@@ -175,6 +175,12 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
           <p className="text-sm text-gray-400">{t("footer.copyright")}</p>
+          <p className="mt-2 text-xs text-gray-500">
+            Developed by Amir Hossein Shrififard
+          </p>
+          <p className="text-xs text-gray-500">
+            Email: amirhosseinshrififard@gmail.com | Phone: +989172380487
+          </p>
         </div>
       </div>
     </footer>

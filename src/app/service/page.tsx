@@ -1,12 +1,12 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { CreditCard, FileText, Globe, Shield, Wrench } from "lucide-react";
+import { CreditCard, FileText, Globe, Shield, Wrench } from 'lucide-react';
 
-import AnimatedBackground from "@/components/AnimatedBackground";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { useLanguage } from "@/contexts/LanguageContext";
+import AnimatedBackground from '@/components/AnimatedBackground';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesPage = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -14,30 +14,30 @@ const ServicesPage = () => {
   const serviceItems = [
     {
       icon: CreditCard,
-      key: "financing",
-      color: "from-blue-500 to-cyan-500",
+      key: 'financing',
+      color: 'from-blue-500 to-cyan-500',
     },
     {
       icon: Shield,
-      key: "warranty",
-      color: "from-green-500 to-teal-500",
+      key: 'warranty',
+      color: 'from-green-500 to-teal-500',
     },
     {
       icon: Wrench,
-      key: "tradeIn",
-      color: "from-amber-500 to-orange-500",
+      key: 'tradeIn',
+      color: 'from-amber-500 to-orange-500',
     },
     {
       icon: Globe,
-      key: "export",
-      color: "from-purple-500 to-indigo-500",
+      key: 'export',
+      color: 'from-purple-500 to-indigo-500',
     },
   ];
 
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={t("direction")}
+      dir={t('direction')}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
@@ -46,9 +46,9 @@ const ServicesPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
-              {t("services.title")}
+              {t('services.title')}
             </h1>
-            <p className="text-xl text-gray-300">{t("services.subtitle")}</p>
+            <p className="text-xl text-gray-300">{t('services.subtitle')}</p>
           </div>
 
           {/* Services Grid */}
@@ -62,8 +62,8 @@ const ServicesPage = () => {
                 features: [
                   t(`services.${service.key}.feature1`),
                   t(`services.${service.key}.feature2`),
-                  t(`services.${service.key}.feature3`)
-                ].filter(f => f && !f.includes('services.'))
+                  t(`services.${service.key}.feature3`),
+                ].filter((f) => f && !f.includes('services.')),
               };
 
               return (
@@ -87,7 +87,7 @@ const ServicesPage = () => {
                     </p>
 
                     <h3 className="mb-4 text-lg font-semibold text-white">
-                      Leistungen im Überblick:
+                      {t('services.features.title')}
                     </h3>
                     <ul className="mb-6 space-y-3">
                       {serviceData.features.map((feature, index) => (
@@ -99,7 +99,7 @@ const ServicesPage = () => {
                     </ul>
 
                     <button className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-medium text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
-                      Mehr erfahren
+                      {t('services.learnMore')}
                     </button>
                   </div>
                 </div>
@@ -111,21 +111,23 @@ const ServicesPage = () => {
           <div className="mb-20 rounded-2xl border border-white/10 bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-slate-900/80 p-8 text-white shadow-xl backdrop-blur-sm">
             <div className="mb-12 text-center">
               <h2 className="mb-4 text-3xl font-bold">
-                {t("services.process.title")}
+                {t('services.process.title')}
               </h2>
-              <p className="text-blue-200">
-                So einfach funktioniert es bei uns
-              </p>
+              <p className="text-blue-200">{t('services.process.subtitle')}</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-              {[1,2,3].map((step, index) => (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {[1, 2, 3].map((step, index) => (
                 <div key={index} className="text-center">
-                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-xl font-bold">
+                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-xl font-bold text-white shadow-lg">
                     {index + 1}
                   </div>
-                  <h3 className="mb-3 text-xl font-bold">{t(`services.process.step${index + 1}.title`)}</h3>
-                  <p className="text-blue-100">{t(`services.process.step${index + 1}.description`)}</p>
+                  <h3 className="mb-3 text-xl font-bold text-white">
+                    {t(`services.process.step${index + 1}.title`)}
+                  </h3>
+                  <p className="text-blue-100 leading-relaxed">
+                    {t(`services.process.step${index + 1}.description`)}
+                  </p>
                 </div>
               ))}
             </div>
@@ -138,16 +140,16 @@ const ServicesPage = () => {
                 <FileText className="h-10 w-10 text-blue-400" />
               </div>
               <h2 className="mb-4 text-3xl font-bold text-white">
-                {t("services.cta.title")}
+                {t('services.cta.title')}
               </h2>
               <p className="mb-8 max-w-2xl text-gray-300">
-                {t("services.cta.description")}
+                {t('services.cta.description')}
               </p>
               <a
                 href="/contact-us"
                 className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"
               >
-                {t("services.cta.button")}
+                {t('services.cta.button')}
               </a>
             </div>
           </div>
