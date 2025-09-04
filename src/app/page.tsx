@@ -24,10 +24,6 @@ import { AdminPanel } from "@/components/AdminPanel";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import TranslationTest from "@/components/TranslationTest";
-import ExcelDebug from "@/components/ExcelDebug";
-import CSVTest from "@/components/CSVTest";
-import JSONTest from "@/components/JSONTest";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useExcelData } from "@/hooks/useExcelData";
 
@@ -87,26 +83,6 @@ const BahramAutohaus = () => {
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
-      
-      {/* Translation Test Component - Remove this after testing */}
-      <div className="fixed top-20 right-4 z-50 max-w-md rounded-lg bg-black/80 p-4 backdrop-blur-sm">
-        <TranslationTest />
-      </div>
-      
-      {/* Excel Debug Component - Remove this after testing */}
-      <div className="fixed bottom-4 right-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
-        <ExcelDebug />
-      </div>
-      
-      {/* CSV Test Component - Remove this after testing */}
-      <div className="fixed bottom-4 left-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
-        <CSVTest />
-      </div>
-      
-      {/* JSON Test Component - Remove this after testing */}
-      <div className="fixed top-20 left-4 z-50 max-w-lg rounded-lg bg-black/80 p-4 backdrop-blur-sm">
-        <JSONTest />
-      </div>
 
       {/* Error notification */}
       {error && (
@@ -571,14 +547,14 @@ const BahramAutohaus = () => {
               {(Array.isArray(translations[language]?.advantageItems)
                 ? translations[language].advantageItems
                 : []).map((advantage: any, index: number) => {
-                const IconComponent =
-                  advantage.icon === "Shield"
-                    ? Shield
-                    : advantage.icon === "Award"
-                      ? Award
-                      : advantage.icon === "Users"
-                        ? Users
-                        : Shield;
+                  const IconComponent =
+                    advantage.icon === "Shield"
+                      ? Shield
+                      : advantage.icon === "Award"
+                        ? Award
+                        : advantage.icon === "Users"
+                          ? Users
+                          : Shield;
                 const title = t(`advantageItems.${index}.title`);
                 const description = t(`advantageItems.${index}.description`);
 
