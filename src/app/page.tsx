@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Award,
@@ -15,6 +15,7 @@ import {
   Settings,
   Shield,
   Users,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,11 +34,27 @@ const BahramAutohaus = () => {
   const [selectedCar, setSelectedCar] = useState<(typeof de.cars)[0] | null>(
     null,
   );
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isModalAnimating, setIsModalAnimating] = useState(false);
 
   const content = { de, fa };
   const t = content[language as keyof typeof content];
 
   // advantageItems are now imported from language constants
+
+  // Handle modal animations
+  useEffect(() => {
+    if (isVideoModalOpen) {
+      setIsModalAnimating(true);
+    } else {
+      const timer = setTimeout(() => setIsModalAnimating(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isVideoModalOpen]);
+
+  const closeModal = () => {
+    setIsVideoModalOpen(false);
+  };
 
   const filteredCars = t.cars.filter(
     (car) =>
@@ -85,7 +102,10 @@ const BahramAutohaus = () => {
                   >
                     {t.hero.cta}
                   </Link>
-                  <button className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg">
+                  <button
+                    onClick={() => setIsVideoModalOpen(true)}
+                    className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg"
+                  >
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
                     {t.hero.videoButton}
                   </button>
@@ -535,6 +555,69 @@ const BahramAutohaus = () => {
       </main>
 
       <Footer language={language} />
+
+      {/* Video Modal */}
+      {(isVideoModalOpen || isModalAnimating) && (
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 ${
+            isVideoModalOpen ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300"
+            onClick={closeModal}
+          />
+
+          {/* Modal Content */}
+          <div
+            className={`relative mx-4 w-full max-w-4xl transform transition-all duration-300 ease-out ${
+              isVideoModalOpen
+                ? "translate-y-0 scale-100 opacity-100"
+                : "translate-y-4 scale-95 opacity-0"
+            }`}
+          >
+            <div className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-2xl">
+              {/* Close Button */}
+              <button
+                onClick={closeModal}
+                className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+              >
+                <X className="h-6 w-6" />
+              </button>
+
+              {/* Video Container */}
+              <div className="relative aspect-video w-full">
+                <video
+                  className="h-full w-full object-cover"
+                  controls
+                  autoPlay
+                  onEnded={closeModal}
+                  poster="/images/cars/hero-bg.jpg"
+                >
+                  <source
+                    src="/videos/bahram-autohaus-intro.mp4"
+                    type="video/mp4"
+                  />
+                  <source
+                    src="/videos/bahram-autohaus-intro.webm"
+                    type="video/webm"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              {/* Video Info */}
+              <div className="p-6">
+                <h3 className="mb-2 text-xl font-bold text-white">
+                  {t.hero.title} - {t.hero.subtitle}
+                </h3>
+                <p className="text-gray-300">{t.hero.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
