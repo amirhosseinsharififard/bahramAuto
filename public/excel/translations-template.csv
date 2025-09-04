@@ -47,3 +47,14 @@ advantageItems.1.description,Transparente Preisgestaltung ohne versteckte Kosten
 advantageItems.2.icon,Users,Users,advantages
 advantageItems.2.title,Persönliche Beratung,مشاوره شخصی,advantages
 advantageItems.2.description,Kompetente Beratung auf Deutsch Englisch und Farsi,مشاوره متخصص به زبان‌های آلمانی انگلیسی و فارسی,advantages
+footer.company.name,Bahram Autohaus,بهرام اتوهاوس,footer
+footer.company.description,Ihr Premium Partner für Qualitätsfahrzeuge,شریک برتر شما برای خودروهای باکیفیت,footer
+footer.company.rating,4.9/5 Sterne,۴.۹/۵ ستاره,footer
+footer.contact,Kontakt,تماس,footer
+footer.contactInfo.phone,+49 123 456 7890,+۴۹ ۱۲۳ ۴۵۶ ۷۸۹۰,footer
+footer.contactInfo.email,info@bahram-autohaus.de,info@bahram-autohaus.de,footer
+footer.contactInfo.address.street,Musterstraße 123,خیابان نمونه ۱۲۳,footer
+footer.contactInfo.address.city,12345 Musterstadt,۱۲۳۴۵ شهر نمونه,footer
+footer.contactInfo.address.country,Deutschland,آلمان,footer
+footer.services,Unsere Services,خدمات ما,footer
+footer.legal,Rechtliches,قانونی,footer

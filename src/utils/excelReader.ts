@@ -33,6 +33,7 @@ export class ExcelReader {
       const response = await fetch(filePath);
       const text = await response.text();
       
+      
       // Parse CSV with proper UTF-8 handling
       const lines = text.split('\n').filter(line => line.trim());
       const jsonData = lines.map(line => {
@@ -69,15 +70,10 @@ export class ExcelReader {
           };
           translations.push(translation);
           
-          // Debug first few translations
-          if (i <= 5) {
-            console.log(`Translation ${i}:`, translation);
-          }
         }
       }
 
-      console.log('Parsed translations:', translations);
-      console.log('First few translations:', translations.slice(0, 5));
+      console.log('Total translations found:', translations.length);
       return translations;
     } catch (error) {
       console.error("Error reading translations file:", error);

@@ -97,16 +97,30 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 {t("footer.services")}
               </h3>
               <ul className="space-y-2">
-                {translations[language]?.footer?.servicesLinks?.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href="#"
-                      className="text-sm text-gray-300 transition-colors hover:text-blue-400"
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    {t("nav.gallery")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/service"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    {t("nav.services")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about-us"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    {t("nav.about")}
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
@@ -114,16 +128,30 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 {t("footer.legal")}
               </h3>
               <ul className="space-y-2">
-                {translations[language]?.footer?.legalLinks?.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href="#"
-                      className="text-sm text-gray-300 transition-colors hover:text-blue-400"
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="#"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    {t("footer.legal")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    Datenschutz
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-sm text-gray-300 transition-colors hover:text-blue-400"
+                  >
+                    Impressum
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -132,14 +160,15 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
         {/* Certifications */}
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-wrap items-center justify-center gap-4 text-center">
-            {translations[language]?.footer?.certifications?.map((cert, index) => (
-              <div
-                key={index}
-                className="rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300"
-              >
-                {cert}
-              </div>
-            ))}
+            <div className="rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300">
+              TÜV Geprüft
+            </div>
+            <div className="rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300">
+              ADAC Partner
+            </div>
+            <div className="rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300">
+              Garantie
+            </div>
           </div>
         </div>
 

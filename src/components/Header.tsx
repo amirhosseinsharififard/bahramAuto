@@ -8,8 +8,8 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeaderProps {
-  language: string;
-  setLanguage: (lang: string) => void;
+  language: "de" | "fa";
+  setLanguage: (lang: "de" | "fa") => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {

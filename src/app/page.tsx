@@ -83,6 +83,7 @@ const BahramAutohaus = () => {
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
+      
 
       {/* Error notification */}
       {error && (

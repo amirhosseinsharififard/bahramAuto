@@ -17,7 +17,7 @@ export const useExcelData = () => {
 
       // Load translations
       const translationData = await ExcelReader.readTranslations(
-        "/excel/translations.xlsx",
+        "/excel/translations-template.csv",
       );
       if (translationData.length > 0) {
         const convertedTranslations =

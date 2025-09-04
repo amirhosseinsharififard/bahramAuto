@@ -33,6 +33,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // Translation function
   const t = (key: string): string => {
     try {
+      
       // Split the key by dots to navigate nested objects
       const keys = key.split('.');
       let value: any = translations[language];

@@ -7,25 +7,20 @@ import Image from "next/image";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { de } from "@/constants/de";
-import { fa } from "@/constants/fa";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useExcelData } from "@/hooks/useExcelData";
 
 const GalleryPage = () => {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [selectedFilter, setSelectedFilter] = useState("alle");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCar, setSelectedCar] = useState<any | null>(null);
 
   // Load data from Excel files
-  const { translations, cars, loading, error } = useExcelData();
+  const { cars, loading, error } = useExcelData();
 
-  // Use Excel data if available, otherwise fallback to constants
-  const content =
-    translations.de && translations.fa ? translations : { de, fa };
-  const t = content[language as keyof typeof content] || content.de || de;
-  const availableCars = cars.length > 0 ? cars : de.cars;
+  // Use Excel data if available
+  const availableCars = cars.length > 0 ? cars : [];
 
   const filteredCars = availableCars.filter(
     (car) =>
@@ -49,7 +44,7 @@ const GalleryPage = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={t.direction}
+      dir={t("direction")}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
@@ -65,9 +60,9 @@ const GalleryPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
             <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
-              {t.gallery.title}
+              {t("gallery.title")}
             </h1>
-            <p className="text-xl text-gray-300">{t.gallery.subtitle}</p>
+            <p className="text-xl text-gray-300">{t("gallery.subtitle")}</p>
           </div>
 
           {/* Search & Filter Section */}
@@ -77,7 +72,7 @@ const GalleryPage = () => {
                 <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
                 <input
                   type="text"
-                  placeholder={t.search.placeholder}
+                  placeholder={t("search.placeholder")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-xl border border-white/20 bg-gray-800/50 py-3 pl-12 pr-4 text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
@@ -85,11 +80,11 @@ const GalleryPage = () => {
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
-                  { key: "alle", label: t.search.filters.all },
-                  { key: "limousine", label: t.search.filters.limousine },
-                  { key: "suv", label: t.search.filters.suv },
-                  { key: "sportwagen", label: t.search.filters.sportwagen },
-                  { key: "kombi", label: t.search.filters.kombi },
+                  { key: "alle", label: t("search.filters.all") },
+                  { key: "limousine", label: t("search.filters.limousine") },
+                  { key: "suv", label: t("search.filters.suv") },
+                  { key: "sportwagen", label: t("search.filters.sportwagen") },
+                  { key: "kombi", label: t("search.filters.kombi") },
                 ].map((filter) => (
                   <button
                     key={filter.key}
@@ -128,7 +123,7 @@ const GalleryPage = () => {
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                {t.gallery.details.back}
+                {t("gallery.details.back")}
               </button>
 
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -155,7 +150,7 @@ const GalleryPage = () => {
                         <Calendar className="h-4 w-4 text-gray-400" />
                         <div>
                           <p className="text-sm text-gray-400">
-                            {t.gallery.details.year}
+                            {t("gallery.details.year")}
                           </p>
                           <p className="font-medium text-white">
                             {selectedCar.year}
@@ -168,7 +163,7 @@ const GalleryPage = () => {
                         <Gauge className="h-4 w-4 text-gray-400" />
                         <div>
                           <p className="text-sm text-gray-400">
-                            {t.gallery.details.mileage}
+                            {t("gallery.details.mileage")}
                           </p>
                           <p className="font-medium text-white">
                             {selectedCar.mileage} km
@@ -181,7 +176,7 @@ const GalleryPage = () => {
                         <Fuel className="h-4 w-4 text-gray-400" />
                         <div>
                           <p className="text-sm text-gray-400">
-                            {t.gallery.details.fuel}
+                            {t("gallery.details.fuel")}
                           </p>
                           <p className="font-medium text-white">
                             {selectedCar.fuel}
@@ -194,7 +189,7 @@ const GalleryPage = () => {
                         <Settings className="h-4 w-4 text-gray-400" />
                         <div>
                           <p className="text-sm text-gray-400">
-                            {t.gallery.details.transmission}
+                            {t("gallery.details.transmission")}
                           </p>
                           <p className="font-medium text-white">
                             {selectedCar.transmission}
@@ -206,7 +201,7 @@ const GalleryPage = () => {
 
                   <div className="mb-8">
                     <h3 className="mb-3 text-lg font-semibold text-white">
-                      {t.gallery.details.features}
+                      {t("gallery.details.features")}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedCar.features.map(
@@ -224,20 +219,20 @@ const GalleryPage = () => {
 
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center text-white">
-                      <p className="text-sm">{t.gallery.details.price}</p>
+                      <p className="text-sm">{t("gallery.details.price")}</p>
                       <p className="text-2xl font-bold">€{selectedCar.price}</p>
                     </div>
                     <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
-                      <p className="text-sm">{t.gallery.details.financing}</p>
+                      <p className="text-sm">{t("gallery.details.financing")}</p>
                       <p className="text-2xl font-bold">
                         €{selectedCar.financing}
-                        {t.gallery.details.month}
+                        {t("gallery.details.month")}
                       </p>
                     </div>
                   </div>
 
                   <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
-                    {t.gallery.details.contact}
+                    {t("gallery.details.contact")}
                   </button>
                 </div>
               </div>
@@ -276,21 +271,21 @@ const GalleryPage = () => {
                         <div className="font-medium">{car.mileage}</div>
                         <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                           <Gauge className="h-3 w-3 text-gray-400" />
-                          <p>{t.carLabels.mileage}</p>
+                          <p>{t("carLabels.mileage")}</p>
                         </div>
                       </div>
                       <div className="text-center">
                         <div className="font-medium">{car.fuel}</div>
                         <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                           <Fuel className="h-3 w-3 text-gray-400" />
-                          <p>{t.carLabels.fuel}</p>
+                          <p>{t("carLabels.fuel")}</p>
                         </div>
                       </div>
                       <div className="text-center">
                         <div className="font-medium">{car.transmission}</div>
                         <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                           <Settings className="h-3 w-3 text-gray-400" />
-                          <p>{t.carLabels.transmission}</p>
+                          <p>{t("carLabels.transmission")}</p>
                         </div>
                       </div>
                     </div>
@@ -314,8 +309,8 @@ const GalleryPage = () => {
                     </div>
 
                     <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-2 text-center text-sm text-green-400">
-                      {t.gallery.details.financing} €{car.financing}
-                      {t.gallery.details.month}
+                      {t("gallery.details.financing")} €{car.financing}
+                      {t("gallery.details.month")}
                     </div>
                   </div>
                 </div>
