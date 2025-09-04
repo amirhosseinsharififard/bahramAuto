@@ -223,7 +223,9 @@ const GalleryPage = () => {
                       <p className="text-2xl font-bold">€{selectedCar.price}</p>
                     </div>
                     <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
-                      <p className="text-sm">{t("gallery.details.financing")}</p>
+                      <p className="text-sm">
+                        {t("gallery.details.financing")}
+                      </p>
                       <p className="text-2xl font-bold">
                         €{selectedCar.financing}
                         {t("gallery.details.month")}

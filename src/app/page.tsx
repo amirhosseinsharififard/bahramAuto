@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 import {
   Award,
@@ -16,22 +16,22 @@ import {
   Shield,
   Users,
   X,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+} from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { AdminPanel } from "@/components/AdminPanel";
-import AnimatedBackground from "@/components/AnimatedBackground";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { useExcelData } from "@/hooks/useExcelData";
+import { AdminPanel } from '@/components/AdminPanel';
+import AnimatedBackground from '@/components/AnimatedBackground';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useExcelData } from '@/hooks/useExcelData';
 
 const BahramAutohaus = () => {
   const { language, setLanguage, t, translations, loading, error } =
     useLanguage();
-  const [selectedFilter, setSelectedFilter] = useState("alle");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState('alle');
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedCar, setSelectedCar] = useState<any | null>(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isModalAnimating, setIsModalAnimating] = useState(false);
@@ -59,9 +59,9 @@ const BahramAutohaus = () => {
 
   const filteredCars = availableCars.filter(
     (car) =>
-      (selectedFilter === "alle" || car.category === selectedFilter) &&
+      (selectedFilter === 'alle' || car.category === selectedFilter) &&
       (car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        car.model.toLowerCase().includes(searchTerm.toLowerCase())),
+        car.model.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   // Show loading state
@@ -79,11 +79,10 @@ const BahramAutohaus = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={t("direction")}
+      dir={t('direction')}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
-      
 
       {/* Error notification */}
       {error && (
@@ -93,7 +92,7 @@ const BahramAutohaus = () => {
       )}
 
       {/* Admin Panel Toggle (only visible in development) */}
-      {process.env.NODE_ENV === "development" && (
+      {process.env.NODE_ENV === 'development' && (
         <button
           onClick={() => setIsAdminPanelOpen(true)}
           className="fixed bottom-4 right-4 z-40 rounded-full bg-gray-800 p-3 text-white shadow-lg transition-colors hover:bg-gray-700"
@@ -111,7 +110,7 @@ const BahramAutohaus = () => {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url(/images/cars/hero-bg.jpg)",
+              backgroundImage: 'url(/images/cars/hero-bg.jpg)',
             }}
           ></div>
 
@@ -119,27 +118,27 @@ const BahramAutohaus = () => {
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <div className="text-center lg:text-left">
                 <h1 className="mb-4 text-4xl font-bold leading-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl xl:text-7xl">
-                  {t("hero.title")}
+                  {t('hero.title')}
                 </h1>
                 <p className="mb-3 text-lg text-white/90 sm:mb-4 sm:text-xl lg:text-2xl">
-                  {t("hero.subtitle")}
+                  {t('hero.subtitle')}
                 </p>
                 <p className="mx-auto mb-6 max-w-xl text-base text-white/80 sm:mb-8 sm:text-lg lg:mx-0">
-                  {t("hero.description")}
+                  {t('hero.description')}
                 </p>
                 <div className="mb-6 flex flex-col justify-center gap-3 sm:mb-8 sm:flex-row sm:gap-4 lg:justify-start">
                   <Link
                     href="/gallery"
                     className="transform rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-xl sm:px-8 sm:py-4 sm:text-lg"
                   >
-                    {t("hero.cta")}
+                    {t('hero.cta')}
                   </Link>
                   <button
                     onClick={() => setIsVideoModalOpen(true)}
                     className="rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/30 sm:px-8 sm:py-4 sm:text-lg"
                   >
                     <PlayCircle className="mr-2 inline-block h-4 w-4 sm:h-5 sm:w-5" />
-                    {t("hero.videoButton")}
+                    {t('hero.videoButton')}
                   </button>
                 </div>
               </div>
@@ -151,7 +150,7 @@ const BahramAutohaus = () => {
                     2500+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t("hero.stats.sold")}
+                    {t('hero.stats.sold')}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -159,7 +158,7 @@ const BahramAutohaus = () => {
                     1800+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t("hero.stats.customers")}
+                    {t('hero.stats.customers')}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
@@ -167,7 +166,7 @@ const BahramAutohaus = () => {
                     15+
                   </div>
                   <div className="text-xs text-white/80 sm:text-sm">
-                    {t("hero.stats.experience")}
+                    {t('hero.stats.experience')}
                   </div>
                 </div>
               </div>
@@ -183,7 +182,7 @@ const BahramAutohaus = () => {
                 <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 sm:h-5 sm:w-5" />
                 <input
                   type="text"
-                  placeholder={t("search.placeholder")}
+                  placeholder={t('search.placeholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full rounded-xl border border-white/20 bg-white/10 py-2 pl-10 pr-4 text-sm text-white placeholder-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
@@ -191,19 +190,19 @@ const BahramAutohaus = () => {
               </div>
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
-                  { key: "alle", label: t("search.filters.all") },
+                  { key: 'alle', label: t('search.filters.all') },
                   {
-                    key: "limousine",
-                    label: t("search.filters.limousine"),
+                    key: 'limousine',
+                    label: t('search.filters.limousine'),
                   },
-                  { key: "suv", label: t("search.filters.suv") },
+                  { key: 'suv', label: t('search.filters.suv') },
                   {
-                    key: "sportwagen",
-                    label: t("search.filters.sportwagen"),
+                    key: 'sportwagen',
+                    label: t('search.filters.sportwagen'),
                   },
                   {
-                    key: "kombi",
-                    label: t("search.filters.kombi"),
+                    key: 'kombi',
+                    label: t('search.filters.kombi'),
                   },
                 ].map((filter) => (
                   <button
@@ -211,8 +210,8 @@ const BahramAutohaus = () => {
                     onClick={() => setSelectedFilter(filter.key)}
                     className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
                       selectedFilter === filter.key
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "bg-white/20 text-white hover:bg-white/30 hover:shadow-sm"
+                        ? 'bg-blue-600 text-white shadow-md'
+                        : 'bg-white/20 text-white hover:bg-white/30 hover:shadow-sm'
                     }`}
                   >
                     {filter.label}
@@ -231,10 +230,10 @@ const BahramAutohaus = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center">
               <h2 className="mb-5 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text py-2 text-5xl font-bold text-transparent">
-                {t("highlights.title")}
+                {t('highlights.title')}
               </h2>
               <p className="text-xl text-gray-300">
-                {t("highlights.subtitle")}
+                {t('highlights.subtitle')}
               </p>
             </div>
 
@@ -258,7 +257,7 @@ const BahramAutohaus = () => {
                       d="M10 19l-7-7m0 0l7-7m-7 7h18"
                     />
                   </svg>
-                  {t("highlights.back")}
+                  {t('highlights.back')}
                 </button>
 
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -285,7 +284,7 @@ const BahramAutohaus = () => {
                           <Calendar className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t("highlights.year")}
+                              {t('highlights.year')}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.year}
@@ -298,7 +297,7 @@ const BahramAutohaus = () => {
                           <Gauge className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t("highlights.mileage")}
+                              {t('highlights.mileage')}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.mileage} km
@@ -311,7 +310,7 @@ const BahramAutohaus = () => {
                           <Fuel className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t("highlights.fuel")}
+                              {t('highlights.fuel')}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.fuel}
@@ -324,7 +323,7 @@ const BahramAutohaus = () => {
                           <Settings className="h-4 w-4 text-gray-400" />
                           <div>
                             <p className="text-sm text-gray-400">
-                              {t("highlights.transmission")}
+                              {t('highlights.transmission')}
                             </p>
                             <p className="font-medium text-white">
                               {selectedCar.transmission}
@@ -336,7 +335,7 @@ const BahramAutohaus = () => {
 
                     <div className="mb-8">
                       <h3 className="mb-3 text-lg font-semibold text-white">
-                        {t("highlights.features")}
+                        {t('highlights.features')}
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {selectedCar.features.map(
@@ -347,29 +346,29 @@ const BahramAutohaus = () => {
                             >
                               {feature}
                             </span>
-                          ),
+                          )
                         )}
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-4 sm:flex-row">
                       <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center text-white">
-                        <p className="text-sm">{t("highlights.price")}</p>
+                        <p className="text-sm">{t('highlights.price')}</p>
                         <p className="text-2xl font-bold">
                           €{selectedCar.price}
                         </p>
                       </div>
                       <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
-                        <p className="text-sm">{t("highlights.financing")}</p>
+                        <p className="text-sm">{t('highlights.financing')}</p>
                         <p className="text-2xl font-bold">
                           €{selectedCar.financing}
-                          {t("highlights.month")}
+                          {t('highlights.month')}
                         </p>
                       </div>
                     </div>
 
                     <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
-                      {t("highlights.contactUs")}
+                      {t('highlights.contactUs')}
                     </button>
                   </div>
                 </div>
@@ -430,7 +429,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Gauge className="h-3 w-3 text-gray-400" />
-                                  <p>{t("carLabels.mileage")}</p>
+                                  <p>{t('carLabels.mileage')}</p>
                                 </div>
                               </div>
                               <div className="text-center">
@@ -441,7 +440,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Fuel className="h-3 w-3 text-gray-400" />
-                                  <p>{t("carLabels.fuel")}</p>
+                                  <p>{t('carLabels.fuel')}</p>
                                 </div>
                               </div>
                               <div className="text-center">
@@ -452,7 +451,7 @@ const BahramAutohaus = () => {
                                 </div>
                                 <div className="flex items-center justify-center gap-2 text-xs opacity-75">
                                   <Settings className="h-3 w-3 text-gray-400" />
-                                  <p>{t("carLabels.transmission")}</p>
+                                  <p>{t('carLabels.transmission')}</p>
                                 </div>
                               </div>
                             </div>
@@ -469,7 +468,7 @@ const BahramAutohaus = () => {
                                     >
                                       {feature}
                                     </span>
-                                  ),
+                                  )
                                 )}
                               {car.features.length > 2 && (
                                 <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
@@ -481,8 +480,8 @@ const BahramAutohaus = () => {
                             {/* Financing info */}
                             <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 p-2 sm:p-3">
                               <div className="text-center text-xs text-green-400 sm:text-sm">
-                                {t("highlights.financing")} €{car.financing}
-                                {t("highlights.month")}
+                                {t('highlights.financing')} €{car.financing}
+                                {t('highlights.month')}
                               </div>
                             </div>
 
@@ -493,14 +492,14 @@ const BahramAutohaus = () => {
                                 className="flex-1 transform rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-2 py-1.5 text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-blue-500 hover:to-blue-600 sm:px-3 sm:py-2 sm:text-sm"
                               >
                                 <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                                {t("highlights.details")}
+                                {t('highlights.details')}
                               </button>
                               <Link
                                 href="/contact-us"
                                 className="flex-1 transform rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 px-2 py-1.5 text-center text-xs font-medium text-white transition-all duration-300 hover:scale-105 hover:from-purple-500 hover:to-purple-600 sm:px-3 sm:py-2 sm:text-sm"
                               >
                                 <Mail className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
-                                {t("highlights.contact")}
+                                {t('highlights.contact')}
                               </Link>
                             </div>
                           </div>
@@ -519,7 +518,7 @@ const BahramAutohaus = () => {
                   href="/gallery"
                   className="transform rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-blue-500/25"
                 >
-                  {t("highlights.viewAll")}
+                  {t('highlights.viewAll')}
                 </Link>
               </div>
             )}
@@ -537,56 +536,58 @@ const BahramAutohaus = () => {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text py-2 text-5xl font-bold text-transparent">
-                {t("advantages.title")}
+                {t('advantages.title')}
               </h2>
               <p className="mx-auto max-w-2xl text-xl text-gray-300">
-                {t("advantages.subtitle")}
+                {t('advantages.subtitle')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {translations[language].advantageItems.map((advantage: any, index: number) => {
+              {translations[language].advantageItems.map(
+                (advantage: any, index: number) => {
                   const IconComponent =
-                    advantage?.[index].icon === "Shield"
+                    advantage?.[index].icon === 'Shield'
                       ? Shield
-                      : advantage?.[index].icon === "Award"
+                      : advantage?.[index].icon === 'Award'
                         ? Award
-                        : advantage?.[index].icon === "Users"
+                        : advantage?.[index].icon === 'Users'
                           ? Users
                           : Shield;
 
-                const title = advantage?.[index]?.title;
-                const description = advantage?.[index]?.description;
-                return (
-                  <div
-                    key={index}
-                    className="group relative h-full transform transition-all duration-500 hover:scale-105"
-                  >
-                    <div className="flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-purple-500/20">
-                      {/* Icon container */}
-                      <div className="relative mb-8 flex justify-center">
-                        <div className="relative">
-                          <div className="absolute inset-0 scale-125 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-50 blur-lg transition-opacity duration-500 group-hover:opacity-100"></div>
-                          <div className="relative transform rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-6 shadow-2xl transition-all duration-500 group-hover:rotate-6 group-hover:shadow-blue-500/50">
-                            <IconComponent className="relative z-10 h-10 w-10 text-white" />
+                  const title = advantage?.[index]?.title;
+                  const description = advantage?.[index]?.description;
+                  return (
+                    <div
+                      key={index}
+                      className="group relative h-full transform transition-all duration-500 hover:scale-105"
+                    >
+                      <div className="flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-purple-500/20">
+                        {/* Icon container */}
+                        <div className="relative mb-8 flex justify-center">
+                          <div className="relative">
+                            <div className="absolute inset-0 scale-125 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-50 blur-lg transition-opacity duration-500 group-hover:opacity-100"></div>
+                            <div className="relative transform rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-6 shadow-2xl transition-all duration-500 group-hover:rotate-6 group-hover:shadow-blue-500/50">
+                              <IconComponent className="relative z-10 h-10 w-10 text-white" />
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="relative z-10 flex flex-1 flex-col justify-center text-center">
-                        <h3 className="mb-4 text-2xl font-bold text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent">
-                          {title}
-                        </h3>
-                        <p className="flex-1 leading-relaxed text-gray-300 transition-colors duration-500 group-hover:text-white">
-                          {description}
-                        </p>
-                      </div>
+                        <div className="relative z-10 flex flex-1 flex-col justify-center text-center">
+                          <h3 className="mb-4 text-2xl font-bold text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent">
+                            {title}
+                          </h3>
+                          <p className="flex-1 leading-relaxed text-gray-300 transition-colors duration-500 group-hover:text-white">
+                            {description}
+                          </p>
+                        </div>
 
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-600/5 to-purple-600/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           </div>
         </section>
@@ -598,7 +599,7 @@ const BahramAutohaus = () => {
       {(isVideoModalOpen || isModalAnimating) && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 ${
-            isVideoModalOpen ? "opacity-100" : "opacity-0"
+            isVideoModalOpen ? 'opacity-100' : 'opacity-0'
           }`}
         >
           {/* Backdrop */}
@@ -611,8 +612,8 @@ const BahramAutohaus = () => {
           <div
             className={`relative mx-4 w-full max-w-4xl transform transition-all duration-300 ease-out ${
               isVideoModalOpen
-                ? "translate-y-0 scale-100 opacity-100"
-                : "translate-y-4 scale-95 opacity-0"
+                ? 'translate-y-0 scale-100 opacity-100'
+                : 'translate-y-4 scale-95 opacity-0'
             }`}
           >
             <div className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-2xl">
@@ -648,9 +649,9 @@ const BahramAutohaus = () => {
               {/* Video Info */}
               <div className="p-6">
                 <h3 className="mb-2 text-xl font-bold text-white">
-                  {t("hero.title")} - {t("hero.subtitle")}
+                  {t('hero.title')} - {t('hero.subtitle')}
                 </h3>
-                <p className="text-gray-300">{t("hero.description")}</p>
+                <p className="text-gray-300">{t('hero.description')}</p>
               </div>
             </div>
           </div>
