@@ -22,9 +22,9 @@ interface FooterProps {
  * @param {FooterProps} props - Component props
  * @returns {JSX.Element} Footer component
  */
-const Footer: React.FC<FooterProps> = ({ language }) => {
+const Footer: React.FC<FooterProps> = () => {
   // Get translation function and translations from language context
-  const { t, translations } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <footer className="relative z-10 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 py-12 text-white">

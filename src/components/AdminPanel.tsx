@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+
 import { useExcelData } from '@/hooks/useExcelData';
 
 /**
@@ -95,7 +96,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
                 Edit Excel files in <code>/public/excel/</code>
               </li>
               <li>Save the files</li>
-              <li>Click "Refresh Data" below</li>
+              <li>Click Refresh Data below</li>
               <li>Changes will appear on the website</li>
             </ol>
           </div>

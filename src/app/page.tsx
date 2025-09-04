@@ -39,7 +39,6 @@ import {
   Users, // Users icon for advantages section
   X, // X icon for closing modals
 } from 'lucide-react';
-
 // Next.js components for optimized images and navigation
 import Image from 'next/image'; // Optimized image component
 import Link from 'next/link'; // Client-side navigation component
@@ -49,7 +48,6 @@ import { AdminPanel } from '@/components/AdminPanel'; // Admin panel for content
 import AnimatedBackground from '@/components/AnimatedBackground'; // Animated background effects
 import Footer from '@/components/Footer'; // Footer component
 import Header from '@/components/Header'; // Header component with navigation
-
 // Custom hooks and contexts
 import { useLanguage } from '@/contexts/LanguageContext'; // Language context for translations
 import { useExcelData } from '@/hooks/useExcelData'; // Hook for loading Excel data

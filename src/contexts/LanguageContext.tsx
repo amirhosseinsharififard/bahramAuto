@@ -21,13 +21,7 @@
 'use client'; // Enable client-side rendering
 
 // React imports for context and state management
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 // Import Excel data hook for loading translations
 import { useExcelData } from '@/hooks/useExcelData';

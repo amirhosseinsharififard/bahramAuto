@@ -22,11 +22,9 @@
 'use client'; // Enable client-side rendering
 
 // React imports
-import React from 'react';
 
 // Lucide React icons for UI elements
 import { Building, CheckCircle, Globe } from 'lucide-react';
-
 // Next.js components for optimized images and navigation
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,7 +33,6 @@ import Link from 'next/link';
 import AnimatedBackground from '@/components/AnimatedBackground'; // Animated background effects
 import Footer from '@/components/Footer'; // Footer component
 import Header from '@/components/Header'; // Header with navigation
-
 // Custom hooks and contexts
 import { useLanguage } from '@/contexts/LanguageContext'; // Language context for translations
 
