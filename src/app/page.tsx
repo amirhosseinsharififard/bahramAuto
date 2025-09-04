@@ -1,6 +1,6 @@
 /**
  * Bahram Autohaus - Main Homepage Component
- * 
+ *
  * This is the main landing page for the Bahram Autohaus website.
  * It displays a premium car dealership interface with:
  * - Hero section with company introduction
@@ -9,10 +9,10 @@
  * - Company advantages section
  * - Video modal for promotional content
  * - Admin panel for content management
- * 
+ *
  * The component uses Excel-based content management system where
  * all car data and translations are loaded from Excel files.
- * 
+ *
  * @fileoverview Main homepage component for Bahram Autohaus
  * @author Amir Hossein Shrififard
  * @version 1.0.0
@@ -25,34 +25,34 @@ import { useEffect, useState } from 'react';
 
 // Lucide React icons for UI elements
 import {
-  Award,        // Award icon for advantages section
-  Calendar,     // Calendar icon for car year display
-  Eye,          // Eye icon for "view details" buttons
-  Fuel,         // Fuel icon for fuel type display
-  Gauge,        // Gauge icon for mileage display
-  Heart,        // Heart icon for favorites
-  Mail,         // Mail icon for contact buttons
-  PlayCircle,   // Play icon for video modal
-  Search,       // Search icon for search input
-  Settings,     // Settings icon for admin panel and transmission
-  Shield,       // Shield icon for advantages section
-  Users,        // Users icon for advantages section
-  X,            // X icon for closing modals
+  Award, // Award icon for advantages section
+  Calendar, // Calendar icon for car year display
+  Eye, // Eye icon for "view details" buttons
+  Fuel, // Fuel icon for fuel type display
+  Gauge, // Gauge icon for mileage display
+  Heart, // Heart icon for favorites
+  Mail, // Mail icon for contact buttons
+  PlayCircle, // Play icon for video modal
+  Search, // Search icon for search input
+  Settings, // Settings icon for admin panel and transmission
+  Shield, // Shield icon for advantages section
+  Users, // Users icon for advantages section
+  X, // X icon for closing modals
 } from 'lucide-react';
 
 // Next.js components for optimized images and navigation
-import Image from 'next/image';  // Optimized image component
-import Link from 'next/link';    // Client-side navigation component
+import Image from 'next/image'; // Optimized image component
+import Link from 'next/link'; // Client-side navigation component
 
 // Custom components
-import { AdminPanel } from '@/components/AdminPanel';        // Admin panel for content management
+import { AdminPanel } from '@/components/AdminPanel'; // Admin panel for content management
 import AnimatedBackground from '@/components/AnimatedBackground'; // Animated background effects
-import Footer from '@/components/Footer';                    // Footer component
-import Header from '@/components/Header';                    // Header component with navigation
+import Footer from '@/components/Footer'; // Footer component
+import Header from '@/components/Header'; // Header component with navigation
 
 // Custom hooks and contexts
-import { useLanguage } from '@/contexts/LanguageContext';    // Language context for translations
-import { useExcelData } from '@/hooks/useExcelData';         // Hook for loading Excel data
+import { useLanguage } from '@/contexts/LanguageContext'; // Language context for translations
+import { useExcelData } from '@/hooks/useExcelData'; // Hook for loading Excel data
 
 /**
  * Main Bahram Autohaus component
@@ -62,18 +62,18 @@ const BahramAutohaus = () => {
   // Get language context values for internationalization
   const { language, setLanguage, t, translations, loading, error } =
     useLanguage();
-  
+
   // State for car filtering functionality
   const [selectedFilter, setSelectedFilter] = useState('alle'); // Current selected filter (alle, limousine, suv, etc.)
   const [searchTerm, setSearchTerm] = useState(''); // Search input value for filtering cars
-  
+
   // State for car detail view
   const [selectedCar, setSelectedCar] = useState<any | null>(null); // Currently selected car for detail view
-  
+
   // State for video modal functionality
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false); // Whether video modal is open
   const [isModalAnimating, setIsModalAnimating] = useState(false); // Animation state for modal transitions
-  
+
   // State for admin panel functionality
   const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false); // Whether admin panel is open
 
@@ -147,7 +147,7 @@ const BahramAutohaus = () => {
     >
       {/* Animated background with floating gradient orbs */}
       <AnimatedBackground />
-      
+
       {/* Header with navigation and language switcher */}
       <Header language={language} setLanguage={setLanguage} />
 
@@ -176,7 +176,7 @@ const BahramAutohaus = () => {
         <section id="home" className="relative overflow-hidden py-24">
           {/* Dark gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
-          
+
           {/* Hero background image */}
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -194,12 +194,12 @@ const BahramAutohaus = () => {
                 <h1 className="mb-4 text-4xl font-bold leading-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl xl:text-7xl">
                   {t('hero.title')}
                 </h1>
-                
+
                 {/* Subtitle - company tagline */}
                 <p className="mb-3 text-lg text-white/90 sm:mb-4 sm:text-xl lg:text-2xl">
                   {t('hero.subtitle')}
                 </p>
-                
+
                 {/* Description - company introduction */}
                 <p className="mx-auto mb-6 max-w-xl text-base text-white/80 sm:mb-8 sm:text-lg lg:mx-0">
                   {t('hero.description')}
@@ -213,7 +213,7 @@ const BahramAutohaus = () => {
                   >
                     {t('hero.cta')}
                   </Link>
-                  
+
                   {/* Secondary CTA - Watch Video */}
                   <button
                     onClick={() => setIsVideoModalOpen(true)}
@@ -236,7 +236,7 @@ const BahramAutohaus = () => {
                     {t('hero.stats.sold')}
                   </div>
                 </div>
-                
+
                 {/* Customers Statistic */}
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
                   <div className="mb-2 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
@@ -246,7 +246,7 @@ const BahramAutohaus = () => {
                     {t('hero.stats.customers')}
                   </div>
                 </div>
-                
+
                 {/* Years of Experience Statistic */}
                 <div className="rounded-2xl bg-white/10 p-4 text-center backdrop-blur-sm sm:p-6">
                   <div className="mb-2 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
@@ -276,22 +276,22 @@ const BahramAutohaus = () => {
                   className="w-full rounded-xl border border-white/20 bg-white/10 py-2 pl-10 pr-4 text-sm text-white placeholder-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 sm:py-3 sm:pl-12 sm:text-base"
                 />
               </div>
-              
+
               {/* Category Filter Buttons */}
               <div className="flex w-full flex-wrap justify-center gap-2 lg:w-auto">
                 {[
-                  { key: 'alle', label: t('search.filters.all') },           // Show all cars
+                  { key: 'alle', label: t('search.filters.all') }, // Show all cars
                   { key: 'limousine', label: t('search.filters.limousine') }, // Sedan cars
-                  { key: 'suv', label: t('search.filters.suv') },             // SUV vehicles
+                  { key: 'suv', label: t('search.filters.suv') }, // SUV vehicles
                   { key: 'sportwagen', label: t('search.filters.sportwagen') }, // Sports cars
-                  { key: 'kombi', label: t('search.filters.kombi') },         // Station wagons
+                  { key: 'kombi', label: t('search.filters.kombi') }, // Station wagons
                 ].map((filter) => (
                   <button
                     key={filter.key}
                     onClick={() => setSelectedFilter(filter.key)}
                     className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:py-2 sm:text-sm ${
                       selectedFilter === filter.key
-                        ? 'bg-blue-600 text-white shadow-md'        // Active filter style
+                        ? 'bg-blue-600 text-white shadow-md' // Active filter style
                         : 'bg-white/20 text-white hover:bg-white/30 hover:shadow-sm' // Inactive filter style
                     }`}
                   >
@@ -362,7 +362,7 @@ const BahramAutohaus = () => {
                     <h2 className="mb-4 text-3xl font-bold text-white">
                       {selectedCar.brand} {selectedCar.model}
                     </h2>
-                    
+
                     {/* Car description */}
                     <p className="mb-6 text-gray-300">
                       {selectedCar.description}
@@ -384,7 +384,7 @@ const BahramAutohaus = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Mileage specification */}
                       <div>
                         <div className="flex items-center gap-2">
@@ -399,7 +399,7 @@ const BahramAutohaus = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Fuel type specification */}
                       <div>
                         <div className="flex items-center gap-2">
@@ -414,7 +414,7 @@ const BahramAutohaus = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Transmission specification */}
                       <div>
                         <div className="flex items-center gap-2">
@@ -459,7 +459,7 @@ const BahramAutohaus = () => {
                           €{selectedCar.price}
                         </p>
                       </div>
-                      
+
                       {/* Monthly financing */}
                       <div className="rounded-xl bg-gradient-to-r from-green-600 to-teal-600 p-6 text-center text-white">
                         <p className="text-sm">{t('highlights.financing')}</p>
@@ -542,7 +542,7 @@ const BahramAutohaus = () => {
                                   <p>{t('carLabels.mileage')}</p>
                                 </div>
                               </div>
-                              
+
                               {/* Fuel type specification */}
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
@@ -555,7 +555,7 @@ const BahramAutohaus = () => {
                                   <p>{t('carLabels.fuel')}</p>
                                 </div>
                               </div>
-                              
+
                               {/* Transmission specification */}
                               <div className="text-center">
                                 <div className="flex items-center justify-center gap-1">
@@ -610,7 +610,7 @@ const BahramAutohaus = () => {
                                 <Eye className="mr-1 inline-block h-3 w-3 sm:h-4 sm:w-4" />
                                 {t('highlights.details')}
                               </button>
-                              
+
                               {/* Contact button */}
                               <Link
                                 href="/contact-us"
@@ -678,7 +678,7 @@ const BahramAutohaus = () => {
 
                   const title = advantage?.[index]?.title;
                   const description = advantage?.[index]?.description;
-                  
+
                   return (
                     <div
                       key={index}

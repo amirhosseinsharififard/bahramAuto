@@ -1,6 +1,7 @@
 # Bahram Autohaus - Complete Developer Guide
 
 ## 📋 Table of Contents
+
 1. [Project Overview](#project-overview)
 2. [Architecture & Design Patterns](#architecture--design-patterns)
 3. [File Structure Deep Dive](#file-structure-deep-dive)
@@ -18,9 +19,11 @@
 ## 🚗 Project Overview
 
 ### What is Bahram Autohaus?
+
 Bahram Autohaus is a modern, bilingual car dealership website built with Next.js 14. It serves as a digital showroom for premium vehicles, featuring dynamic content management through Excel files and comprehensive multilingual support.
 
 ### Key Business Requirements
+
 - **Bilingual Support**: German (primary) and Persian (secondary) markets
 - **Content Management**: Non-technical staff can update content via Excel
 - **Car Showcase**: Dynamic vehicle listings with search and filtering
@@ -28,6 +31,7 @@ Bahram Autohaus is a modern, bilingual car dealership website built with Next.js
 - **Performance**: Fast loading times and smooth user experience
 
 ### Technology Stack
+
 ```typescript
 // Core Framework
 Next.js 14 (App Router) + TypeScript
@@ -45,6 +49,7 @@ ESLint + Prettier + TypeScript
 ## 🏗 Architecture & Design Patterns
 
 ### Overall Architecture
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Presentation Layer                       │
@@ -69,6 +74,7 @@ ESLint + Prettier + TypeScript
 ### Design Patterns Used
 
 #### 1. Context Pattern (Language Management)
+
 ```typescript
 // Centralized language state management
 const LanguageContext = createContext<LanguageContextType>();
@@ -78,6 +84,7 @@ const { language, setLanguage, t } = useLanguage();
 ```
 
 #### 2. Custom Hooks Pattern (Data Management)
+
 ```typescript
 // Encapsulates Excel data logic
 const useExcelData = () => {
@@ -87,6 +94,7 @@ const useExcelData = () => {
 ```
 
 #### 3. Component Composition Pattern
+
 ```typescript
 // Reusable, composable components
 <Header language={language} setLanguage={setLanguage} />
@@ -95,6 +103,7 @@ const useExcelData = () => {
 ```
 
 #### 4. Provider Pattern (Dependency Injection)
+
 ```typescript
 // Wraps the entire app with language context
 <LanguageProvider>
@@ -105,6 +114,7 @@ const useExcelData = () => {
 ## 📁 File Structure Deep Dive
 
 ### Root Directory Structure
+
 ```
 bahram-auto/
 ├── public/                     # Static assets (served directly)
@@ -132,6 +142,7 @@ bahram-auto/
 ```
 
 ### App Router Structure (Next.js 14)
+
 ```
 src/app/
 ├── layout.tsx                 # Root layout (wraps all pages)
@@ -151,6 +162,7 @@ src/app/
 ## 🧩 Component Architecture
 
 ### Component Hierarchy
+
 ```
 App (layout.tsx)
 ├── LanguageProvider
@@ -173,6 +185,7 @@ App (layout.tsx)
 ### Component Responsibilities
 
 #### Header Component
+
 ```typescript
 /**
  * Responsibilities:
@@ -182,12 +195,13 @@ App (layout.tsx)
  * - Active page highlighting
  */
 interface HeaderProps {
-  language: "de" | "fa";
-  setLanguage: (lang: "de" | "fa") => void;
+  language: 'de' | 'fa';
+  setLanguage: (lang: 'de' | 'fa') => void;
 }
 ```
 
 #### Footer Component
+
 ```typescript
 /**
  * Responsibilities:
@@ -202,6 +216,7 @@ interface FooterProps {
 ```
 
 #### AdminPanel Component
+
 ```typescript
 /**
  * Responsibilities:
@@ -219,6 +234,7 @@ interface AdminPanelProps {
 ## 🔄 Data Flow & State Management
 
 ### Data Flow Architecture
+
 ```
 Excel Files → ExcelReader → useExcelData Hook → Components → UI
      ↓              ↓              ↓              ↓         ↓
@@ -228,6 +244,7 @@ Excel Files → ExcelReader → useExcelData Hook → Components → UI
 ### State Management Strategy
 
 #### 1. Global State (Context)
+
 ```typescript
 // Language state - shared across all components
 const LanguageContext = createContext<{
@@ -241,6 +258,7 @@ const LanguageContext = createContext<{
 ```
 
 #### 2. Component State (useState)
+
 ```typescript
 // Local component state
 const [selectedFilter, setSelectedFilter] = useState('alle');
@@ -249,6 +267,7 @@ const [selectedCar, setSelectedCar] = useState<any | null>(null);
 ```
 
 #### 3. Data State (Custom Hooks)
+
 ```typescript
 // Excel data state management
 const { cars, translations, loading, error, refreshData } = useExcelData();
@@ -257,6 +276,7 @@ const { cars, translations, loading, error, refreshData } = useExcelData();
 ### State Update Patterns
 
 #### Language Switching
+
 ```typescript
 // 1. User clicks language button
 // 2. setLanguage is called
@@ -269,6 +289,7 @@ const handleLanguageChange = (newLang: 'de' | 'fa') => {
 ```
 
 #### Data Refresh
+
 ```typescript
 // 1. User updates Excel file
 // 2. Clicks "Refresh Data" in Admin Panel
@@ -287,6 +308,7 @@ const handleRefresh = async () => {
 ### Excel File Structure
 
 #### Translations File (CSV Format)
+
 ```csv
 key,de,fa,category
 nav.home,Startseite,صفحه اصلی,navigation
@@ -295,57 +317,62 @@ services.financing.title,Finanzierung,تامین مالی,services
 ```
 
 #### Cars File (Excel Format)
-| Column | Type | Description | Example |
-|--------|------|-------------|---------|
-| brand | String | Manufacturer | BMW |
-| model | String | Model name | X5 |
-| year | Number | Manufacturing year | 2023 |
-| price | String | Price with currency | 45.000 € |
-| mileage | Number | Kilometers driven | 25000 |
-| fuel | String | Fuel type | Benzin |
-| transmission | String | Transmission type | Automatik |
-| category | String | Vehicle category | suv |
-| image | String | Image filename | bmw-x5.jpg |
-| description | String | Vehicle description | Premium SUV... |
+
+| Column       | Type   | Description         | Example        |
+| ------------ | ------ | ------------------- | -------------- |
+| brand        | String | Manufacturer        | BMW            |
+| model        | String | Model name          | X5             |
+| year         | Number | Manufacturing year  | 2023           |
+| price        | String | Price with currency | 45.000 €       |
+| mileage      | Number | Kilometers driven   | 25000          |
+| fuel         | String | Fuel type           | Benzin         |
+| transmission | String | Transmission type   | Automatik      |
+| category     | String | Vehicle category    | suv            |
+| image        | String | Image filename      | bmw-x5.jpg     |
+| description  | String | Vehicle description | Premium SUV... |
 
 ### Excel Reading Process
 
 #### 1. File Loading
+
 ```typescript
 // Fetch CSV file for translations
 const response = await fetch('/excel/translations-template.csv');
 const text = await response.text();
 
 // Parse CSV with UTF-8 support
-const lines = text.split('\n').filter(line => line.trim());
+const lines = text.split('\n').filter((line) => line.trim());
 ```
 
 #### 2. Data Processing
+
 ```typescript
 // Convert CSV to structured data
-const translationData = lines.map(line => {
+const translationData = lines.map((line) => {
   const [key, de, fa, category] = parseCSVLine(line);
   return { key, de, fa, category };
 });
 ```
 
 #### 3. Object Conversion
+
 ```typescript
 // Convert flat array to nested object structure
 const convertTranslationsToObject = (data: TranslationData[]) => {
   const result = { de: {}, fa: {} };
-  
-  data.forEach(item => {
+
+  data.forEach((item) => {
     // Create nested structure from dot notation keys
     setNestedValue(result.de, item.key, item.de);
     setNestedValue(result.fa, item.key, item.fa);
   });
-  
+
   return result;
 };
 ```
 
 ### Error Handling
+
 ```typescript
 try {
   // Load and process Excel data
@@ -364,6 +391,7 @@ try {
 ### Translation System Architecture
 
 #### 1. Translation Key Structure
+
 ```typescript
 // Dot notation for nested keys
 const translationKeys = {
@@ -371,18 +399,19 @@ const translationKeys = {
   'nav.gallery': 'Fahrzeuge',
   'footer.company.name': 'Bahram Autohaus',
   'services.financing.title': 'Finanzierung',
-  'services.financing.feature1': 'Ab 0% Zinsen möglich'
+  'services.financing.feature1': 'Ab 0% Zinsen möglich',
 };
 ```
 
 #### 2. Translation Function
+
 ```typescript
 const t = (key: string): string => {
   try {
     // Split key by dots to navigate nested objects
     const keys = key.split('.');
     let value: any = translations[language];
-    
+
     // Navigate through nested structure
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
@@ -392,7 +421,7 @@ const t = (key: string): string => {
         return getFallbackTranslation(key);
       }
     }
-    
+
     return value || key;
   } catch (error) {
     console.error('Translation error:', error);
@@ -402,6 +431,7 @@ const t = (key: string): string => {
 ```
 
 #### 3. Language Switching
+
 ```typescript
 // Language state management
 const [language, setLanguage] = useState<'de' | 'fa'>('de');
@@ -415,13 +445,14 @@ const handleLanguageChange = (newLang: 'de' | 'fa') => {
 ```
 
 ### RTL Support (Persian)
+
 ```css
 /* Dynamic direction based on language */
-[dir="rtl"] {
+[dir='rtl'] {
   text-align: right;
 }
 
-[dir="ltr"] {
+[dir='ltr'] {
   text-align: left;
 }
 ```
@@ -436,6 +467,7 @@ const handleLanguageChange = (newLang: 'de' | 'fa') => {
 ## 🎨 Styling & UI Framework
 
 ### Tailwind CSS Configuration
+
 ```typescript
 // tailwind.config.ts
 module.exports = {
@@ -452,17 +484,18 @@ module.exports = {
           500: '#3b82f6',
           600: '#2563eb',
           900: '#1e3a8a',
-        }
-      }
+        },
+      },
     },
   },
   plugins: [],
-}
+};
 ```
 
 ### Design System
 
 #### Color Palette
+
 ```css
 /* Primary Colors */
 --blue-50: #eff6ff;
@@ -482,35 +515,38 @@ module.exports = {
 ```
 
 #### Typography Scale
+
 ```css
 /* Font Sizes */
-text-xs: 0.75rem;    /* 12px */
-text-sm: 0.875rem;   /* 14px */
-text-base: 1rem;     /* 16px */
-text-lg: 1.125rem;   /* 18px */
-text-xl: 1.25rem;    /* 20px */
-text-2xl: 1.5rem;    /* 24px */
-text-3xl: 1.875rem;  /* 30px */
-text-4xl: 2.25rem;   /* 36px */
-text-5xl: 3rem;      /* 48px */
+text-xs: 0.75rem; /* 12px */
+text-sm: 0.875rem; /* 14px */
+text-base: 1rem; /* 16px */
+text-lg: 1.125rem; /* 18px */
+text-xl: 1.25rem; /* 20px */
+text-2xl: 1.5rem; /* 24px */
+text-3xl: 1.875rem; /* 30px */
+text-4xl: 2.25rem; /* 36px */
+text-5xl: 3rem; /* 48px */
 ```
 
 #### Spacing System
+
 ```css
 /* Spacing Scale */
-space-1: 0.25rem;   /* 4px */
-space-2: 0.5rem;    /* 8px */
-space-3: 0.75rem;   /* 12px */
-space-4: 1rem;      /* 16px */
-space-6: 1.5rem;    /* 24px */
-space-8: 2rem;      /* 32px */
-space-12: 3rem;     /* 48px */
-space-16: 4rem;     /* 64px */
+space-1: 0.25rem; /* 4px */
+space-2: 0.5rem; /* 8px */
+space-3: 0.75rem; /* 12px */
+space-4: 1rem; /* 16px */
+space-6: 1.5rem; /* 24px */
+space-8: 2rem; /* 32px */
+space-12: 3rem; /* 48px */
+space-16: 4rem; /* 64px */
 ```
 
 ### Component Styling Patterns
 
 #### Glassmorphism Effect
+
 ```css
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
@@ -520,6 +556,7 @@ space-16: 4rem;     /* 64px */
 ```
 
 #### Gradient Backgrounds
+
 ```css
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -527,6 +564,7 @@ space-16: 4rem;     /* 64px */
 ```
 
 #### Hover Effects
+
 ```css
 .hover-scale {
   transition: transform 0.3s ease;
@@ -542,6 +580,7 @@ space-16: 4rem;     /* 64px */
 ### Next.js Optimizations
 
 #### 1. Image Optimization
+
 ```typescript
 // Using Next.js Image component
 import Image from 'next/image';
@@ -558,6 +597,7 @@ import Image from 'next/image';
 ```
 
 #### 2. Code Splitting
+
 ```typescript
 // Dynamic imports for heavy components
 const AdminPanel = dynamic(() => import('@/components/AdminPanel'), {
@@ -567,6 +607,7 @@ const AdminPanel = dynamic(() => import('@/components/AdminPanel'), {
 ```
 
 #### 3. Static Generation
+
 ```typescript
 // Generate static pages at build time
 export async function generateStaticParams() {
@@ -574,7 +615,7 @@ export async function generateStaticParams() {
     { slug: 'about-us' },
     { slug: 'contact-us' },
     { slug: 'gallery' },
-    { slug: 'service' }
+    { slug: 'service' },
   ];
 }
 ```
@@ -582,17 +623,20 @@ export async function generateStaticParams() {
 ### React Optimizations
 
 #### 1. Memoization
+
 ```typescript
 // Memoize expensive calculations
 const filteredCars = useMemo(() => {
-  return cars.filter(car => 
-    car.category === selectedFilter && 
-    car.brand.toLowerCase().includes(searchTerm.toLowerCase())
+  return cars.filter(
+    (car) =>
+      car.category === selectedFilter &&
+      car.brand.toLowerCase().includes(searchTerm.toLowerCase())
   );
 }, [cars, selectedFilter, searchTerm]);
 ```
 
 #### 2. Callback Optimization
+
 ```typescript
 // Memoize event handlers
 const handleCarSelect = useCallback((car: CarData) => {
@@ -602,6 +646,7 @@ const handleCarSelect = useCallback((car: CarData) => {
 ```
 
 #### 3. State Optimization
+
 ```typescript
 // Batch state updates
 const handleFormSubmit = useCallback(() => {
@@ -609,7 +654,7 @@ const handleFormSubmit = useCallback(() => {
   setLoading(true);
   setError(null);
   setSuccess(false);
-  
+
   // Process form...
 }, []);
 ```
@@ -617,6 +662,7 @@ const handleFormSubmit = useCallback(() => {
 ### Bundle Optimization
 
 #### 1. Tree Shaking
+
 ```typescript
 // Import only what you need
 import { useState, useEffect } from 'react';
@@ -624,6 +670,7 @@ import { Car, Search } from 'lucide-react';
 ```
 
 #### 2. Dynamic Imports
+
 ```typescript
 // Load components on demand
 const HeavyComponent = lazy(() => import('./HeavyComponent'));
@@ -632,6 +679,7 @@ const HeavyComponent = lazy(() => import('./HeavyComponent'));
 ## 🧪 Testing Strategy
 
 ### Testing Pyramid
+
 ```
     ┌─────────────────┐
     │   E2E Tests     │ ← Full user journeys
@@ -645,19 +693,20 @@ const HeavyComponent = lazy(() => import('./HeavyComponent'));
 ```
 
 ### Unit Testing
+
 ```typescript
 // Example unit test for translation function
 describe('Translation Function', () => {
   it('should return correct translation for valid key', () => {
     const translations = {
       de: { nav: { home: 'Startseite' } },
-      fa: { nav: { home: 'صفحه اصلی' } }
+      fa: { nav: { home: 'صفحه اصلی' } },
     };
-    
+
     const result = t('nav.home', translations, 'de');
     expect(result).toBe('Startseite');
   });
-  
+
   it('should return key if translation not found', () => {
     const result = t('nonexistent.key', {}, 'de');
     expect(result).toBe('nonexistent.key');
@@ -666,15 +715,16 @@ describe('Translation Function', () => {
 ```
 
 ### Integration Testing
+
 ```typescript
 // Example integration test for car filtering
 describe('Car Filtering', () => {
   it('should filter cars by category', () => {
     const cars = [
       { id: 1, brand: 'BMW', category: 'suv' },
-      { id: 2, brand: 'Audi', category: 'limousine' }
+      { id: 2, brand: 'Audi', category: 'limousine' },
     ];
-    
+
     const filtered = filterCarsByCategory(cars, 'suv');
     expect(filtered).toHaveLength(1);
     expect(filtered[0].brand).toBe('BMW');
@@ -683,6 +733,7 @@ describe('Car Filtering', () => {
 ```
 
 ### E2E Testing
+
 ```typescript
 // Example E2E test for language switching
 describe('Language Switching', () => {
@@ -698,6 +749,7 @@ describe('Language Switching', () => {
 ## 🚀 Deployment & DevOps
 
 ### Build Process
+
 ```bash
 # Development
 npm run dev
@@ -713,6 +765,7 @@ npm run export
 ```
 
 ### Environment Configuration
+
 ```typescript
 // next.config.ts
 const nextConfig = {
@@ -723,11 +776,12 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true, // CSS optimization
-  }
+  },
 };
 ```
 
 ### Docker Configuration
+
 ```dockerfile
 # Dockerfile
 FROM node:18-alpine AS base
@@ -756,6 +810,7 @@ CMD ["node", "server.js"]
 ```
 
 ### CI/CD Pipeline
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy to Production
@@ -788,12 +843,15 @@ jobs:
 ### Common Issues & Solutions
 
 #### 1. Excel Files Not Loading
+
 **Symptoms:**
+
 - Empty car list
 - Missing translations
 - Console errors about file loading
 
 **Solutions:**
+
 ```typescript
 // Check file paths
 const filePath = '/excel/translations-template.csv';
@@ -806,11 +864,14 @@ if (!response.ok) {
 ```
 
 #### 2. Translation Keys Not Working
+
 **Symptoms:**
+
 - Raw keys displayed instead of translations
 - Missing text in UI
 
 **Solutions:**
+
 ```typescript
 // Debug translation function
 const t = (key: string) => {
@@ -821,11 +882,14 @@ const t = (key: string) => {
 ```
 
 #### 3. Images Not Displaying
+
 **Symptoms:**
+
 - Broken image icons
 - 404 errors for images
 
 **Solutions:**
+
 ```typescript
 // Check image paths
 const imagePath = `/images/cars/${car.image}`;
@@ -834,11 +898,14 @@ const imagePath = `/images/cars/${car.image}`;
 ```
 
 #### 4. Performance Issues
+
 **Symptoms:**
+
 - Slow loading times
 - Laggy interactions
 
 **Solutions:**
+
 ```typescript
 // Optimize images
 <Image
@@ -858,6 +925,7 @@ const filteredCars = useMemo(() => {
 ### Debug Tools
 
 #### 1. Browser DevTools
+
 ```typescript
 // Add debug logging
 console.log('Current language:', language);
@@ -866,11 +934,13 @@ console.log('Translations:', translations);
 ```
 
 #### 2. React DevTools
+
 - Install React Developer Tools browser extension
 - Inspect component state and props
 - Monitor re-renders and performance
 
 #### 3. Network Tab
+
 - Monitor Excel file loading
 - Check for 404 errors
 - Analyze loading times
@@ -880,6 +950,7 @@ console.log('Translations:', translations);
 ### TypeScript Standards
 
 #### 1. Interface Definitions
+
 ```typescript
 // Use descriptive interface names
 interface CarData {
@@ -898,6 +969,7 @@ interface ApiResponse<T> {
 ```
 
 #### 2. Function Signatures
+
 ```typescript
 // Use explicit return types
 const calculatePrice = (basePrice: number, discount: number): number => {
@@ -913,6 +985,7 @@ const handleCarSelect = (car: CarData): void => {
 ### React Best Practices
 
 #### 1. Component Structure
+
 ```typescript
 // 1. Imports
 import React from 'react';
@@ -928,18 +1001,18 @@ interface ComponentProps {
 const Component: React.FC<ComponentProps> = ({ title, onAction }) => {
   // 4. State
   const [isOpen, setIsOpen] = useState(false);
-  
+
   // 5. Effects
   useEffect(() => {
     // Side effects
   }, []);
-  
+
   // 6. Handlers
   const handleClick = () => {
     setIsOpen(true);
     onAction();
   };
-  
+
   // 7. Render
   return (
     <div>
@@ -954,11 +1027,12 @@ export default Component;
 ```
 
 #### 2. Hook Usage
+
 ```typescript
 // Custom hooks for reusable logic
 const useCarFilter = (cars: CarData[], filter: string) => {
   return useMemo(() => {
-    return cars.filter(car => car.category === filter);
+    return cars.filter((car) => car.category === filter);
   }, [cars, filter]);
 };
 
@@ -969,6 +1043,7 @@ const filteredCars = useCarFilter(cars, selectedFilter);
 ### File Organization
 
 #### 1. Naming Conventions
+
 ```
 // Components: PascalCase
 Header.tsx
@@ -987,6 +1062,7 @@ validationUtils.ts
 ```
 
 #### 2. Import Organization
+
 ```typescript
 // 1. React imports
 import React, { useState, useEffect } from 'react';
@@ -1006,6 +1082,7 @@ import './Component.css';
 ### Error Handling
 
 #### 1. Try-Catch Blocks
+
 ```typescript
 const loadData = async () => {
   try {
@@ -1022,6 +1099,7 @@ const loadData = async () => {
 ```
 
 #### 2. Error Boundaries
+
 ```typescript
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -1060,5 +1138,4 @@ class ErrorBoundary extends React.Component {
 
 ---
 
-*This guide provides comprehensive documentation for the Bahram Autohaus project. It covers everything from basic setup to advanced deployment strategies, ensuring that developers of all skill levels can understand, maintain, and extend the application.*
-
+_This guide provides comprehensive documentation for the Bahram Autohaus project. It covers everything from basic setup to advanced deployment strategies, ensuring that developers of all skill levels can understand, maintain, and extend the application._

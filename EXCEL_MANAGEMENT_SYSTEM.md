@@ -1,19 +1,23 @@
 # Excel Content Management System
 
 ## Overview
+
 This system allows the site manager to update website content through Excel files without touching the code. The website automatically reads and displays content from these Excel files.
 
 ## Files Structure
 
 ### 1. Excel Files Location
+
 All Excel files are stored in: `/public/excel/`
 
 ### 2. Required Files
 
 #### `translations.xlsx` - Language Management
+
 Manages all text content for German (de) and Farsi (fa) languages.
 
 **Columns:**
+
 - `key`: Translation key (e.g., "nav.home", "hero.title")
 - `de`: German translation
 - `fa`: Farsi translation
@@ -21,14 +25,16 @@ Manages all text content for German (de) and Farsi (fa) languages.
 
 **Example:**
 | key | de | fa | category |
-|-----|----|----|----------| 
+|-----|----|----|----------|
 | nav.home | Startseite | صفحه اصلی | navigation |
 | hero.title | Bahram Autohaus | بهرام اتوهاوس | hero |
 
 #### `cars.xlsx` - Car Data Management
+
 Manages all car information displayed on the website.
 
 **Columns:**
+
 - `id`: Unique car ID (number)
 - `brand`: Car brand (e.g., BMW, Mercedes)
 - `model`: Car model (e.g., X5 M50d, C63 AMG)
@@ -77,6 +83,7 @@ Manages all car information displayed on the website.
 ## Technical Implementation
 
 ### Files Created:
+
 - `src/utils/excelReader.ts` - Excel file reading utilities
 - `src/hooks/useExcelData.ts` - React hook for Excel data management
 - `src/components/AdminPanel.tsx` - Admin panel component
@@ -84,6 +91,7 @@ Manages all car information displayed on the website.
 - `public/excel/cars.xlsx` - Car data file
 
 ### Key Features:
+
 - **Automatic Loading**: Excel files are read automatically on page load
 - **Error Handling**: Graceful fallback to default data if Excel files are missing
 - **Loading States**: Shows loading indicator while reading Excel files
@@ -91,6 +99,7 @@ Manages all car information displayed on the website.
 - **Admin Panel**: Easy access to refresh data and view instructions
 
 ### Dependencies:
+
 - `xlsx` library for reading Excel files
 - React hooks for state management
 - TypeScript for type safety
@@ -113,6 +122,7 @@ Manages all car information displayed on the website.
 ## Troubleshooting
 
 ### Common Issues:
+
 1. **File Not Found**: Ensure Excel files are in `/public/excel/` directory
 2. **Format Errors**: Check that files are in .xlsx format
 3. **Header Issues**: Verify first row contains proper headers
@@ -120,6 +130,7 @@ Manages all car information displayed on the website.
 5. **Special Characters**: Ensure proper UTF-8 encoding
 
 ### Error Messages:
+
 - "Failed to load content data. Using default data." - Excel files not found or corrupted
 - "Loading content..." - System is reading Excel files
 - Yellow notification - Warning about Excel file issues

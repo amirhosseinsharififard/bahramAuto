@@ -1,11 +1,11 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useState } from 'react';
 
-import { Car, Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Car, Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 /**
  * Header component props interface
@@ -14,8 +14,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
  * @property {function} setLanguage - Function to change language setting
  */
 interface HeaderProps {
-  language: "de" | "fa";
-  setLanguage: (lang: "de" | "fa") => void;
+  language: 'de' | 'fa';
+  setLanguage: (lang: 'de' | 'fa') => void;
 }
 
 /**
@@ -27,20 +27,20 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
   // State for mobile menu visibility
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   // Get current pathname for active link highlighting
   const pathname = usePathname();
-  
+
   // Get translation function from language context
   const { t } = useLanguage();
 
   // Navigation items with translated labels and icons
   const navigation = [
-    { href: "/", label: t("nav.home"), icon: "🏠" },
-    { href: "/gallery", label: t("nav.gallery"), icon: "🚗" },
-    { href: "/service", label: t("nav.services"), icon: "🔧" },
-    { href: "/about-us", label: t("nav.about"), icon: "ℹ️" },
-    { href: "/contact-us", label: t("nav.contact"), icon: "📞" },
+    { href: '/', label: t('nav.home'), icon: '🏠' },
+    { href: '/gallery', label: t('nav.gallery'), icon: '🚗' },
+    { href: '/service', label: t('nav.services'), icon: '🔧' },
+    { href: '/about-us', label: t('nav.about'), icon: 'ℹ️' },
+    { href: '/contact-us', label: t('nav.contact'), icon: '📞' },
   ];
 
   return (
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
                 key={item.href}
                 href={item.href}
                 className={`group relative rounded-lg px-4 py-2 font-medium transition-all duration-300 ${
-                  pathname === item.href ? "text-blue-400" : "text-gray-300"
+                  pathname === item.href ? 'text-blue-400' : 'text-gray-300'
                 }`}
               >
                 {item.label}
@@ -87,21 +87,21 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
             {/* Desktop Language Switcher */}
             <div className="hidden md:flex md:space-x-2">
               <button
-                onClick={() => setLanguage("de")}
+                onClick={() => setLanguage('de')}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  language === "de"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  language === 'de'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               >
                 DE
               </button>
               <button
-                onClick={() => setLanguage("fa")}
+                onClick={() => setLanguage('fa')}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  language === "fa"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  language === 'fa'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               >
                 FA
@@ -133,8 +133,8 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex transform items-center space-x-3 rounded-lg px-4 py-3 transition-all duration-300 hover:translate-x-2 hover:bg-blue-900/30 ${
                     pathname === item.href
-                      ? "bg-blue-900/30 text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                      ? 'bg-blue-900/30 text-blue-400'
+                      : 'text-gray-300 hover:text-blue-400'
                   }`}
                 >
                   <span className="text-lg">{item.icon}</span>
@@ -147,26 +147,26 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
             <div className="mt-4 flex space-x-2 border-t border-white/10 pt-4">
               <button
                 onClick={() => {
-                  setLanguage("de");
+                  setLanguage('de');
                   setMobileMenuOpen(false);
                 }}
                 className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  language === "de"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  language === 'de'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               >
                 Deutsch
               </button>
               <button
                 onClick={() => {
-                  setLanguage("fa");
+                  setLanguage('fa');
                   setMobileMenuOpen(false);
                 }}
                 className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ${
-                  language === "fa"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  language === 'fa'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               >
                 فارسی

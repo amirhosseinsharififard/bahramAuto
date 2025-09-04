@@ -5,24 +5,28 @@ This directory contains Excel files that allow the site manager to update websit
 ## Files Structure
 
 ### 1. `translations.xlsx` - Language Management
+
 This file manages all text content for both German (de) and Farsi (fa) languages.
 
 **Columns:**
+
 - `key`: The translation key (e.g., "nav.home", "hero.title")
 - `de`: German translation
-- `fa`: Farsi translation  
+- `fa`: Farsi translation
 - `category`: Content category (navigation, hero, highlights, etc.)
 
 **Example:**
 | key | de | fa | category |
-|-----|----|----|----------| 
+|-----|----|----|----------|
 | nav.home | Startseite | صفحه اصلی | navigation |
 | hero.title | Bahram Autohaus | بهرام اتوهاوس | hero |
 
 ### 2. `cars.xlsx` - Car Data Management
+
 This file manages all car information displayed on the website.
 
 **Columns:**
+
 - `id`: Unique car ID (number)
 - `brand`: Car brand (e.g., BMW, Mercedes)
 - `model`: Car model (e.g., X5 M50d, C63 AMG)
@@ -81,6 +85,7 @@ Always keep backup copies of your Excel files before making major changes.
 ## Support
 
 If you encounter issues with the Excel system, check:
+
 1. File format is correct (.xlsx)
 2. Headers are in the first row
 3. No empty rows in the middle of data

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import { Car, Mail, MapPin, Phone, Star } from "lucide-react";
-import Link from "next/link";
+import { Car, Mail, MapPin, Phone, Star } from 'lucide-react';
+import Link from 'next/link';
 
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 /**
  * Footer component props interface
@@ -38,10 +38,10 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">
-                  {t("footer.company.name")}
+                  {t('footer.company.name')}
                 </h3>
                 <p className="text-sm text-gray-300">
-                  {t("footer.company.description")}
+                  {t('footer.company.description')}
                 </p>
               </div>
             </div>
@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <span className="ml-2 text-gray-300">
-                {t("footer.company.rating")}
+                {t('footer.company.rating')}
               </span>
             </div>
           </div>
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           {/* Kontaktinfo */}
           <div>
             <h3 className="mb-6 text-xl font-bold text-white">
-              {t("footer.contact")}
+              {t('footer.contact')}
             </h3>
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">
-                    {t("footer.contactInfo.phone")}
+                    {t('footer.contactInfo.phone')}
                   </p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-300">
-                    {t("footer.contactInfo.email")}
+                    {t('footer.contactInfo.email')}
                   </p>
                 </div>
               </div>
@@ -89,13 +89,13 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                 </div>
                 <div>
                   <p className="text-white">
-                    {t("footer.contactInfo.address.street")}
+                    {t('footer.contactInfo.address.street')}
                   </p>
                   <p className="text-white">
-                    {t("footer.contactInfo.address.city")}
+                    {t('footer.contactInfo.address.city')}
                   </p>
                   <p className="text-sm text-gray-400">
-                    {t("footer.contactInfo.address.country")}
+                    {t('footer.contactInfo.address.country')}
                   </p>
                 </div>
               </div>
@@ -106,7 +106,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           <div className="space-y-6">
             <div>
               <h3 className="mb-4 text-lg font-semibold text-white">
-                {t("footer.services")}
+                {t('footer.services')}
               </h3>
               <ul className="space-y-2">
                 <li>
@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="/gallery"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("nav.gallery")}
+                    {t('nav.gallery')}
                   </Link>
                 </li>
                 <li>
@@ -122,7 +122,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="/service"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("nav.services")}
+                    {t('nav.services')}
                   </Link>
                 </li>
                 <li>
@@ -130,14 +130,14 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="/about-us"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("nav.about")}
+                    {t('nav.about')}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
               <h3 className="mb-4 text-lg font-semibold text-white">
-                {t("footer.legal")}
+                {t('footer.legal')}
               </h3>
               <ul className="space-y-2">
                 <li>
@@ -145,7 +145,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="#"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("footer.legal")}
+                    {t('footer.legal')}
                   </Link>
                 </li>
                 <li>
@@ -153,7 +153,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="#"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("footer.privacy")}
+                    {t('footer.privacy')}
                   </Link>
                 </li>
                 <li>
@@ -161,7 +161,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                     href="#"
                     className="text-sm text-gray-300 transition-colors hover:text-blue-400"
                   >
-                    {t("footer.imprint")}
+                    {t('footer.imprint')}
                   </Link>
                 </li>
               </ul>
@@ -186,7 +186,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
 
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
-          <p className="text-sm text-gray-400">{t("footer.copyright")}</p>
+          <p className="text-sm text-gray-400">{t('footer.copyright')}</p>
           <p className="mt-2 text-xs text-gray-500">
             Developed by Amir Hossein Shrififard
           </p>

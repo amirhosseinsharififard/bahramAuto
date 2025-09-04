@@ -3,69 +3,69 @@
   "compilerOptions": {
     // Target ECMAScript version for compilation
     "target": "ES2017",
-    
+
     // Library files to include in compilation
     "lib": ["dom", "dom.iterable", "esnext"],
-    
+
     // Allow JavaScript files to be compiled
     "allowJs": true,
-    
+
     // Skip type checking of declaration files
     "skipLibCheck": true,
-    
+
     // Enable strict type checking
     "strict": true,
-    
+
     // Don't emit output files (Next.js handles this)
     "noEmit": true,
-    
+
     // Enable ES module interop
     "esModuleInterop": true,
-    
+
     // Module system to use
     "module": "esnext",
-    
+
     // Module resolution strategy
     "moduleResolution": "bundler",
-    
+
     // Allow importing JSON files
     "resolveJsonModule": true,
-    
+
     // Ensure each file can be safely transpiled without relying on other imports
     "isolatedModules": true,
-    
+
     // Preserve JSX for Next.js to handle
     "jsx": "preserve",
-    
+
     // Enable incremental compilation
     "incremental": true,
-    
+
     // TypeScript plugins
     "plugins": [
       {
-        "name": "next"  // Next.js TypeScript plugin
+        "name": "next" // Next.js TypeScript plugin
       }
     ],
-    
+
     // Path mapping for imports
     "paths": {
-      "@/*": ["./src/*"]  // Map @ to src directory
+      "@/*": ["./src/*"] // Map @ to src directory
     },
-    
+
     // Type declarations to include
     "types": []
   },
-  
+
   // Files to include in compilation
   "include": [
-    "next-env.d.ts",        // Next.js type definitions
-    "**/*.ts",              // All TypeScript files
-    "**/*.tsx",             // All TypeScript React files
-    ".next/types/**/*.ts"   // Next.js generated types
+    "next-env.d.ts", // Next.js type definitions
+    "**/*.ts", // All TypeScript files
+    "**/*.tsx", // All TypeScript React files
+    ".next/types/**/*.ts" // Next.js generated types
   ],
-  
+
   // Files to exclude from compilation
   "exclude": [
-    "node_modules"          // Exclude node_modules directory
+    "node_modules" // Exclude node_modules directory
   ]
 }

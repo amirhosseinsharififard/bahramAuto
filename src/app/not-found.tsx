@@ -1,31 +1,31 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function NotFound() {
-  const [language, setLanguage] = useState("de");
+  const [language, setLanguage] = useState('de');
 
   const content = {
     de: {
-      title: "404",
-      subtitle: "Seite nicht gefunden",
-      description: "Die gesuchte Seite existiert nicht.",
-      backButton: "Zurück zur Startseite",
+      title: '404',
+      subtitle: 'Seite nicht gefunden',
+      description: 'Die gesuchte Seite existiert nicht.',
+      backButton: 'Zurück zur Startseite',
       language: {
-        de: "Deutsch",
-        fa: "فارسی",
+        de: 'Deutsch',
+        fa: 'فارسی',
       },
     },
     fa: {
-      title: "۴۰۴",
-      subtitle: "صفحه مورد نظر یافت نشد",
-      description: "صفحه‌ای که به دنبال آن هستید وجود ندارد.",
-      backButton: "بازگشت به صفحه اصلی",
+      title: '۴۰۴',
+      subtitle: 'صفحه مورد نظر یافت نشد',
+      description: 'صفحه‌ای که به دنبال آن هستید وجود ندارد.',
+      backButton: 'بازگشت به صفحه اصلی',
       language: {
-        de: "آلمانی",
-        fa: "فارسی",
+        de: 'آلمانی',
+        fa: 'فارسی',
       },
     },
   };
@@ -39,11 +39,11 @@ export default function NotFound() {
         <div className="absolute right-8 top-8">
           <div className="flex items-center space-x-2 rounded-xl border border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 p-1 shadow-lg">
             <button
-              onClick={() => setLanguage("de")}
+              onClick={() => setLanguage('de')}
               className={`relative flex items-center space-x-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                language === "de"
-                  ? "scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "text-gray-700 hover:bg-white hover:text-blue-600 hover:shadow-md"
+                language === 'de'
+                  ? 'scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                  : 'text-gray-700 hover:bg-white hover:text-blue-600 hover:shadow-md'
               }`}
             >
               <span className="text-xs">🇩🇪</span>
@@ -51,11 +51,11 @@ export default function NotFound() {
               <span className="sm:hidden">DE</span>
             </button>
             <button
-              onClick={() => setLanguage("fa")}
+              onClick={() => setLanguage('fa')}
               className={`relative flex items-center space-x-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                language === "fa"
-                  ? "scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                  : "text-gray-700 hover:bg-white hover:text-blue-600 hover:shadow-md"
+                language === 'fa'
+                  ? 'scale-105 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                  : 'text-gray-700 hover:bg-white hover:text-blue-600 hover:shadow-md'
               }`}
             >
               <span className="text-xs">🇮🇷</span>

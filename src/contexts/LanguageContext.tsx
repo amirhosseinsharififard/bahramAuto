@@ -1,10 +1,10 @@
 /**
  * Language Context for Internationalization
- * 
+ *
  * This context provides internationalization (i18n) functionality for the Bahram Autohaus application.
  * It manages language state, translations, and provides a translation function that supports
  * nested object navigation with dot notation.
- * 
+ *
  * Key Features:
  * - Supports German (de) and Persian (fa) languages
  * - Dynamic translation loading from Excel files
@@ -12,7 +12,7 @@
  * - Fallback to other language if translation not found
  * - RTL/LTR direction support
  * - Loading and error states
- * 
+ *
  * @fileoverview Language context for internationalization
  * @author Amir Hossein Shrififard
  * @version 1.0.0
@@ -21,17 +21,23 @@
 'use client'; // Enable client-side rendering
 
 // React imports for context and state management
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 
 // Import Excel data hook for loading translations
 import { useExcelData } from '@/hooks/useExcelData';
 
 /**
  * Language context type definition
- * 
+ *
  * This interface defines the shape of the language context value,
  * including all the properties and methods that components can access.
- * 
+ *
  * @interface LanguageContextType
  * @property {'de' | 'fa'} language - Current language setting ('de' for German, 'fa' for Persian)
  * @property {function} setLanguage - Function to change the current language
@@ -51,20 +57,22 @@ interface LanguageContextType {
 
 // Create the language context with undefined as default value
 // This will be used to detect if the hook is used outside of the provider
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 /**
  * Custom hook to use the language context
- * 
+ *
  * This hook provides access to the language context value. It must be used
  * within a LanguageProvider component, otherwise it will throw an error.
- * 
+ *
  * @returns {LanguageContextType} Language context value containing language state and translation function
  * @throws {Error} If used outside of LanguageProvider
- * 
+ *
  * @example
  * const { language, setLanguage, t, loading, error } = useLanguage();
- * 
+ *
  * return (
  *   <div>
  *     <h1>{t('hero.title')}</h1>
@@ -82,7 +90,7 @@ export const useLanguage = () => {
 
 /**
  * Language provider props interface
- * 
+ *
  * @interface LanguageProviderProps
  * @property {ReactNode} children - Child components that will have access to the language context
  */
@@ -92,40 +100,42 @@ interface LanguageProviderProps {
 
 /**
  * Language provider component that manages language state and translations
- * 
+ *
  * This component provides the language context to all child components.
  * It manages the current language state and provides a translation function
  * that can navigate nested objects using dot notation.
- * 
+ *
  * @param {LanguageProviderProps} props - Component props
  * @returns {JSX.Element} Language provider component that wraps children with language context
- * 
+ *
  * @example
  * <LanguageProvider>
  *   <App />
  * </LanguageProvider>
  */
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({
+  children,
+}) => {
   // Current language state (defaults to German)
   // This state determines which language translations to use
   const [language, setLanguage] = useState<'de' | 'fa'>('de');
-  
+
   // Get translations data from Excel files using the custom hook
   // This provides the raw translation data, loading state, and error state
   const { translations, loading, error } = useExcelData();
 
   /**
    * Translation function that retrieves translated text by key
-   * 
+   *
    * This function provides a powerful translation system that supports:
    * - Nested object navigation using dot notation (e.g., "nav.home")
    * - Fallback to the other language if translation not found
    * - Error handling with graceful degradation
    * - Returns the key itself if no translation is found
-   * 
+   *
    * @param {string} key - Translation key (supports dot notation for nested objects)
    * @returns {string} Translated text or key if not found
-   * 
+   *
    * @example
    * t('nav.home') // Returns "Startseite" in German or "صفحه اصلی" in Persian
    * t('hero.title') // Returns the hero title in the current language
@@ -136,7 +146,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       // Split the key by dots to navigate nested objects
       const keys = key.split('.');
       let value: any = translations[language];
-      
+
       // Navigate through nested object structure
       for (const k of keys) {
         if (value && typeof value === 'object' && k in value) {
@@ -144,9 +154,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
           value = value[k];
         } else {
           // Key not found in current language, try fallback to other language
-          let fallbackValue: any = translations[language === 'de' ? 'fa' : 'de'];
+          let fallbackValue: any =
+            translations[language === 'de' ? 'fa' : 'de'];
           for (const fallbackKey of keys) {
-            if (fallbackValue && typeof fallbackValue === 'object' && fallbackKey in fallbackValue) {
+            if (
+              fallbackValue &&
+              typeof fallbackValue === 'object' &&
+              fallbackKey in fallbackValue
+            ) {
               fallbackValue = fallbackValue[fallbackKey];
             } else {
               fallbackValue = undefined;
@@ -161,7 +176,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
           return key;
         }
       }
-      
+
       // Return the final value or the key if value is falsy
       return value || key;
     } catch (error) {
@@ -173,22 +188,22 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   /**
    * Create the context value object
-   * 
+   *
    * This object contains all the values and functions that will be available
    * to components that use the useLanguage hook.
    */
   const value: LanguageContextType = {
-    language,      // Current language setting
-    setLanguage,   // Function to change language
-    t,            // Translation function
+    language, // Current language setting
+    setLanguage, // Function to change language
+    t, // Translation function
     translations, // Raw translation data
-    loading,      // Loading state
-    error,        // Error state
+    loading, // Loading state
+    error, // Error state
   };
 
   /**
    * Render the provider with the context value
-   * 
+   *
    * This makes the language context available to all child components.
    */
   return (

@@ -1,11 +1,11 @@
 /**
  * About Us Page Component
- * 
+ *
  * This page displays comprehensive information about Bahram Autohaus,
  * including company history, milestones, values, team members, and
  * a call-to-action section. The content is fully internationalized
  * with support for German and Persian languages.
- * 
+ *
  * Key Features:
  * - Company history and milestones timeline
  * - Core values and principles
@@ -13,7 +13,7 @@
  * - Responsive design with animations
  * - Internationalization support
  * - Call-to-action for contact
- * 
+ *
  * @fileoverview About us page for Bahram Autohaus
  * @author Amir Hossein Shrififard
  * @version 1.0.0
@@ -22,31 +22,31 @@
 'use client'; // Enable client-side rendering
 
 // React imports
-import React from "react";
+import React from 'react';
 
 // Lucide React icons for UI elements
-import { Building, CheckCircle, Globe } from "lucide-react";
+import { Building, CheckCircle, Globe } from 'lucide-react';
 
 // Next.js components for optimized images and navigation
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Custom components
-import AnimatedBackground from "@/components/AnimatedBackground"; // Animated background effects
-import Footer from "@/components/Footer";                          // Footer component
-import Header from "@/components/Header";                          // Header with navigation
+import AnimatedBackground from '@/components/AnimatedBackground'; // Animated background effects
+import Footer from '@/components/Footer'; // Footer component
+import Header from '@/components/Header'; // Header with navigation
 
 // Custom hooks and contexts
-import { useLanguage } from "@/contexts/LanguageContext";          // Language context for translations
+import { useLanguage } from '@/contexts/LanguageContext'; // Language context for translations
 
 /**
  * About Page Component
- * 
+ *
  * This component renders the about us page with company information,
  * history, values, and team details. It uses hardcoded content for
  * demonstration purposes, but in a real application, this could be
  * loaded from a CMS or database.
- * 
+ *
  * @returns {JSX.Element} About us page component
  */
 const AboutPage = () => {
@@ -55,197 +55,197 @@ const AboutPage = () => {
 
   /**
    * Static content object containing all page content in both languages
-   * 
+   *
    * This object contains all the text content for the about page in both
    * German and Persian. In a production application, this content would
    * typically be loaded from a CMS or database.
    */
   const content = {
     de: {
-      title: "Über Bahram Autohaus",
-      subtitle: "Ihr vertrauensvoller Partner für Premium-Fahrzeuge",
+      title: 'Über Bahram Autohaus',
+      subtitle: 'Ihr vertrauensvoller Partner für Premium-Fahrzeuge',
       story: {
-        title: "Unsere Geschichte",
+        title: 'Unsere Geschichte',
         description:
-          "Gegründet im Jahr 2008, hat sich Bahram Autohaus zu einem der führenden Händler für Premium-Fahrzeuge in Deutschland entwickelt. Unser Erfolg basiert auf einer einfachen Philosophie: Kundenzufriedenheit durch Qualität und Transparenz.",
+          'Gegründet im Jahr 2008, hat sich Bahram Autohaus zu einem der führenden Händler für Premium-Fahrzeuge in Deutschland entwickelt. Unser Erfolg basiert auf einer einfachen Philosophie: Kundenzufriedenheit durch Qualität und Transparenz.',
         milestones: [
           {
-            year: "2008",
-            title: "Gründung",
-            description: "Eröffnung des ersten Standorts in Köln",
+            year: '2008',
+            title: 'Gründung',
+            description: 'Eröffnung des ersten Standorts in Köln',
           },
           {
-            year: "2012",
-            title: "Expansion",
-            description: "Eröffnung zweiter Standort und Beginn des Exports",
+            year: '2012',
+            title: 'Expansion',
+            description: 'Eröffnung zweiter Standort und Beginn des Exports',
           },
           {
-            year: "2016",
-            title: "Zertifizierung",
-            description: "Zertifizierung durch TÜV SÜD und DEKRA",
+            year: '2016',
+            title: 'Zertifizierung',
+            description: 'Zertifizierung durch TÜV SÜD und DEKRA',
           },
           {
-            year: "2020",
-            title: "Digitalisierung",
+            year: '2020',
+            title: 'Digitalisierung',
             description:
-              "Einführung des Online-Showrooms und digitalen Services",
+              'Einführung des Online-Showrooms und digitalen Services',
           },
           {
-            year: "2024",
-            title: "15 Jahre Erfahrung",
+            year: '2024',
+            title: '15 Jahre Erfahrung',
             description:
-              "Feier von 15 Jahren Erfolg und über 2500 verkaufte Fahrzeuge",
+              'Feier von 15 Jahren Erfolg und über 2500 verkaufte Fahrzeuge',
           },
         ],
       },
       values: {
-        title: "Unsere Werte",
+        title: 'Unsere Werte',
         items: [
           {
-            title: "Qualität",
+            title: 'Qualität',
             description:
-              "Jedes Fahrzeug wird sorgfältig geprüft und bietet höchste Qualität.",
+              'Jedes Fahrzeug wird sorgfältig geprüft und bietet höchste Qualität.',
           },
           {
-            title: "Transparenz",
+            title: 'Transparenz',
             description:
-              "Ehrliche Beratung und faire Preise ohne versteckte Kosten.",
+              'Ehrliche Beratung und faire Preise ohne versteckte Kosten.',
           },
           {
-            title: "Kundenzufriedenheit",
-            description: "Ihre Zufriedenheit ist unser höchstes Ziel.",
+            title: 'Kundenzufriedenheit',
+            description: 'Ihre Zufriedenheit ist unser höchstes Ziel.',
           },
           {
-            title: "Vertrauen",
+            title: 'Vertrauen',
             description:
-              "Langfristige Beziehungen basierend auf Vertrauen und Integrität.",
+              'Langfristige Beziehungen basierend auf Vertrauen und Integrität.',
           },
         ],
       },
       team: {
-        title: "Unser Team",
+        title: 'Unser Team',
         description:
-          "Unser erfahrenes Team besteht aus Automobil-Experten mit einer Leidenschaft für Premium-Fahrzeuge.",
+          'Unser erfahrenes Team besteht aus Automobil-Experten mit einer Leidenschaft für Premium-Fahrzeuge.',
         members: [
           {
-            name: "Bahram Ahmad",
-            position: "Geschäftsführer",
-            bio: "Mit über 20 Jahren Erfahrung in der Automobilbranche.",
+            name: 'Bahram Ahmad',
+            position: 'Geschäftsführer',
+            bio: 'Mit über 20 Jahren Erfahrung in der Automobilbranche.',
           },
           {
-            name: "Sarah Müller",
-            position: "Verkaufsleitung",
-            bio: "Expertin für Premium-Fahrzeuge und Kundenbetreuung.",
+            name: 'Sarah Müller',
+            position: 'Verkaufsleitung',
+            bio: 'Expertin für Premium-Fahrzeuge und Kundenbetreuung.',
           },
           {
-            name: "Thomas Weber",
-            position: "Serviceleiter",
-            bio: "Spezialist für Fahrzeugtechnik und -wartung.",
+            name: 'Thomas Weber',
+            position: 'Serviceleiter',
+            bio: 'Spezialist für Fahrzeugtechnik und -wartung.',
           },
           {
-            name: "Lena Schmidt",
-            position: "Exportmanagerin",
-            bio: "Expertin für internationale Fahrzeugexporte.",
+            name: 'Lena Schmidt',
+            position: 'Exportmanagerin',
+            bio: 'Expertin für internationale Fahrzeugexporte.',
           },
         ],
       },
       cta: {
-        title: "Besuchen Sie uns",
+        title: 'Besuchen Sie uns',
         description:
-          "Wir freuen uns auf Ihren Besuch in unserem Showroom in Köln.",
-        button: "Kontaktieren Sie uns",
+          'Wir freuen uns auf Ihren Besuch in unserem Showroom in Köln.',
+        button: 'Kontaktieren Sie uns',
       },
     },
     fa: {
-      title: "درباره بهرام اتوهاوس",
-      subtitle: "شریک قابل اعتماد شما برای خودروهای پریمیوم",
+      title: 'درباره بهرام اتوهاوس',
+      subtitle: 'شریک قابل اعتماد شما برای خودروهای پریمیوم',
       story: {
-        title: "داستان ما",
+        title: 'داستان ما',
         description:
-          "تأسیس شده در سال ۲۰۰۸، بهرام اتوهاوس به یکی از پیشروترین فروشندگان خودروهای پریمیوم در آلمان تبدیل شده است. موفقیت ما بر اساس فلسفه ساده‌ای است: رضایت مشتری از طریق کیفیت و شفافیت.",
+          'تأسیس شده در سال ۲۰۰۸، بهرام اتوهاوس به یکی از پیشروترین فروشندگان خودروهای پریمیوم در آلمان تبدیل شده است. موفقیت ما بر اساس فلسفه ساده‌ای است: رضایت مشتری از طریق کیفیت و شفافیت.',
         milestones: [
           {
-            year: "۲۰۰۸",
-            title: "تأسیس",
-            description: "افتتاح اولین شعبه در کلن",
+            year: '۲۰۰۸',
+            title: 'تأسیس',
+            description: 'افتتاح اولین شعبه در کلن',
           },
           {
-            year: "۲۰۱۲",
-            title: "گسترش",
-            description: "افتتاح شعبه دوم و آغاز صادرات",
+            year: '۲۰۱۲',
+            title: 'گسترش',
+            description: 'افتتاح شعبه دوم و آغاز صادرات',
           },
           {
-            year: "۲۰۱۶",
-            title: "گواهینامه",
-            description: "گواهینامه از TÜV SÜD و DEKRA",
+            year: '۲۰۱۶',
+            title: 'گواهینامه',
+            description: 'گواهینامه از TÜV SÜD و DEKRA',
           },
           {
-            year: "۲۰۲۰",
-            title: "دیجیتالی‌سازی",
-            description: "معرفی نمایشگاه آنلاین و خدمات دیجیتال",
+            year: '۲۰۲۰',
+            title: 'دیجیتالی‌سازی',
+            description: 'معرفی نمایشگاه آنلاین و خدمات دیجیتال',
           },
           {
-            year: "۲۰۲۴",
-            title: "۱۵ سال تجربه",
+            year: '۲۰۲۴',
+            title: '۱۵ سال تجربه',
             description:
-              "جشن گرفتن ۱۵ سال موفقیت و بیش از ۲۵۰۰ خودرو فروخته شده",
+              'جشن گرفتن ۱۵ سال موفقیت و بیش از ۲۵۰۰ خودرو فروخته شده',
           },
         ],
       },
       values: {
-        title: "ارزش‌های ما",
+        title: 'ارزش‌های ما',
         items: [
           {
-            title: "کیفیت",
+            title: 'کیفیت',
             description:
-              "هر خودرو با دقت بررسی شده و بالاترین کیفیت را ارائه می‌دهد.",
+              'هر خودرو با دقت بررسی شده و بالاترین کیفیت را ارائه می‌دهد.',
           },
           {
-            title: "شفافیت",
+            title: 'شفافیت',
             description:
-              "مشاوره صادقانه و قیمت‌های منصفانه بدون هزینه‌های پنهان.",
+              'مشاوره صادقانه و قیمت‌های منصفانه بدون هزینه‌های پنهان.',
           },
           {
-            title: "رضایت مشتری",
-            description: "رضایت شما بالاترین هدف ماست.",
+            title: 'رضایت مشتری',
+            description: 'رضایت شما بالاترین هدف ماست.',
           },
           {
-            title: "اعتماد",
-            description: "روابط بلندمدت مبتنی بر اعتماد و درستی.",
+            title: 'اعتماد',
+            description: 'روابط بلندمدت مبتنی بر اعتماد و درستی.',
           },
         ],
       },
       team: {
-        title: "تیم ما",
+        title: 'تیم ما',
         description:
-          "تیم باتجربه ما از متخصصان خودرو با اشتیاق برای خودروهای پریمیوم تشکیل شده است.",
+          'تیم باتجربه ما از متخصصان خودرو با اشتیاق برای خودروهای پریمیوم تشکیل شده است.',
         members: [
           {
-            name: "بهرام احمد",
-            position: "مدیرعامل",
-            bio: "با بیش از ۲۰ سال تجربه در صنعت خودرو.",
+            name: 'بهرام احمد',
+            position: 'مدیرعامل',
+            bio: 'با بیش از ۲۰ سال تجربه در صنعت خودرو.',
           },
           {
-            name: "سارا مولر",
-            position: "مدیر فروش",
-            bio: "متخصص خودروهای پریمیوم و خدمات مشتریان.",
+            name: 'سارا مولر',
+            position: 'مدیر فروش',
+            bio: 'متخصص خودروهای پریمیوم و خدمات مشتریان.',
           },
           {
-            name: "توماس وبر",
-            position: "مدیر خدمات",
-            bio: "متخصص فناوری و نگهداری خودرو.",
+            name: 'توماس وبر',
+            position: 'مدیر خدمات',
+            bio: 'متخصص فناوری و نگهداری خودرو.',
           },
           {
-            name: "لنا اشمیت",
-            position: "مدیر صادرات",
-            bio: "متخصص در صادرات بین‌المللی خودرو.",
+            name: 'لنا اشمیت',
+            position: 'مدیر صادرات',
+            bio: 'متخصص در صادرات بین‌المللی خودرو.',
           },
         ],
       },
       cta: {
-        title: "از ما دیدن کنید",
-        description: "ما از بازدید شما در نمایشگاه ما در کلن استقبال می‌کنیم.",
-        button: "با ما تماس بگیرید",
+        title: 'از ما دیدن کنید',
+        description: 'ما از بازدید شما در نمایشگاه ما در کلن استقبال می‌کنیم.',
+        button: 'با ما تماس بگیرید',
       },
     },
   };
@@ -256,11 +256,11 @@ const AboutPage = () => {
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={language === "fa" ? "rtl" : "ltr"} // Set text direction based on language
+      dir={language === 'fa' ? 'rtl' : 'ltr'} // Set text direction based on language
     >
       {/* Animated background with floating gradient orbs */}
       <AnimatedBackground />
-      
+
       {/* Header with navigation and language switcher */}
       <Header language={language} setLanguage={setLanguage} />
 
@@ -306,12 +306,12 @@ const AboutPage = () => {
                 {t.story.milestones.map((milestone, index) => (
                   <div
                     key={index}
-                    className={`relative flex ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center`}
+                    className={`relative flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}
                   >
                     {/* Milestone content card */}
                     <div className="md:w-1/2 md:px-8">
                       <div
-                        className={`rounded-2xl bg-gradient-to-br from-gray-800/70 to-gray-900/80 p-6 shadow-lg backdrop-blur-sm ${index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"}`}
+                        className={`rounded-2xl bg-gradient-to-br from-gray-800/70 to-gray-900/80 p-6 shadow-lg backdrop-blur-sm ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
                       >
                         {/* Milestone header with icon and title */}
                         <div className="mb-4 flex items-center">
@@ -398,7 +398,7 @@ const AboutPage = () => {
                   {/* Team member photo */}
                   <div className="h-64 bg-gray-700">
                     <Image
-                      src={`/images/team/${member.name.toLowerCase().replace(" ", "-")}.jpg`}
+                      src={`/images/team/${member.name.toLowerCase().replace(' ', '-')}.jpg`}
                       alt={member.name}
                       width={300}
                       height={300}

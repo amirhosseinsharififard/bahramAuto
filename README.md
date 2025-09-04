@@ -5,18 +5,21 @@ A modern, responsive website for Bahram Autohaus, a premium car dealership in Ge
 ## 🚀 Features
 
 ### 🌐 Multi-language Support
+
 - **German (DE)** - Primary language
 - **Persian/Farsi (FA)** - Secondary language with RTL support
 - Dynamic language switching across all pages
 - Context-based language management
 
 ### 📱 Responsive Design
+
 - Mobile-first approach
 - Optimized for all device sizes
 - Touch-friendly navigation
 - Smooth animations and transitions
 
 ### 🎨 Modern UI/UX
+
 - Gradient backgrounds and glassmorphism effects
 - Smooth hover animations
 - Interactive car gallery with filtering
@@ -45,6 +48,7 @@ src/
 ## 🧩 Components
 
 ### Header Component
+
 - Responsive navigation menu
 - Language switcher (DE/FA)
 - Mobile hamburger menu
@@ -52,6 +56,7 @@ src/
 - Logo with hover effects
 
 ### Footer Component
+
 - Company information
 - Contact details
 - Service links
@@ -59,6 +64,7 @@ src/
 - Certifications
 
 ### AnimatedBackground Component
+
 - Floating gradient orbs
 - Smooth pulse animations
 - Performance-optimized
@@ -66,6 +72,7 @@ src/
 ## 📄 Pages
 
 ### Homepage (`/`)
+
 - Hero section with statistics
 - Featured cars showcase
 - Search and filtering
@@ -73,6 +80,7 @@ src/
 - Call-to-action sections
 
 ### Gallery (`/gallery`)
+
 - Car grid with filtering
 - Search functionality
 - Detailed car views
@@ -80,18 +88,21 @@ src/
 - Responsive image gallery
 
 ### Services (`/service`)
+
 - Service overview
 - Process explanation
 - Interactive service cards
 - Contact call-to-action
 
 ### About Us (`/about-us`)
+
 - Company history timeline
 - Team information
 - Company values
 - Milestone achievements
 
 ### Contact (`/contact-us`)
+
 - Contact form
 - Business hours
 - Location information
@@ -109,10 +120,12 @@ src/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Installation
+
 ```bash
 # Clone the repository
 git clone [repository-url]
@@ -132,6 +145,7 @@ yarn dev
 ```
 
 ### Build for Production
+
 ```bash
 npm run build
 npm start
@@ -140,24 +154,28 @@ npm start
 ## 🎯 Key Optimizations
 
 ### Code Reusability
+
 - Shared Header and Footer components
 - Centralized language management
 - Consistent styling patterns
 - Reusable UI components
 
 ### Performance
+
 - Optimized images with Next.js Image component
 - Efficient state management
 - Minimal re-renders
 - Lazy loading for components
 
 ### User Experience
+
 - Smooth page transitions
 - Interactive elements
 - Responsive design
 - Accessibility considerations
 
 ### SEO & Accessibility
+
 - Semantic HTML structure
 - Meta tags and descriptions
 - Alt text for images
@@ -166,11 +184,13 @@ npm start
 ## 🌍 Language Support
 
 ### German (DE)
+
 - Primary business language
 - Professional automotive terminology
 - Local business context
 
 ### Persian/Farsi (FA)
+
 - RTL text direction support
 - Cultural adaptation
 - Localized content
@@ -184,6 +204,7 @@ npm start
 ## 🎨 Design System
 
 ### Colors
+
 - **Primary**: Blue (#3B82F6)
 - **Secondary**: Purple (#8B5CF6)
 - **Accent**: Cyan (#06B6D4)
@@ -191,11 +212,13 @@ npm start
 - **Text**: White and light grays
 
 ### Typography
+
 - **Headings**: Bold, gradient text
 - **Body**: Clean, readable fonts
 - **Buttons**: Rounded, gradient backgrounds
 
 ### Spacing
+
 - Consistent spacing scale
 - Responsive margins and padding
 - Proper component spacing
@@ -203,16 +226,19 @@ npm start
 ## 🔧 Customization
 
 ### Adding New Languages
+
 1. Update `LanguageContext.tsx`
 2. Add translations to component content objects
 3. Update navigation labels
 
 ### Adding New Pages
+
 1. Create new page in `app/` directory
 2. Import shared components
 3. Add to navigation in `Header.tsx`
 
 ### Styling Changes
+
 - Modify `tailwind.config.ts` for theme changes
 - Update component classes for layout changes
 - Use CSS variables for consistent theming
@@ -227,12 +253,14 @@ npm start
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 npm run build
 vercel --prod
 ```
 
 ### Other Platforms
+
 - Build the project: `npm run build`
 - Deploy the `out/` directory
 - Configure environment variables
@@ -252,6 +280,7 @@ This project is proprietary software for Bahram Autohaus.
 ## 📞 Support
 
 For technical support or questions:
+
 - Email: [support-email]
 - Documentation: [docs-url]
 - Issues: [github-issues-url]

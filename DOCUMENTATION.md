@@ -1,6 +1,7 @@
 # Bahram Autohaus - Project Documentation
 
 ## 📋 Table of Contents
+
 - [Project Overview](#project-overview)
 - [Technology Stack](#technology-stack)
 - [Project Structure](#project-structure)
@@ -18,6 +19,7 @@
 Bahram Autohaus is a modern, bilingual (German/Persian) car dealership website built with Next.js 14. The application features a responsive design, Excel-based content management, and comprehensive car showcase functionality.
 
 ### Key Features
+
 - 🌐 **Bilingual Support**: German and Persian languages
 - 📊 **Excel-based CMS**: Manage content through Excel files
 - 🚗 **Car Showcase**: Dynamic car listings with filtering
@@ -28,6 +30,7 @@ Bahram Autohaus is a modern, bilingual (German/Persian) car dealership website b
 ## 🛠 Technology Stack
 
 ### Frontend
+
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first CSS framework
@@ -35,11 +38,13 @@ Bahram Autohaus is a modern, bilingual (German/Persian) car dealership website b
 - **React Hooks** - State management
 
 ### Data Management
+
 - **Excel Files** - Content management via Excel/CSV
 - **Custom Hooks** - Data fetching and state management
 - **Context API** - Global state management
 
 ### Development Tools
+
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
 - **TypeScript** - Static type checking
@@ -87,19 +92,22 @@ bahram-auto/
 ## 🚀 Setup Instructions
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 - Git
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd bahram-auto
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -112,6 +120,7 @@ bahram-auto/
    - See [Excel File Structure](#excel-file-structure) for details
 
 4. **Run development server**
+
    ```bash
    npm run dev
    # or
@@ -124,6 +133,7 @@ bahram-auto/
 ## 🌐 Language Management
 
 ### Supported Languages
+
 - **German (DE)** - Default language
 - **Persian (FA)** - RTL support
 
@@ -138,10 +148,11 @@ bahram-auto/
 3. **Use in components**:
    ```tsx
    const { t } = useLanguage();
-   return <h1>{t("new.key")}</h1>;
+   return <h1>{t('new.key')}</h1>;
    ```
 
 ### Translation Key Structure
+
 - Use dot notation for nested keys: `nav.home`, `footer.company.name`
 - Categories help organize translations: `navigation`, `hero`, `footer`, etc.
 
@@ -165,6 +176,7 @@ bahram-auto/
 3. **Save and refresh** using Admin Panel
 
 ### Car Categories
+
 - `limousine` - Sedan cars
 - `suv` - SUV vehicles
 - `sportwagen` - Sports cars
@@ -173,6 +185,7 @@ bahram-auto/
 ## 📊 Excel File Structure
 
 ### Translations File (`translations-template.csv`)
+
 ```csv
 key,de,fa,category
 nav.home,Startseite,صفحه اصلی,navigation
@@ -180,42 +193,48 @@ hero.title,Bahram Autohaus,بهرام اتوهاوس,hero
 ```
 
 ### Cars File (`cars.xlsx`)
-| Column | Type | Description | Example |
-|--------|------|-------------|---------|
-| brand | String | Car manufacturer | BMW |
-| model | String | Car model | X5 |
-| year | Number | Manufacturing year | 2023 |
-| price | String | Price with currency | 45.000 € |
-| mileage | Number | Kilometers driven | 25000 |
-| fuel | String | Fuel type | Benzin |
-| transmission | String | Transmission type | Automatik |
-| category | String | Car category | suv |
-| image | String | Image filename | bmw-x5.jpg |
-| description | String | Car description | Premium SUV... |
+
+| Column       | Type   | Description         | Example        |
+| ------------ | ------ | ------------------- | -------------- |
+| brand        | String | Car manufacturer    | BMW            |
+| model        | String | Car model           | X5             |
+| year         | Number | Manufacturing year  | 2023           |
+| price        | String | Price with currency | 45.000 €       |
+| mileage      | Number | Kilometers driven   | 25000          |
+| fuel         | String | Fuel type           | Benzin         |
+| transmission | String | Transmission type   | Automatik      |
+| category     | String | Car category        | suv            |
+| image        | String | Image filename      | bmw-x5.jpg     |
+| description  | String | Car description     | Premium SUV... |
 
 ## 🧩 Component Documentation
 
 ### Header Component
+
 **File**: `src/components/Header.tsx`
 
 Responsive navigation header with:
+
 - Logo and branding
 - Navigation menu
 - Language switcher
 - Mobile menu
 
 **Props**:
+
 ```tsx
 interface HeaderProps {
-  language: "de" | "fa";
-  setLanguage: (lang: "de" | "fa") => void;
+  language: 'de' | 'fa';
+  setLanguage: (lang: 'de' | 'fa') => void;
 }
 ```
 
 ### Footer Component
+
 **File**: `src/components/Footer.tsx`
 
 Site footer with:
+
 - Company information
 - Contact details
 - Service links
@@ -223,6 +242,7 @@ Site footer with:
 - Developer information
 
 **Props**:
+
 ```tsx
 interface FooterProps {
   language: string;
@@ -230,15 +250,18 @@ interface FooterProps {
 ```
 
 ### AdminPanel Component
+
 **File**: `src/components/AdminPanel.tsx`
 
 Content management panel with:
+
 - Excel file location info
 - Data refresh functionality
 - Error handling
 - Usage instructions
 
 **Props**:
+
 ```tsx
 interface AdminPanelProps {
   isOpen: boolean;
@@ -249,13 +272,16 @@ interface AdminPanelProps {
 ## 🔧 API Reference
 
 ### useLanguage Hook
+
 **File**: `src/contexts/LanguageContext.tsx`
 
 ```tsx
-const { language, setLanguage, t, translations, loading, error } = useLanguage();
+const { language, setLanguage, t, translations, loading, error } =
+  useLanguage();
 ```
 
 **Returns**:
+
 - `language`: Current language ('de' | 'fa')
 - `setLanguage`: Function to change language
 - `t`: Translation function
@@ -264,6 +290,7 @@ const { language, setLanguage, t, translations, loading, error } = useLanguage()
 - `error`: Error state
 
 ### useExcelData Hook
+
 **File**: `src/hooks/useExcelData.ts`
 
 ```tsx
@@ -271,6 +298,7 @@ const { translations, cars, loading, error, refreshData } = useExcelData();
 ```
 
 **Returns**:
+
 - `translations`: Translation data
 - `cars`: Car data array
 - `loading`: Loading state
@@ -280,15 +308,18 @@ const { translations, cars, loading, error, refreshData } = useExcelData();
 ## 🚀 Deployment
 
 ### Production Build
+
 ```bash
 npm run build
 npm start
 ```
 
 ### Environment Variables
+
 No environment variables required for basic functionality.
 
 ### Static Export (Optional)
+
 ```bash
 npm run build
 npm run export
@@ -319,7 +350,9 @@ npm run export
    - Verify translation data structure
 
 ### Debug Mode
+
 Enable debug logging by checking browser console for:
+
 - Translation loading logs
 - Excel data loading logs
 - Error messages
@@ -327,11 +360,11 @@ Enable debug logging by checking browser console for:
 ## 📞 Support
 
 For technical support or questions:
+
 - **Developer**: Amir Hossein Shrififard
 - **Email**: amirhosseinshrififard@gmail.com
 - **Phone**: +989172380487
 
 ---
 
-*Last updated: December 2024*
-
+_Last updated: December 2024_

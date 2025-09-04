@@ -1,84 +1,84 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React, { useState } from 'react';
 
-import { Mail, Map, MapPin, Phone, Send, Wrench } from "lucide-react";
-import Image from "next/image";
+import { Mail, Map, MapPin, Phone, Send, Wrench } from 'lucide-react';
+import Image from 'next/image';
 
-import AnimatedBackground from "@/components/AnimatedBackground";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import { useLanguage } from "@/contexts/LanguageContext";
+import AnimatedBackground from '@/components/AnimatedBackground';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactPage = () => {
   const { language, setLanguage } = useLanguage();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
   });
 
   const content = {
     de: {
-      title: "Kontakt",
-      subtitle: "Wir freuen uns auf Ihre Nachricht",
+      title: 'Kontakt',
+      subtitle: 'Wir freuen uns auf Ihre Nachricht',
       form: {
-        title: "Schreiben Sie uns",
-        name: "Name",
-        email: "E-Mail",
-        phone: "Telefon",
-        subject: "Betreff",
-        message: "Nachricht",
-        submit: "Nachricht senden",
+        title: 'Schreiben Sie uns',
+        name: 'Name',
+        email: 'E-Mail',
+        phone: 'Telefon',
+        subject: 'Betreff',
+        message: 'Nachricht',
+        submit: 'Nachricht senden',
         success:
-          "Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.",
+          'Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.',
       },
       info: {
-        title: "Kontaktinformationen",
-        address: "Adresse",
-        phone: "Telefon",
-        email: "E-Mail",
-        hours: "Öffnungszeiten",
-        showroom: "Showroom",
-        service: "Service-Center",
-        hoursShowroom: "Mo-Fr: 9:00-18:00, Sa: 10:00-14:00",
-        hoursService: "Mo-Fr: 8:00-17:00",
+        title: 'Kontaktinformationen',
+        address: 'Adresse',
+        phone: 'Telefon',
+        email: 'E-Mail',
+        hours: 'Öffnungszeiten',
+        showroom: 'Showroom',
+        service: 'Service-Center',
+        hoursShowroom: 'Mo-Fr: 9:00-18:00, Sa: 10:00-14:00',
+        hoursService: 'Mo-Fr: 8:00-17:00',
       },
       map: {
-        title: "So finden Sie uns",
+        title: 'So finden Sie uns',
         description:
-          "Unser Showroom befindet sich in zentraler Lage in Köln. Gerne vereinbaren wir einen Termin für Ihre Besichtigung.",
+          'Unser Showroom befindet sich in zentraler Lage in Köln. Gerne vereinbaren wir einen Termin für Ihre Besichtigung.',
       },
     },
     fa: {
-      title: "تماس",
-      subtitle: "ما از شنیدن از شما خوشحال خواهیم شد",
+      title: 'تماس',
+      subtitle: 'ما از شنیدن از شما خوشحال خواهیم شد',
       form: {
-        title: "به ما بنویسید",
-        name: "نام",
-        email: "ایمیل",
-        phone: "تلفن",
-        subject: "موضوع",
-        message: "پیام",
-        submit: "ارسال پیام",
-        success: "از پیام شما متشکریم! ما در اسرع وقت با شما تماس خواهیم گرفت.",
+        title: 'به ما بنویسید',
+        name: 'نام',
+        email: 'ایمیل',
+        phone: 'تلفن',
+        subject: 'موضوع',
+        message: 'پیام',
+        submit: 'ارسال پیام',
+        success: 'از پیام شما متشکریم! ما در اسرع وقت با شما تماس خواهیم گرفت.',
       },
       info: {
-        title: "اطلاعات تماس",
-        address: "آدرس",
-        phone: "تلفن",
-        email: "ایمیل",
-        hours: "ساعات کاری",
-        showroom: "نمایشگاه",
-        service: "مرکز خدمات",
-        hoursShowroom: "دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰, شنبه: ۱۰:۰۰-۱۴:۰۰",
-        hoursService: "دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰",
+        title: 'اطلاعات تماس',
+        address: 'آدرس',
+        phone: 'تلفن',
+        email: 'ایمیل',
+        hours: 'ساعات کاری',
+        showroom: 'نمایشگاه',
+        service: 'مرکز خدمات',
+        hoursShowroom: 'دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰, شنبه: ۱۰:۰۰-۱۴:۰۰',
+        hoursService: 'دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰',
       },
       map: {
-        title: "چگونه ما را پیدا کنید",
+        title: 'چگونه ما را پیدا کنید',
         description:
-          "نمایشگاه ما در موقعیت مرکزی کلن قرار دارد. ما خوشحال خواهیم شد که یک قرار ملاقات برای بازدید شما تنظیم کنیم.",
+          'نمایشگاه ما در موقعیت مرکزی کلن قرار دارد. ما خوشحال خواهیم شد که یک قرار ملاقات برای بازدید شما تنظیم کنیم.',
       },
     },
   };
@@ -86,7 +86,7 @@ const ContactPage = () => {
   const t = content[language as keyof typeof content];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -99,18 +99,18 @@ const ContactPage = () => {
     e.preventDefault();
     alert(t.form.success);
     setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
     });
   };
 
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"
-      dir={language === "fa" ? "rtl" : "ltr"}
+      dir={language === 'fa' ? 'rtl' : 'ltr'}
     >
       <AnimatedBackground />
       <Header language={language} setLanguage={setLanguage} />
