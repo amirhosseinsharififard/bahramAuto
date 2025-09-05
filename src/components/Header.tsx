@@ -50,21 +50,25 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
           {/* Company Logo and Branding */}
           <Link
             href="/"
-            className="group flex cursor-pointer items-center space-x-3"
+            className="group flex cursor-pointer items-center gap-3"
           >
             {/* Animated logo icon with hover effects */}
-            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl flex-shrink-0">
               <Car className="h-8 w-8 text-white transition-transform duration-300 group-hover:rotate-12" />
             </div>
             {/* Company name and tagline */}
-            <div className="text-left">
-              <h1 className="text-xl font-bold text-white">Bahram Autohaus</h1>
-              <p className="text-xs text-blue-200">Premium Cars Deutschland</p>
+            <div className="text-left min-w-0">
+              <h1 className="text-xl font-bold text-white truncate">
+                Bahram Autohaus
+              </h1>
+              <p className="text-xs text-blue-200 truncate">
+                Premium Cars Deutschland
+              </p>
             </div>
           </Link>
 
           {/* Desktop Navigation Menu */}
-          <nav className="hidden md:flex md:space-x-1">
+          <nav className="hidden md:flex md:gap-1">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -83,9 +87,9 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
           </nav>
 
           {/* Language Switcher and Mobile Menu Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4">
             {/* Desktop Language Switcher */}
-            <div className="hidden md:flex md:space-x-2">
+            <div className="hidden md:flex md:gap-2">
               <button
                 onClick={() => setLanguage('de')}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ${
@@ -131,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex transform items-center space-x-3 rounded-lg px-4 py-3 transition-all duration-300 hover:translate-x-2 hover:bg-blue-900/30 ${
+                  className={`flex transform items-center gap-3 rounded-lg px-4 py-3 transition-all duration-300 hover:translate-x-2 hover:bg-blue-900/30 ${
                     pathname === item.href
                       ? 'bg-blue-900/30 text-blue-400'
                       : 'text-gray-300 hover:text-blue-400'
@@ -144,7 +148,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
             </nav>
 
             {/* Mobile Language Switch */}
-            <div className="mt-4 flex space-x-2 border-t border-white/10 pt-4">
+            <div className="mt-4 flex gap-2 border-t border-white/10 pt-4">
               <button
                 onClick={() => {
                   setLanguage('de');

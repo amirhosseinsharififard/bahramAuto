@@ -96,3 +96,15 @@ services.cta.button,Jetzt kontaktieren,همین الان تماس بگیرید,s
 services.features.title,Leistungen im Überblick,خدمات در یک نگاه,services
 services.learnMore,Mehr erfahren,بیشتر بدانید,services
 services.process.subtitle,So einfach funktioniert es bei uns,این‌طور ساده کار می‌کند,services
+gallery.title,Fahrzeuge,خودروها,gallery
+gallery.subtitle,Entdecken Sie unsere Premium-Fahrzeuge,کشف خودروهای پریمیوم ما,gallery
+gallery.details.back,Zurück zur Übersicht,بازگشت به نمای کلی,gallery
+gallery.details.year,Baujahr,سال ساخت,gallery
+gallery.details.mileage,Kilometerstand,کیلومتر,gallery
+gallery.details.fuel,Kraftstoff,سوخت,gallery
+gallery.details.transmission,Getriebe,گیربکس,gallery
+gallery.details.features,Ausstattung,ویژگی‌ها,gallery
+gallery.details.price,Preis,قیمت,gallery
+gallery.details.financing,Finanzierung ab,تامین مالی از,gallery
+gallery.details.month,/Monat,/ماه,gallery
+gallery.details.contact,Kontakt aufnehmen,تماس بگیرید,gallery

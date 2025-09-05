@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Calendar, Fuel, Gauge, Search, Settings } from 'lucide-react';
 import Image from 'next/image';
@@ -19,8 +19,65 @@ const GalleryPage = () => {
   // Load data from Excel files
   const { cars, loading, error } = useExcelData();
 
-  // Use Excel data if available
-  const availableCars = cars.length > 0 ? cars : [];
+  // Fallback car data in case Excel files fail to load
+  const fallbackCars = [
+    {
+      id: 1,
+      brand: 'BMW',
+      model: 'X5 M50d',
+      year: 2023,
+      price: '78900',
+      financing: '499',
+      mileage: '15000',
+      fuel: 'Diesel',
+      transmission: 'Automatik',
+      image: '/images/cars/bmw-x5.jpg',
+      features: ['M-Paket', 'Panorama', 'HUD', 'Harman Kardon'],
+      category: 'suv',
+      description:
+        'Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort.',
+    },
+    {
+      id: 2,
+      brand: 'Mercedes',
+      model: 'C63 AMG',
+      year: 2024,
+      price: '95500',
+      financing: '649',
+      mileage: '8500',
+      fuel: 'Benzin',
+      transmission: 'Automatik',
+      image: '/images/cars/mercedes-c63.jpg',
+      features: ['AMG Performance', 'Burmester', 'Distronic', '360° Kamera'],
+      category: 'sportwagen',
+      description:
+        'Der Mercedes-AMG C63 ist die Definition von Performance und Luxus.',
+    },
+    {
+      id: 3,
+      brand: 'Audi',
+      model: 'RS6 Avant',
+      year: 2023,
+      price: '112000',
+      financing: '799',
+      mileage: '12000',
+      fuel: 'Benzin',
+      transmission: 'Automatik',
+      image: '/images/cars/audi-rs6.jpg',
+      features: [
+        'RS Performance',
+        'Virtual Cockpit',
+        'Matrix LED',
+        'B&O Sound',
+      ],
+      category: 'kombi',
+      description:
+        'Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens.',
+    },
+  ];
+
+  // Use Excel data if available, otherwise use fallback data
+  const availableCars = cars.length > 0 ? cars : fallbackCars;
 
   const filteredCars = availableCars.filter(
     (car) =>
@@ -204,16 +261,17 @@ const GalleryPage = () => {
                       {t('gallery.details.features')}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {selectedCar.features.map(
-                        (feature: string, index: number) => (
-                          <span
-                            key={index}
-                            className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
-                          >
-                            {feature}
-                          </span>
-                        )
-                      )}
+                      {Array.isArray(selectedCar.features) &&
+                        selectedCar.features.map(
+                          (feature: string, index: number) => (
+                            <span
+                              key={index}
+                              className="rounded-full bg-blue-500/20 px-3 py-1 text-sm text-blue-300"
+                            >
+                              {feature}
+                            </span>
+                          )
+                        )}
                     </div>
                   </div>
 
@@ -293,26 +351,33 @@ const GalleryPage = () => {
                     </div>
 
                     <div className="mb-4 flex flex-wrap gap-1">
-                      {car.features
-                        .slice(0, 2)
-                        .map((feature: string, index: number) => (
-                          <span
-                            key={index}
-                            className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
-                          >
-                            {feature}
+                      {Array.isArray(car.features) &&
+                        car.features
+                          .slice(0, 2)
+                          .map((feature: string, index: number) => (
+                            <span
+                              key={index}
+                              className="rounded-lg border border-blue-500/30 bg-blue-500/20 px-2 py-1 text-xs text-blue-300"
+                            >
+                              {feature}
+                            </span>
+                          ))}
+                      {Array.isArray(car.features) &&
+                        car.features.length > 2 && (
+                          <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
+                            +{car.features.length - 2}
                           </span>
-                        ))}
-                      {car.features.length > 2 && (
-                        <span className="rounded-lg bg-gray-500/20 px-2 py-1 text-xs text-gray-300">
-                          +{car.features.length - 2}
-                        </span>
-                      )}
+                        )}
                     </div>
 
-                    <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-2 text-center text-sm text-green-400">
-                      {t('gallery.details.financing')} €{car.financing}
-                      {t('gallery.details.month')}
+                    <div className="rounded-lg border border-green-500/20 bg-green-500/10 p-3 text-center">
+                      <div className="text-xs text-green-300 mb-1">
+                        {t('gallery.details.financing')}
+                      </div>
+                      <div className="text-sm font-semibold text-green-400">
+                        €{car.financing}
+                        {t('gallery.details.month')}
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -32,11 +32,11 @@ const Footer: React.FC<FooterProps> = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Company Information Section */}
           <div className="lg:col-span-2">
-            <div className="mb-6 flex items-center space-x-3">
-              <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-3 flex-shrink-0">
                 <Car className="h-8 w-8 text-white" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="text-xl font-bold text-white">
                   {t('footer.company.name')}
                 </h3>
@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center gap-1">
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <Star className="h-5 w-5 fill-current text-yellow-400" />
               <Star className="h-5 w-5 fill-current text-yellow-400" />
@@ -63,31 +63,31 @@ const Footer: React.FC<FooterProps> = () => {
               {t('footer.contact')}
             </h3>
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
                   <Phone className="h-5 w-5 text-blue-400" />
                 </div>
-                <div>
-                  <p className="text-sm text-gray-300">
+                <div className="min-w-0">
+                  <p className="text-sm text-gray-300" dir="ltr">
                     {t('footer.contactInfo.phone')}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
                   <Mail className="h-5 w-5 text-blue-400" />
                 </div>
-                <div>
-                  <p className="text-sm text-gray-300">
+                <div className="min-w-0">
+                  <p className="text-sm text-gray-300" dir="ltr">
                     {t('footer.contactInfo.email')}
                   </p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
+              <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
                   <MapPin className="mt-1 h-5 w-5 text-blue-400" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-white">
                     {t('footer.contactInfo.address.street')}
                   </p>
@@ -187,10 +187,10 @@ const Footer: React.FC<FooterProps> = () => {
         {/* Copyright */}
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
           <p className="text-sm text-gray-400">{t('footer.copyright')}</p>
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-xs text-gray-500" dir="ltr">
             Developed by Amir Hossein Shrififard
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500" dir="ltr">
             Email: amirhosseinshrififard@gmail.com | Phone: +989172380487
           </p>
         </div>
