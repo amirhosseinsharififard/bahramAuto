@@ -96,7 +96,7 @@ const AboutPage = () => {
           {/* Company Milestones Timeline */}
           <div className="mb-20 rounded-2xl border border-white/10 bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 shadow-xl backdrop-blur-sm">
             <h2 className="mb-12 text-center text-3xl font-bold text-white">
-              Unsere Meilensteine
+              {t('about.milestones.title')}
             </h2>
             <div className="relative">
               {/* Vertical timeline line */}
@@ -121,16 +121,22 @@ const AboutPage = () => {
                           </div>
                           <div>
                             <h3 className="text-xl font-bold text-white">
-                              {t(`about.story.milestones.${index}.title`)}
+                              {t(
+                                `about.story.milestones.${index}.${index}.title`
+                              )}
                             </h3>
                             <p className="text-blue-400">
-                              {t(`about.story.milestones.${index}.year`)}
+                              {t(
+                                `about.story.milestones.${index}.${index}.year`
+                              )}
                             </p>
                           </div>
                         </div>
                         {/* Milestone description */}
                         <p className="text-gray-300">
-                          {t(`about.story.milestones.${index}.description`)}
+                          {t(
+                            `about.story.milestones.${index}.${index}.description`
+                          )}
                         </p>
                       </div>
                     </div>
@@ -160,7 +166,7 @@ const AboutPage = () => {
               <h2 className="mb-4 text-3xl font-bold">
                 {t('about.values.title')}
               </h2>
-              <p className="text-blue-200">Was uns antreibt und auszeichnet</p>
+              <p className="text-blue-200">{t('about.values.subtitle')}</p>
             </div>
 
             {/* Values grid */}
@@ -208,7 +214,7 @@ const AboutPage = () => {
                   <div className="h-64 bg-gray-700">
                     <Image
                       src={`/images/team/member-${index + 1}.jpg`}
-                      alt={t(`about.team.${index}.name`)}
+                      alt={t(`about.team.${index}.${index}.name`)}
                       width={300}
                       height={300}
                       className="h-full w-full object-cover"
@@ -217,13 +223,13 @@ const AboutPage = () => {
                   {/* Team member info */}
                   <div className="p-6">
                     <h3 className="mb-1 text-xl font-bold text-white">
-                      {t(`about.team.${index}.name`)}
+                      {t(`about.team.${index}.${index}.name`)}
                     </h3>
                     <p className="mb-4 text-blue-400">
-                      {t(`about.team.${index}.position`)}
+                      {t(`about.team.${index}.${index}.position`)}
                     </p>
                     <p className="text-gray-300">
-                      {t(`about.team.${index}.bio`)}
+                      {t(`about.team.${index}.${index}.bio`)}
                     </p>
                   </div>
                 </div>
