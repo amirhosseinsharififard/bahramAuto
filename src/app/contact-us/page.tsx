@@ -193,9 +193,15 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.address')}
                       </h3>
-                      <p className="text-gray-300">Musterstraße 123</p>
-                      <p className="text-gray-300">50667 Köln</p>
-                      <p className="text-gray-300">Deutschland</p>
+                      <p className="text-gray-300">
+                        {t('contact.data.address.street')}
+                      </p>
+                      <p className="text-gray-300">
+                        {t('contact.data.address.city')}
+                      </p>
+                      <p className="text-gray-300">
+                        {t('contact.data.address.country')}
+                      </p>
                     </div>
                   </div>
 
@@ -207,7 +213,7 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.phone')}
                       </h3>
-                      <p className="text-gray-300">+49 221 123 4567</p>
+                      <p className="text-gray-300">{t('contact.data.phone')}</p>
                     </div>
                   </div>
 
@@ -219,7 +225,7 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.email')}
                       </h3>
-                      <p className="text-gray-300">info@bahramautohaus.de</p>
+                      <p className="text-gray-300">{t('contact.data.email')}</p>
                     </div>
                   </div>
 
@@ -231,7 +237,9 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.whatsapp')}
                       </h3>
-                      <p className="text-gray-300">+49 221 123 4567</p>
+                      <p className="text-gray-300">
+                        {t('contact.data.whatsapp')}
+                      </p>
                     </div>
                   </div>
 
@@ -243,7 +251,9 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.telegram')}
                       </h3>
-                      <p className="text-gray-300">@bahramautohaus</p>
+                      <p className="text-gray-300">
+                        {t('contact.data.telegram')}
+                      </p>
                     </div>
                   </div>
 
@@ -255,7 +265,9 @@ const ContactPage = () => {
                       <h3 className="mb-1 font-medium text-white">
                         {t('contact.info.instagram')}
                       </h3>
-                      <p className="text-gray-300">@bahramautohaus</p>
+                      <p className="text-gray-300">
+                        {t('contact.data.instagram')}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -277,7 +289,7 @@ const ContactPage = () => {
                       </h3>
                     </div>
                     <p className="text-gray-300">
-                      {t('contact.info.hoursShowroom')}
+                      {t('contact.data.hours.showroom')}
                     </p>
                   </div>
 
@@ -291,7 +303,7 @@ const ContactPage = () => {
                       </h3>
                     </div>
                     <p className="text-gray-300">
-                      {t('contact.info.hoursService')}
+                      {t('contact.data.hours.service')}
                     </p>
                   </div>
                 </div>
@@ -320,7 +332,10 @@ const ContactPage = () => {
                 <h3 className="mb-2 text-xl font-bold text-white">
                   Bahram Autohaus
                 </h3>
-                <p className="text-gray-300">Musterstraße 123, 50667 Köln</p>
+                <p className="text-gray-300">
+                  {t('contact.data.address.street')},{' '}
+                  {t('contact.data.address.city')}
+                </p>
                 <a
                   href="https://maps.google.com"
                   target="_blank"

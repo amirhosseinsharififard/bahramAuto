@@ -132,6 +132,16 @@ contact.info.hoursShowroom,Mo-Fr: 9:00-18:00, Sa: 10:00-14:00,دوشنبه تا 
 contact.info.hoursService,Mo-Fr: 8:00-17:00,دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰,contact
 contact.map.title,So finden Sie uns,چگونه ما را پیدا کنید,contact
 contact.map.description,Unser Showroom befindet sich in zentraler Lage in Köln. Gerne vereinbaren wir einen Termin für Ihre Besichtigung.,نمایشگاه ما در موقعیت مرکزی کلن قرار دارد. ما خوشحال خواهیم شد که یک قرار ملاقات برای بازدید شما تنظیم کنیم.,contact
+contact.data.address.street,Musterstraße 123,خیابان نمونه ۱۲۳,contact
+contact.data.address.city,50667 Köln,۵۰۶۶۷ کلن,contact
+contact.data.address.country,Deutschland,آلمان,contact
+contact.data.phone,+49 221 123 4567,+۴۹ ۲۲۱ ۱۲۳ ۴۵۶۷,contact
+contact.data.email,info@bahramautohaus.de,info@bahramautohaus.de,contact
+contact.data.whatsapp,+49 221 123 4567,+۴۹ ۲۲۱ ۱۲۳ ۴۵۶۷,contact
+contact.data.telegram,@bahramautohaus,@bahramautohaus,contact
+contact.data.instagram,@bahramautohaus,@bahramautohaus,contact
+contact.data.hours.showroom,Mo-Fr: 9:00-18:00, Sa: 10:00-14:00,دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰, شنبه: ۱۰:۰۰-۱۴:۰۰,contact
+contact.data.hours.service,Mo-Fr: 8:00-17:00,دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰,contact
 about.title,Über Bahram Autohaus,درباره بهرام اتوهاوس,about
 about.subtitle,Ihr vertrauensvoller Partner für Premium-Fahrzeuge,شریک قابل اعتماد شما برای خودروهای پریمیوم,about
 about.story.title,Unsere Geschichte,داستان ما,about
