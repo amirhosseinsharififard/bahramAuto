@@ -12,9 +12,9 @@ const TeamSection = ({ t }: TeamSectionProps) => {
       {/* Section header */}
       <div className="mb-12 text-center">
         <h2 className="mb-4 text-3xl font-bold text-white">
-          {t('about.team.title')}
+          {t('about.teams.title')}
         </h2>
-        <p className="text-gray-300">{t('about.team.description')}</p>
+        <p className="text-gray-300">{t('about.teams.description')}</p>
       </div>
 
       {/* Team members grid */}

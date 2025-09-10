@@ -11,8 +11,8 @@ const ValuesSection = ({ t }: ValuesSectionProps) => {
     <div className="mb-20 rounded-2xl border border-white/10 bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-slate-900/80 p-8 text-white shadow-xl backdrop-blur-sm">
       {/* Section header */}
       <div className="mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold">{t('about.values.title')}</h2>
-        <p className="text-blue-200">{t('about.values.subtitle')}</p>
+        <h2 className="mb-4 text-3xl font-bold">{t('about.value.title')}</h2>
+        <p className="text-blue-200">{t('about.value.subtitle')}</p>
       </div>
 
       {/* Values grid */}
