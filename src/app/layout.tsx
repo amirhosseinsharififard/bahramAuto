@@ -14,7 +14,7 @@
  * - Prevents horizontal scrolling with overflow-x-hidden
  *
  * @fileoverview Root layout component for Bahram Autohaus
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

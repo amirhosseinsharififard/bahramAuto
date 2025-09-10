@@ -12,7 +12,7 @@
  * - AboutCTASection: Call-to-action section
  *
  * @fileoverview Barrel export for about-us components
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

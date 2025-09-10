@@ -202,7 +202,7 @@ hero.title,Bahram Autohaus,بهرام اتوهاوس,hero
 برای پشتیبانی فنی یا سوالات:
 
 - **توسعه‌دهنده**: امیرحسین شریف‌فرد
-- **ایمیل**: amirhosseinshrififard@gmail.com
+- **ایمیل**: amirhosseinsharififard@gmail.com
 - **تلفن**: +989172380487
 
 ---

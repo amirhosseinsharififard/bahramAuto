@@ -5,12 +5,21 @@
  * across the application. It follows the barrel pattern for clean imports.
  *
  * @fileoverview Centralized component exports
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 
 // About Us Components
 export * from './about-us';
+
+// Gallery Components
+export * from './gallery';
+
+// Services Components
+export * from './services';
+
+// Contact Us Components
+export * from './contact-us';
 
 // Main Page Sections
 export * from './sections';

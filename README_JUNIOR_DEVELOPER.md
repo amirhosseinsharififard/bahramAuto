@@ -373,8 +373,8 @@ If you're stuck:
 
 ## 📞 Contact Information
 
-**Developer:** Amir Hossein Shrififard
-**Email:** amirhosseinshrififard@gmail.com
+**Developer:** Amir Hossein sharififard
+**Email:** amirhosseinsharififard@gmail.com
 **Phone:** +989172380487
 
 ---

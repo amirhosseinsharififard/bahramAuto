@@ -13,7 +13,7 @@
  * - Handles data conversion and validation
  *
  * @fileoverview Custom hook for Excel data management
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

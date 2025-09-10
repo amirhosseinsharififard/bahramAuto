@@ -14,7 +14,7 @@
  * all car data and translations are loaded from Excel files.
  *
  * @fileoverview Main homepage component for Bahram Autohaus
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 2.0.0
  */
 

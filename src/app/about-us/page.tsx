@@ -15,7 +15,7 @@
  * - Call-to-action for contact
  *
  * @fileoverview About us page for Bahram Autohaus
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

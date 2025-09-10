@@ -201,8 +201,8 @@ Aktivieren Sie Debug-Protokollierung durch Überprüfung der Browser-Konsole auf
 
 Für technischen Support oder Fragen:
 
-- **Entwickler**: Amir Hossein Shrififard
-- **E-Mail**: amirhosseinshrififard@gmail.com
+- **Entwickler**: Amir Hossein sharififard
+- **E-Mail**: amirhosseinsharififard@gmail.com
 - **Telefon**: +989172380487
 
 ---

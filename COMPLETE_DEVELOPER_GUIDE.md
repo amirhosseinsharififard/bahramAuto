@@ -1129,11 +1129,11 @@ class ErrorBoundary extends React.Component {
 
 ## 📞 Support & Contact
 
-**Developer:** Amir Hossein Shrififard  
-**Email:** amirhosseinshrififard@gmail.com  
+**Developer:** Amir Hossein sharififard
+**Email:** amirhosseinsharififard@gmail.com
 **Phone:** +989172380487
 
-**Last Updated:** December 2024  
+**Last Updated:** December 2024
 **Version:** 1.0.0
 
 ---

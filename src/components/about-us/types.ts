@@ -5,7 +5,7 @@
  * used across all about-us page components.
  *
  * @fileoverview Type definitions for about-us components
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

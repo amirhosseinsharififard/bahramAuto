@@ -11,7 +11,7 @@
  * - SearchFilterSection: Search and filter functionality
  *
  * @fileoverview Barrel export for main page section components
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

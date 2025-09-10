@@ -14,7 +14,7 @@
  * - Support for nested object structures
  *
  * @fileoverview Utility for reading and processing Excel/CSV data
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 
