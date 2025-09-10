@@ -469,9 +469,12 @@ const BahramAutohaus = () => {
                     </div>
 
                     {/* Contact button */}
-                    <button className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
+                    <Link
+                      href="/contact-us"
+                      className="mt-8 w-full rounded-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 text-center block"
+                    >
                       {t('highlights.contactUs')}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -484,7 +487,7 @@ const BahramAutohaus = () => {
                     id="car-slider"
                     className="grid grid-cols-1 gap-3 py-3 pb-6 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
                   >
-                    {filteredCars.map((car) => (
+                    {filteredCars.slice(0, 6).map((car) => (
                       <div
                         key={car.id}
                         className="group w-full transform cursor-pointer transition-all duration-500"
