@@ -1,11 +1,9 @@
 'use client';
-import React from 'react';
 
 import { CreditCard, FileText, Globe, Shield, Wrench } from 'lucide-react';
 
 import AnimatedBackground from '@/components/AnimatedBackground';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import { Footer, Header } from '@/components/layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesPage = () => {

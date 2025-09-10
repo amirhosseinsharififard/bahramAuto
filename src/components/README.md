@@ -6,11 +6,20 @@ This directory contains all React components organized by their purpose and func
 
 ```
 src/components/
-├── sections/          # Main page sections
+├── about-us/         # About Us page components
+│   ├── AboutCTASection.tsx
+│   ├── AboutHeroSection.tsx
+│   ├── MilestonesSection.tsx
+│   ├── TeamSection.tsx
+│   ├── ValuesSection.tsx
+│   ├── types.ts
+│   ├── index.ts
+│   └── README.md
+├── sections/         # Main page sections
+│   ├── AdvantagesSection.tsx
+│   ├── CarGallerySection.tsx
 │   ├── HeroSection.tsx
 │   ├── SearchFilterSection.tsx
-│   ├── CarGallerySection.tsx
-│   ├── AdvantagesSection.tsx
 │   └── index.ts
 ├── ui/               # Reusable UI components
 │   ├── CarCard.tsx
@@ -32,14 +41,24 @@ src/components/
 
 ## 🎯 Component Categories
 
+### About Us (`/about-us`)
+
+Dedicated components for the About Us page:
+
+- **AboutCTASection**: Call-to-action section for contact
+- **AboutHeroSection**: Hero section with company story
+- **MilestonesSection**: Company timeline and milestones
+- **TeamSection**: Team members showcase
+- **ValuesSection**: Company values and principles
+
 ### Sections (`/sections`)
 
-Main page sections that make up the homepage layout:
+Main page sections for the homepage:
 
+- **AdvantagesSection**: Company advantages showcase
+- **CarGallerySection**: Car gallery with grid/detail view
 - **HeroSection**: Company introduction with statistics
 - **SearchFilterSection**: Car search and filtering interface
-- **CarGallerySection**: Car gallery with grid/detail view
-- **AdvantagesSection**: Company advantages showcase
 
 ### UI Components (`/ui`)
 
@@ -67,6 +86,7 @@ Overlay components for user interactions:
 ### Import from specific category:
 
 ```typescript
+import { AboutHeroSection, MilestonesSection } from '@/components/about-us';
 import { HeroSection, CarGallerySection } from '@/components/sections';
 import { CarCard, LoadingComponent } from '@/components/ui';
 import { Header, Footer } from '@/components/layout';
@@ -77,6 +97,7 @@ import { VideoModal } from '@/components/modals';
 
 ```typescript
 import {
+  AboutHeroSection,
   HeroSection,
   CarCard,
   Header,

@@ -15,8 +15,7 @@ import {
 import Image from 'next/image';
 
 import AnimatedBackground from '@/components/AnimatedBackground';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import { Footer, Header } from '@/components/layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactPage = () => {

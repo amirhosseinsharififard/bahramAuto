@@ -111,20 +111,17 @@ export class ExcelReader {
   static async readTranslations(filePath: string): Promise<TranslationData[]> {
     try {
       // Fetch the CSV file from the public directory
-      console.log('Fetching translations from:', filePath);
+
       const response = await fetch(filePath);
-      console.log('Response status:', response.status);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const text = await response.text();
-      console.log('CSV content length:', text.length);
-      console.log('First 200 characters:', text.substring(0, 200));
 
       // Parse CSV with proper UTF-8 handling for international characters
       const lines = text.split('\n').filter((line) => line.trim());
-      console.log('Total lines found:', lines.length);
-      console.log('First few lines:', lines.slice(0, 3));
+
       const jsonData = lines.map((line) => {
         // Custom CSV parser that handles quoted fields and UTF-8 characters
         const result = [];
@@ -153,10 +150,10 @@ export class ExcelReader {
 
       // Skip header row and convert to TranslationData format
       const translations: TranslationData[] = [];
-      console.log('Processing rows, total jsonData length:', jsonData.length);
+
       for (let i = 1; i < jsonData.length; i++) {
         const row = jsonData[i] as any[];
-        console.log(`Row ${i}:`, row);
+
         // Validate that row has at least 4 columns and first column is not empty
         if (row && row.length >= 4 && row[0]) {
           const translation = {
@@ -165,15 +162,12 @@ export class ExcelReader {
             fa: row[2] || '', // Persian translation
             category: row[3] || 'general', // Category for organization
           };
-          console.log('Adding translation:', translation);
+
           translations.push(translation);
         } else {
-          console.log(`Skipping row ${i} - invalid format:`, row);
         }
       }
 
-      console.log('Total translations found:', translations.length);
-      console.log('First few translations:', translations.slice(0, 3));
       return translations;
     } catch (error) {
       console.error('Error reading translations file:', error);
@@ -330,11 +324,6 @@ export class ExcelReader {
     // Add direction property for RTL/LTR support
     de.direction = 'ltr'; // German is left-to-right
     fa.direction = 'rtl'; // Persian is right-to-left
-
-    console.log('Converted translations - DE keys:', Object.keys(de));
-    console.log('Converted translations - FA keys:', Object.keys(fa));
-    console.log('DE about section:', de.about);
-    console.log('FA about section:', fa.about);
 
     return { de, fa };
   }
