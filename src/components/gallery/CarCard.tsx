@@ -1,28 +1,13 @@
 'use client';
 
+import { UnifiedCar } from '@/hooks/useCarData';
 import { Fuel, Gauge, Settings } from 'lucide-react';
 import Image from 'next/image';
 
-interface Car {
-  id: number;
-  brand: string;
-  model: string;
-  year: number;
-  price: string;
-  financing: string;
-  mileage: string;
-  fuel: string;
-  transmission: string;
-  image: string;
-  features: string[];
-  category: string;
-  description: string;
-}
-
 interface CarCardProps {
   t: (key: string) => string;
-  car: Car;
-  onSelect: (car: Car) => void;
+  car: UnifiedCar;
+  onSelect: (car: UnifiedCar) => void;
 }
 
 const CarCard = ({ t, car, onSelect }: CarCardProps) => {

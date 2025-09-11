@@ -1,27 +1,13 @@
 'use client';
 
-import CarCard from './CarCard';
+import { UnifiedCar } from '@/hooks/useCarData';
 
-interface Car {
-  id: number;
-  brand: string;
-  model: string;
-  year: number;
-  price: string;
-  financing: string;
-  mileage: string;
-  fuel: string;
-  transmission: string;
-  image: string;
-  features: string[];
-  category: string;
-  description: string;
-}
+import CarCard from './CarCard';
 
 interface CarGridSectionProps {
   t: (key: string) => string;
-  cars: Car[];
-  onCarSelect: (car: Car) => void;
+  cars: UnifiedCar[];
+  onCarSelect: (car: UnifiedCar) => void;
 }
 
 const CarGridSection = ({ t, cars, onCarSelect }: CarGridSectionProps) => {

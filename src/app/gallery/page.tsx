@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 
+import { DataSourceSwitcher } from '@/components';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import {
   CarGridSection,
@@ -11,7 +12,7 @@ import {
 } from '@/components/gallery';
 import { Footer, Header } from '@/components/layout';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useExcelData } from '@/hooks/useExcelData';
+import { useCarData } from '@/hooks/useCarData';
 
 const GalleryPage = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -19,68 +20,14 @@ const GalleryPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCar, setSelectedCar] = useState<any | null>(null);
 
-  // Load data from Excel files
-  const { cars, loading, error } = useExcelData();
-
-  // Fallback car data in case Excel files fail to load
-  const fallbackCars = [
-    {
-      id: 1,
-      brand: 'BMW',
-      model: 'X5 M50d',
-      year: 2023,
-      price: '78900',
-      financing: '499',
-      mileage: '15000',
-      fuel: 'Diesel',
-      transmission: 'Automatik',
-      image: '/images/cars/bmw-x5.jpg',
-      features: ['M-Paket', 'Panorama', 'HUD', 'Harman Kardon'],
-      category: 'suv',
-      description:
-        'Der BMW X5 M50d bietet beeindruckende Leistung und exklusiven Komfort.',
-    },
-    {
-      id: 2,
-      brand: 'Mercedes',
-      model: 'C63 AMG',
-      year: 2024,
-      price: '95500',
-      financing: '649',
-      mileage: '8500',
-      fuel: 'Benzin',
-      transmission: 'Automatik',
-      image: '/images/cars/mercedes-c63.jpg',
-      features: ['AMG Performance', 'Burmester', 'Distronic', '360° Kamera'],
-      category: 'sportwagen',
-      description:
-        'Der Mercedes-AMG C63 ist die Definition von Performance und Luxus.',
-    },
-    {
-      id: 3,
-      brand: 'Audi',
-      model: 'RS6 Avant',
-      year: 2023,
-      price: '112000',
-      financing: '799',
-      mileage: '12000',
-      fuel: 'Benzin',
-      transmission: 'Automatik',
-      image: '/images/cars/audi-rs6.jpg',
-      features: [
-        'RS Performance',
-        'Virtual Cockpit',
-        'Matrix LED',
-        'B&O Sound',
-      ],
-      category: 'kombi',
-      description:
-        'Der Audi RS6 Avant kombiniert die Praktikabilität eines Kombis mit der Performance eines Sportwagens.',
-    },
-  ];
-
-  // Use Excel data if available, otherwise use fallback data
-  const availableCars = cars.length > 0 ? cars : fallbackCars;
+  // Load data from Excel or Strapi using unified hook
+  const {
+    cars: availableCars,
+    loading,
+    error,
+    dataSource,
+    setDataSource,
+  } = useCarData();
 
   const filteredCars = availableCars.filter(
     (car) =>
@@ -106,6 +53,16 @@ const GalleryPage = () => {
       {error && (
         <div className="fixed right-4 top-4 z-50 rounded-lg bg-yellow-500 px-4 py-2 text-black shadow-lg">
           <p className="text-sm">{error}</p>
+        </div>
+      )}
+
+      {/* Data source switcher */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed left-4 top-4 z-40">
+          <DataSourceSwitcher
+            currentSource={dataSource}
+            onSourceChange={setDataSource}
+          />
         </div>
       )}
 

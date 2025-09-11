@@ -32,6 +32,7 @@ import {
   AdvantagesSection,
   AnimatedBackground,
   CarGallerySection,
+  DataSourceSwitcher,
   Footer,
   Header,
   HeroSection,
@@ -41,7 +42,7 @@ import {
 } from '@/components';
 // Custom hooks and contexts
 import { useLanguage } from '@/contexts/LanguageContext'; // Language context for translations
-import { useExcelData } from '@/hooks/useExcelData'; // Hook for loading Excel data
+import { useCarData } from '@/hooks/useCarData'; // Hook for loading car data from Excel or Strapi
 
 /**
  * Main Bahram Autohaus component
@@ -65,12 +66,14 @@ const BahramAutohaus = () => {
   // State for admin panel functionality
   const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false); // Whether admin panel is open
 
-  // Load car data from Excel files using custom hook
-  const { cars } = useExcelData();
-
-  // Use Excel data if available, otherwise fallback to empty array
-  // This ensures the component works even if Excel files are not loaded
-  const availableCars = cars.length > 0 ? cars : [];
+  // Load car data from Excel or Strapi using unified hook
+  const {
+    cars: availableCars,
+    loading: carsLoading,
+    error: carsError,
+    dataSource,
+    setDataSource,
+  } = useCarData();
 
   /**
    * Close video modal function
@@ -113,10 +116,20 @@ const BahramAutohaus = () => {
       {/* Header with navigation and language switcher */}
       <Header language={language} setLanguage={setLanguage} />
 
-      {/* Error notification - shows if Excel data loading fails */}
-      {error && (
+      {/* Error notification - shows if data loading fails */}
+      {(error || carsError) && (
         <div className="fixed right-4 top-4 z-50 rounded-lg bg-yellow-500 px-4 py-2 text-black shadow-lg">
-          <p className="text-sm">{error}</p>
+          <p className="text-sm">{error || carsError}</p>
+        </div>
+      )}
+
+      {/* Data source switcher */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed left-4 top-4 z-40">
+          <DataSourceSwitcher
+            currentSource={dataSource}
+            onSourceChange={setDataSource}
+          />
         </div>
       )}
 

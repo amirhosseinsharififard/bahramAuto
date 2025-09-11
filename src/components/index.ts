@@ -37,3 +37,4 @@ export * from './modals';
 export { AdminPanel } from './AdminPanel';
 export { default as AnimatedBackground } from './AnimatedBackground';
 export { CarManagement } from './CarManagement';
+export { default as DataSourceSwitcher } from './DataSourceSwitcher';
