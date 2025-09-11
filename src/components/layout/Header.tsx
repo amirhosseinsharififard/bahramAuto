@@ -1,5 +1,4 @@
-'use client';
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Car, Menu, X } from 'lucide-react';
 import Link from 'next/link';
@@ -24,7 +23,7 @@ interface HeaderProps {
  * @param {HeaderProps} props - Component props
  * @returns {JSX.Element} Header component
  */
-const Header: React.FC<HeaderProps> = ({ language, setLanguage }) => {
+const Header: FC<HeaderProps> = ({ language, setLanguage }) => {
   // State for mobile menu visibility
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

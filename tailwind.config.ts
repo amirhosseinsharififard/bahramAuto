@@ -11,7 +11,7 @@
  * - Responsive design utilities
  *
  * @fileoverview Tailwind CSS configuration for Bahram Autohaus
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

@@ -14,7 +14,7 @@
  * - Loading and error states
  *
  * @fileoverview Language context for internationalization
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 

@@ -108,3 +108,84 @@ gallery.details.price,Preis,قیمت,gallery
 gallery.details.financing,Finanzierung ab,تامین مالی از,gallery
 gallery.details.month,/Monat,/ماه,gallery
 gallery.details.contact,Kontakt aufnehmen,تماس بگیرید,gallery
+contact.title,Kontakt,تماس,contact
+contact.subtitle,Wir freuen uns auf Ihre Nachricht,ما از شنیدن از شما خوشحال خواهیم شد,contact
+contact.form.title,Schreiben Sie uns,به ما بنویسید,contact
+contact.form.name,Name,نام,contact
+contact.form.email,E-Mail,ایمیل,contact
+contact.form.phone,Telefon,تلفن,contact
+contact.form.subject,Betreff,موضوع,contact
+contact.form.message,Nachricht,پیام,contact
+contact.form.submit,Nachricht senden,ارسال پیام,contact
+contact.form.success,Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.,از پیام شما متشکریم! ما در اسرع وقت با شما تماس خواهیم گرفت.,contact
+contact.info.title,Kontaktinformationen,اطلاعات تماس,contact
+contact.info.address,Adresse,آدرس,contact
+contact.info.phone,Telefon,تلفن,contact
+contact.info.email,E-Mail,ایمیل,contact
+contact.info.whatsapp,WhatsApp,واتساپ,contact
+contact.info.telegram,Telegram,تلگرام,contact
+contact.info.instagram,Instagram,اینستاگرام,contact
+contact.info.hours,Öffnungszeiten,ساعات کاری,contact
+contact.info.showroom,Showroom,نمایشگاه,contact
+contact.info.service,Service-Center,مرکز خدمات,contact
+contact.info.hoursShowroom,Mo-Fr: 9:00-18:00, Sa: 10:00-14:00,دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰, شنبه: ۱۰:۰۰-۱۴:۰۰,contact
+contact.info.hoursService,Mo-Fr: 8:00-17:00,دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰,contact
+contact.map.title,So finden Sie uns,چگونه ما را پیدا کنید,contact
+contact.map.description,Unser Showroom befindet sich in zentraler Lage in Köln. Gerne vereinbaren wir einen Termin für Ihre Besichtigung.,نمایشگاه ما در موقعیت مرکزی کلن قرار دارد. ما خوشحال خواهیم شد که یک قرار ملاقات برای بازدید شما تنظیم کنیم.,contact
+contact.data.address.street,Musterstraße 123,خیابان نمونه ۱۲۳,contact
+contact.data.address.city,50667 Köln,۵۰۶۶۷ کلن,contact
+contact.data.address.country,Deutschland,آلمان,contact
+contact.data.phone,+49 221 123 4567,+۴۹ ۲۲۱ ۱۲۳ ۴۵۶۷,contact
+contact.data.email,info@bahramautohaus.de,info@bahramautohaus.de,contact
+contact.data.whatsapp,+49 221 123 4567,+۴۹ ۲۲۱ ۱۲۳ ۴۵۶۷,contact
+contact.data.telegram,@bahramautohaus,@bahramautohaus,contact
+contact.data.instagram,@bahramautohaus,@bahramautohaus,contact
+contact.data.hours.showroom,Mo-Fr: 9:00-18:00, Sa: 10:00-14:00,دوشنبه تا جمعه: ۹:۰۰-۱۸:۰۰, شنبه: ۱۰:۰۰-۱۴:۰۰,contact
+contact.data.hours.service,Mo-Fr: 8:00-17:00,دوشنبه تا جمعه: ۸:۰۰-۱۷:۰۰,contact
+about.title,Über Bahram Autohaus,درباره بهرام اتوهاوس,about
+about.subtitle,Ihr vertrauensvoller Partner für Premium-Fahrzeuge,شریک قابل اعتماد شما برای خودروهای پریمیوم,about
+about.story.title,Unsere Geschichte,داستان ما,about
+about.story.description,Gegründet im Jahr 2008, hat sich Bahram Autohaus zu einem der führenden Händler für Premium-Fahrzeuge in Deutschland entwickelt. Unser Erfolg basiert auf einer einfachen Philosophie: Kundenzufriedenheit durch Qualität und Transparenz.,تأسیس شده در سال ۲۰۰۸، بهرام اتوهاوس به یکی از پیشروترین فروشندگان خودروهای پریمیوم در آلمان تبدیل شده است. موفقیت ما بر اساس فلسفه ساده‌ای است: رضایت مشتری از طریق کیفیت و شفافیت.,about
+about.story.milestones.0.year,2008,۲۰۰۸,about
+about.story.milestones.0.title,Gründung,تأسیس,about
+about.story.milestones.0.description,Eröffnung des ersten Standorts in Köln,افتتاح اولین شعبه در کلن,about
+about.story.milestones.1.year,2012,۲۰۱۲,about
+about.story.milestones.1.title,Expansion,گسترش,about
+about.story.milestones.1.description,Eröffnung zweiter Standort und Beginn des Exports,افتتاح شعبه دوم و آغاز صادرات,about
+about.story.milestones.2.year,2016,۲۰۱۶,about
+about.story.milestones.2.title,Zertifizierung,گواهینامه,about
+about.story.milestones.2.description,Zertifizierung durch TÜV SÜD und DEKRA,گواهینامه از TÜV SÜD و DEKRA,about
+about.story.milestones.3.year,2020,۲۰۲۰,about
+about.story.milestones.3.title,Digitalisierung,دیجیتالی‌سازی,about
+about.story.milestones.3.description,Einführung des Online-Showrooms und digitalen Services,معرفی نمایشگاه آنلاین و خدمات دیجیتال,about
+about.story.milestones.4.year,2024,۲۰۲۴,about
+about.story.milestones.4.title,15 Jahre Erfahrung,۱۵ سال تجربه,about
+about.story.milestones.4.description,Feier von 15 Jahren Erfolg und über 2500 verkaufte Fahrzeuge,جشن گرفتن ۱۵ سال موفقیت و بیش از ۲۵۰۰ خودرو فروخته شده,about
+about.milestones.title,Unsere Meilensteine,نقاط عطف ما,about
+about.value.title,Unsere Werte,ارزش‌های ما,about
+about.value.subtitle,Was uns antreibt und auszeichnet,آنچه ما را به حرکت در می‌آورد و متمایز می‌کند,about
+about.values.0.title,Qualität,کیفیت,about
+about.values.0.description,Jedes Fahrzeug wird sorgfältig geprüft und bietet höchste Qualität.,هر خودرو با دقت بررسی شده و بالاترین کیفیت را ارائه می‌دهد.,about
+about.values.1.title,Transparenz,شفافیت,about
+about.values.1.description,Ehrliche Beratung und faire Preise ohne versteckte Kosten.,مشاوره صادقانه و قیمت‌های منصفانه بدون هزینه‌های پنهان.,about
+about.values.2.title,Kundenzufriedenheit,رضایت مشتری,about
+about.values.2.description,Ihre Zufriedenheit ist unser höchstes Ziel.,رضایت شما بالاترین هدف ماست.,about
+about.values.3.title,Vertrauen,اعتماد,about
+about.values.3.description,Langfristige Beziehungen basierend auf Vertrauen und Integrität.,روابط بلندمدت مبتنی بر اعتماد و درستی.,about
+about.teams.title,Unser Team,تیم ما,about
+about.teams.description,Unser erfahrenes Team besteht aus Automobil-Experten mit einer Leidenschaft für Premium-Fahrzeuge.,تیم باتجربه ما از متخصصان خودرو با اشتیاق برای خودروهای پریمیوم تشکیل شده است.,about
+about.team.0.name,Bahram Ahmad,بهرام احمد,about
+about.team.0.position,Geschäftsführer,مدیرعامل,about
+about.team.0.bio,Mit über 20 Jahren Erfahrung in der Automobilbranche.,با بیش از ۲۰ سال تجربه در صنعت خودرو.,about
+about.team.1.name,Sarah Müller,سارا مولر,about
+about.team.1.position,Verkaufsleitung,مدیر فروش,about
+about.team.1.bio,Expertin für Premium-Fahrzeuge und Kundenbetreuung.,متخصص خودروهای پریمیوم و خدمات مشتریان.,about
+about.team.2.name,Thomas Weber,توماس وبر,about
+about.team.2.position,Serviceleiter,مدیر خدمات,about
+about.team.2.bio,Spezialist für Fahrzeugtechnik und -wartung.,متخصص فناوری و نگهداری خودرو.,about
+about.team.3.name,Lena Schmidt,لنا اشمیت,about
+about.team.3.position,Exportmanagerin,مدیر صادرات,about
+about.team.3.bio,Expertin für internationale Fahrzeugexporte.,متخصص در صادرات بین‌المللی خودرو.,about
+about.cta.title,Besuchen Sie uns,از ما دیدن کنید,about
+about.cta.description,Wir freuen uns auf Ihren Besuch in unserem Showroom in Köln.,ما از بازدید شما در نمایشگاه ما در کلن استقبال می‌کنیم.,about
+about.cta.button,Kontaktieren Sie uns,با ما تماس بگیرید,about

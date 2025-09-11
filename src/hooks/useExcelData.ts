@@ -13,7 +13,7 @@
  * - Handles data conversion and validation
  *
  * @fileoverview Custom hook for Excel data management
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 
@@ -92,15 +92,6 @@ export const useExcelData = () => {
           ExcelReader.convertTranslationsToObject(translationData);
 
         // Debug logging for development
-        console.log('Loaded translations:', convertedTranslations);
-        console.log(
-          'advantageItems DE:',
-          convertedTranslations.de?.advantageItems
-        );
-        console.log(
-          'advantageItems FA:',
-          convertedTranslations.fa?.advantageItems
-        );
 
         // Update translations state
         setTranslations(convertedTranslations);

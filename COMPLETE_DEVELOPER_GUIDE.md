@@ -1129,15 +1129,13 @@ class ErrorBoundary extends React.Component {
 
 ## 📞 Support & Contact
 
-**Developer:** Amir Hossein Shrififard  
-**Email:** amirhosseinshrififard@gmail.com  
+**Developer:** Amir Hossein sharififard
+**Email:** amirhosseinsharififard@gmail.com
 **Phone:** +989172380487
 
-**Last Updated:** December 2024  
+**Last Updated:** December 2024
 **Version:** 1.0.0
 
 ---
 
 _This guide provides comprehensive documentation for the Bahram Autohaus project. It covers everything from basic setup to advanced deployment strategies, ensuring that developers of all skill levels can understand, maintain, and extend the application._
-
-

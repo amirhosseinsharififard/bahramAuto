@@ -14,7 +14,7 @@
  * - Support for nested object structures
  *
  * @fileoverview Utility for reading and processing Excel/CSV data
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 
@@ -111,11 +111,17 @@ export class ExcelReader {
   static async readTranslations(filePath: string): Promise<TranslationData[]> {
     try {
       // Fetch the CSV file from the public directory
+
       const response = await fetch(filePath);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const text = await response.text();
 
       // Parse CSV with proper UTF-8 handling for international characters
       const lines = text.split('\n').filter((line) => line.trim());
+
       const jsonData = lines.map((line) => {
         // Custom CSV parser that handles quoted fields and UTF-8 characters
         const result = [];
@@ -144,8 +150,10 @@ export class ExcelReader {
 
       // Skip header row and convert to TranslationData format
       const translations: TranslationData[] = [];
+
       for (let i = 1; i < jsonData.length; i++) {
         const row = jsonData[i] as any[];
+
         // Validate that row has at least 4 columns and first column is not empty
         if (row && row.length >= 4 && row[0]) {
           const translation = {
@@ -154,11 +162,12 @@ export class ExcelReader {
             fa: row[2] || '', // Persian translation
             category: row[3] || 'general', // Category for organization
           };
+
           translations.push(translation);
+        } else {
         }
       }
 
-      console.log('Total translations found:', translations.length);
       return translations;
     } catch (error) {
       console.error('Error reading translations file:', error);
@@ -315,10 +324,6 @@ export class ExcelReader {
     // Add direction property for RTL/LTR support
     de.direction = 'ltr'; // German is left-to-right
     fa.direction = 'rtl'; // Persian is right-to-left
-
-    console.log('Converted translations - DE:', de);
-    console.log('Converted translations - FA:', fa);
-    console.log('FA advantageItems:', fa.advantageItems);
 
     return { de, fa };
   }

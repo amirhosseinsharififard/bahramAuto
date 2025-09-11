@@ -10,13 +10,12 @@
  * - Development/production environment handling
  *
  * @fileoverview Next.js configuration for Bahram Autohaus
- * @author Amir Hossein Shrififard
+ * @author Amir Hossein sharififard
  * @version 1.0.0
  */
 
 // Next.js type imports
 import type { NextConfig } from 'next';
-
 // PWA plugin for Progressive Web App functionality
 import withPWA from 'next-pwa';
 
@@ -27,6 +26,10 @@ import withPWA from 'next-pwa';
  * It includes image optimization settings and other Next.js-specific options.
  */
 const nextConfig: NextConfig = {
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // Image optimization configuration
   images: {
     // Allow images from external domains

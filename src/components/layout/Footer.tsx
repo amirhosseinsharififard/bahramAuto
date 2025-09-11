@@ -188,10 +188,10 @@ const Footer: React.FC<FooterProps> = () => {
         <div className="mt-8 border-t border-white/10 pt-6 text-center">
           <p className="text-sm text-gray-400">{t('footer.copyright')}</p>
           <p className="mt-2 text-xs text-gray-500" dir="ltr">
-            Developed by Amir Hossein Shrififard
+            Developed by Amir Hossein sharififard
           </p>
           <p className="text-xs text-gray-500" dir="ltr">
-            Email: amirhosseinshrififard@gmail.com | Phone: +989172380487
+            Email: amirhosseinsharififard@gmail.com | Phone: +989172380487
           </p>
         </div>
       </div>
