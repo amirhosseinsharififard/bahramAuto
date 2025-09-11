@@ -214,4 +214,3 @@ Once Strapi is set up, you can:
 4. Set up webhooks for real-time updates
 5. Implement search functionality
 6. Add image optimization and CDN integration
-

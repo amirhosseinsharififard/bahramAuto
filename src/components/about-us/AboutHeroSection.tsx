@@ -35,7 +35,7 @@ const AboutHeroSection = ({ t }: AboutHeroSectionProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/95 via-purple-900/70 to-transparent"></div>
         {/* Animated overlay elements */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-        
+
         {/* Enhanced overlay text */}
         <div className="absolute bottom-8 left-8 max-w-2xl text-white">
           <div className="mb-4 flex items-center">

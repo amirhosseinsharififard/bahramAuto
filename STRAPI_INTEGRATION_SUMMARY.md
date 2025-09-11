@@ -164,4 +164,3 @@ src/
 - [ ] Favorites/wishlist
 - [ ] Contact forms integration
 - [ ] Analytics and reporting
-

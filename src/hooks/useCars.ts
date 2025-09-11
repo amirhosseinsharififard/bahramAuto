@@ -5,8 +5,9 @@
  * CRUD operations and state management for the car gallery.
  */
 
-import { Car, CreateCarData, StrapiService } from '@/services/strapi';
 import { useCallback, useEffect, useState } from 'react';
+
+import { Car, CreateCarData, StrapiService } from '@/services/strapi';
 
 /**
  * Hook return type interface
@@ -164,7 +165,7 @@ export const useCars = (): UseCarsReturn => {
   // Load cars on mount
   useEffect(() => {
     loadCars();
-  }, [loadCars]);
+  }, []);
 
   return {
     cars,
@@ -177,4 +178,3 @@ export const useCars = (): UseCarsReturn => {
     uploadCarImages,
   };
 };
-

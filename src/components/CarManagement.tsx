@@ -1,8 +1,9 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import { useCars } from '@/hooks/useCars';
 import { CreateCarData } from '@/services/strapi';
-import React, { useState } from 'react';
 
 /**
  * Car Management component for admin panel
@@ -433,7 +434,7 @@ export const CarManagement: React.FC = () => {
             <div className="h-48 bg-gray-200 flex items-center justify-center">
               {car.attributes.images?.data?.[0] ? (
                 <img
-                  src={StrapiService.getImageUrl(car.attributes.images.data[0])}
+                  src={`http://localhost:1337${car.attributes.images.data[0].attributes.url}`}
                   alt={car.attributes.name}
                   className="w-full h-full object-cover"
                 />
@@ -478,4 +479,3 @@ export const CarManagement: React.FC = () => {
     </div>
   );
 };
-

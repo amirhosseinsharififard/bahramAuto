@@ -36,7 +36,6 @@ import {
   Footer,
   Header,
   HeroSection,
-  LoadingComponent,
   SearchFilterSection,
   VideoModal,
 } from '@/components';
@@ -99,10 +98,58 @@ const BahramAutohaus = () => {
   );
 
   /**
-   * Show loading state while Excel data is being fetched
+   * Show loading state while data is being fetched
    */
   if (loading) {
-    return <LoadingComponent />;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
+          <p className="mt-4 text-lg text-gray-600">
+            {t('loading.cars') || 'در حال بارگذاری خودروها...'}
+          </p>
+          <p className="text-sm text-gray-500 mt-1">
+            {t('loading.cars.en') || 'Loading cars...'}
+          </p>
+          <p className="text-xs text-gray-400 mt-2">
+            {t('loading.dataSource') || 'منبع داده'}: {dataSource}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  /**
+   * Show error state if data loading failed
+   */
+  if (carsError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {t('error.dataLoading') || 'خطا در بارگذاری داده'}
+          </h2>
+          <p className="text-gray-600 mb-2">
+            {t('error.carsLoading') || 'داده‌های خودروها بارگذاری نشده است'}
+          </p>
+          <p className="text-sm text-gray-500 mb-4">
+            {t('error.carsLoading.en') || 'Car data could not be loaded'}
+          </p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+            <p className="text-red-800 text-sm">
+              {t('error.details') || 'جزئیات خطا'}: {carsError}
+            </p>
+          </div>
+          <button
+            onClick={refreshData}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            {t('button.retry') || 'تلاش مجدد'}
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (

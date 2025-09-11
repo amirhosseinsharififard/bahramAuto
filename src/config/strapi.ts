@@ -45,4 +45,3 @@ export const getStrapiImageUrl = (imagePath: string): string => {
   // Otherwise, prepend the Strapi URL
   return `${STRAPI_CONFIG.url}${imagePath}`;
 };
-

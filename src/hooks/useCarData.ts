@@ -194,7 +194,7 @@ export const useCarData = (): UseCarDataReturn => {
   // Load data when dependencies change
   useEffect(() => {
     loadData();
-  }, [loadData]);
+  }, []);
 
   // Update data source
   const handleSetDataSource = useCallback((source: DataSource) => {

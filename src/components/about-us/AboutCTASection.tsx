@@ -36,4 +36,3 @@ const AboutCTASection = ({ t }: AboutCTASectionProps) => {
 };
 
 export default AboutCTASection;
-

@@ -28,6 +28,9 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 // Import global CSS styles
 import './globals.css';
 
+// Import Strapi connection status component (development only)
+import StrapiConnectionStatus from '@/components/StrapiConnectionStatus';
+
 /**
  * Application metadata configuration
  *
@@ -59,7 +62,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen w-full overflow-x-hidden">
         {/* Language provider wraps all content for internationalization */}
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          {/* Strapi connection status indicator (development only) */}
+          <StrapiConnectionStatus />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import { useSimpleHeroData } from '@/hooks/useSimpleHeroData';
 import { X } from 'lucide-react';
 
 interface VideoModalProps {
@@ -9,7 +10,15 @@ interface VideoModalProps {
 }
 
 const VideoModal = ({ isOpen, onClose, t }: VideoModalProps) => {
+  const { heroContent } = useSimpleHeroData();
+
   if (!isOpen) return null;
+
+  // Use video URL from API or fallback
+  const videoUrl = heroContent?.videoUrl || '/videos/bahram-autohaus-intro.mp4';
+  const title = heroContent?.title || t('hero.title');
+  const subtitle = heroContent?.subtitle || t('hero.subtitle');
+  const description = heroContent?.description || t('hero.description');
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -37,9 +46,13 @@ const VideoModal = ({ isOpen, onClose, t }: VideoModalProps) => {
               controls
               autoPlay
               onEnded={onClose}
-              poster="/images/cars/hero-bg.jpg"
+              poster={
+                heroContent?.backgroundImage || '/images/cars/hero-bg.jpg'
+              }
             >
-              {/* Multiple video formats for browser compatibility */}
+              {/* Video source from API */}
+              <source src={videoUrl} type="video/mp4" />
+              {/* Fallback video sources */}
               <source
                 src="/videos/bahram-autohaus-intro.mp4"
                 type="video/mp4"
@@ -55,9 +68,9 @@ const VideoModal = ({ isOpen, onClose, t }: VideoModalProps) => {
           {/* Video information */}
           <div className="p-6">
             <h3 className="mb-2 text-xl font-bold text-white">
-              {t('hero.title')} - {t('hero.subtitle')}
+              {title} - {subtitle}
             </h3>
-            <p className="text-gray-300">{t('hero.description')}</p>
+            <p className="text-gray-300">{description}</p>
           </div>
         </div>
       </div>
